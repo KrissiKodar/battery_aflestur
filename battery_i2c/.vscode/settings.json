@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "smbus_rw.h": "c",
+        "softi2cmaster.h": "c",
+        "wdt.h": "c",
+        "arduino.h": "c"
+    }
+}
