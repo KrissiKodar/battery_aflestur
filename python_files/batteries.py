@@ -55,9 +55,9 @@ class battery_gauge:
         while True:
             time.sleep(0.2)
             if self.ser.in_waiting > 0:
-                print(f'read {self.ser.in_waiting} bytes')
+                #print(f'read {self.ser.in_waiting} bytes')
                 data = self.ser.read(self.ser.in_waiting)
-                print(self.bytes_to_hex_list(data))
+                #print(self.bytes_to_hex_list(data))
                 break
         print()
 
@@ -363,7 +363,7 @@ class BQ4050(battery_gauge):
             self.measured_values.append(temp_data[offset:offset+type_size])
         return 
 
-    def read_all_dataflash_4050(self):
+    def read_all_dataflash(self):
         # print all sublaclasses (one of each) to see how many different subclasses there are
         all_classes = self.data_df["CLASS"].unique()
         all_subclasses = self.data_df["SUBCLASS"].unique()
@@ -484,7 +484,7 @@ class BQ3060(battery_gauge):
             self.measured_values.append(DC1[offset:offset+type_size])
         return
             
-    def read_all_dataflash_3060(self):
+    def read_all_dataflash(self):
 
         # print all sublaclasses (one of each) to see how many different subclasses there are
         all_classes = self.data_df["CLASS"].unique()
@@ -655,7 +655,7 @@ class BQ78350(battery_gauge):
             self.measured_values.append(temp_data[offset:offset+type_size])
         return 
 
-    def read_all_dataflash_78350(self):
+    def read_all_dataflash(self):
         # print all sublaclasses (one of each) to see how many different subclasses there are
         all_classes = self.data_df["CLASS"].unique()
         all_subclasses = self.data_df["SUBCLASS"].unique()

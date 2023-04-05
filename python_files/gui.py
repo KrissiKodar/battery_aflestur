@@ -36,8 +36,8 @@ def check_template_df(window, current_df, golden_df):
                     , "\nGolden File: ", golden_df["MEASURED VALUE"][index], " ", row["UNIT"] ,"\nCurrent File: ", row["MEASURED VALUE"], " ", row["UNIT"])
             print("\n")
     window.refresh()
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     # serial baud rate
     BAUD = 250000
     ####################### SQL ############################
@@ -61,10 +61,6 @@ if __name__ == "__main__":
     )
 
     engine = create_engine(connection_url, fast_executemany=True)
-
-
-
-
 
     sg.theme('SystemDefault')
     
