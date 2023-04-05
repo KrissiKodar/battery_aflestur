@@ -248,5 +248,5 @@ SBS_4050 = SBS_78350
 print(SBS_4050.loc[SBS_4050["NAME"] == "Authenticate"])
 
 # save pickle
-with open('SBS_BQ4050.pkl', 'wb') as f:
+with open('..\pkl_files\SBS_BQ4050.pkl', 'wb') as f:
     pickle.dump(SBS_4050, f)

@@ -25,12 +25,20 @@ table[0].columns = table[0].columns.str.replace('\r', ' ')
 # add column "Measured Value" to table[0] beteween "DATA TYPE" and "MIN VALUE" columns
 table[0].insert(6, "Measured Value", None)
 
-print(table[0][230:])
+# make all column names upper case
+table[0].columns = table[0].columns.str.upper()
+
+# convert column name DATA TYPE to TYPE
+table[0].rename(columns={'DATA TYPE': 'TYPE'}, inplace=True)
+# convert column name DEFAULT VALUE to DEFAULT
+table[0].rename(columns={'DEFAULT VALUE': 'DEFAULT'}, inplace=True)
+
+
+print(table[0].head(10))
 
 
 
-
-""" # save table[0] to pickle file
-with open('BQ3060_df.pkl', 'wb') as file:
+# save table[0] to pickle file
+with open('..\pkl_files\BQ3060_df.pkl', 'wb') as file:
     # Dump the dictionary to the file
-    pickle.dump(table[0], file) """
+    pickle.dump(table[0], file)

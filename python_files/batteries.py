@@ -14,6 +14,9 @@ import pyodbc
 
 ##########################################################
 
+DELAY = 0.02
+
+
 class battery_gauge:
     def __init__(self, ser):
         # wait for Arduino to be ready
@@ -60,7 +63,7 @@ class battery_gauge:
 
     def wait_and_get_data(self):
         while True:
-            time.sleep(0.1)
+            time.sleep(DELAY+0.08)
             if self.ser.in_waiting > 0:
                 #print(f'read {self.ser.in_waiting} bytes')
                 data = self.ser.read(self.ser.in_waiting)
@@ -175,69 +178,67 @@ class battery_gauge:
 
 
     def SBS_update_dataframe(self, df):
-    # if SIZE IN BYTES > 2 the remove first item from MEASURED VALUE list
+    # if SIZE IN BYTES > 2 then remove first item from MEASURED VALUE list
         for index, row in df.iterrows():
-            if int(row['SIZE IN BYTES']) > 2:
-                value = row['MEASURED VALUE']
+            if int(row["SIZE IN BYTES"]) > 2:
+                value = row["MEASURED VALUE"]
                 # remove first item from list
                 value.pop(0)
                 # update MEASURED VALUE
-                df.at[index, 'MEASURED VALUE'] = value
+                df.at[index, "MEASURED VALUE"] = value
 
         for index, row in df.iterrows():
             # if "SIZE IN BYTES" > 3 and "UNIT" is not "ASCII" and "NAME"
-            if int(row['SIZE IN BYTES']) > 3 and row['UNIT'] != 'ASCII':
-                value = row['MEASURED VALUE']
+            if int(row["SIZE IN BYTES"]) > 3 and row["UNIT"] != "ASCII":
+                value = row["MEASURED VALUE"]
                 # flip order of list elements, first flip first two elements, then the next two, etc.
                 if len(value) % 2 == 0:
                     for i in range(0, len(value), 2):
                         value[i], value[i+1] = value[i+1], value[i]
                 value = self.bytes_to_hex(value)
                 # update MEASURED VALUE
-                df.at[index, 'MEASURED VALUE'] = value
+                df.at[index, "MEASURED VALUE"] = value
 
 
-
-        
         for index, row in df.iterrows():
             # if FORMAT is "integer" and "SIZE IN BYTES" is 2
-            if row['FORMAT'] == 'integer' and int(row['SIZE IN BYTES']) == 2:
-                value = row['MEASURED VALUE']
+            if row["FORMAT"] == 'integer' and int(row["SIZE IN BYTES"]) == 2:
+                value = row["MEASURED VALUE"]
                 value = self.to_signed_int_SBS(value)
                 # update MEASURED VALUE
-                df.at[index, 'MEASURED VALUE'] = value
+                df.at[index, "MEASURED VALUE"] = value
             # if FORMAT is "integer" and "SIZE IN BYTES" is 1
-            if row['FORMAT'] == 'integer' and int(row['SIZE IN BYTES']) == 1:
-                value = row['MEASURED VALUE']
+            if row["FORMAT"] == 'integer' and int(row["SIZE IN BYTES"]) == 1:
+                value = row["MEASURED VALUE"]
                 value = self.to_signed_byte(value)
                 # update MEASURED VALUE
-                df.at[index, 'MEASURED VALUE'] = value
+                df.at[index, "MEASURED VALUE"] = value
             # if FORMAT is "unsigned int" and "SIZE IN BYTES" is 2
-            if row['FORMAT'] == 'unsigned int' and int(row['SIZE IN BYTES']) == 2:
-                value = row['MEASURED VALUE']
+            if row["FORMAT"] == 'unsigned int' and int(row["SIZE IN BYTES"]) == 2:
+                value = row["MEASURED VALUE"]
                 value = int(value[0]+value[1],16)
                 # update MEASURED VALUE
-                df.at[index, 'MEASURED VALUE'] = value
+                df.at[index, "MEASURED VALUE"] = value
             # FORMAT is "unsigned int" and "SIZE IN BYTES" is 1
-            if row['FORMAT'] == 'unsigned int' and int(row['SIZE IN BYTES']) == 1:
-                value = row['MEASURED VALUE']
+            if row["FORMAT"] == 'unsigned int' and int(row["SIZE IN BYTES"]) == 1:
+                value = row["MEASURED VALUE"]
                 value = int(value[1],16)
                 # update MEASURED VALUE
-                df.at[index, 'MEASURED VALUE'] = value
+                df.at[index, "MEASURED VALUE"] = value
 
             # if FORMAT is hex and "SIZE IN BYTES" is 2 or 1
-            if row['FORMAT'] == 'hex' and (int(row['SIZE IN BYTES']) == 2 or int(row['SIZE IN BYTES']) == 1):
-                value = row['MEASURED VALUE']
+            if row["FORMAT"] == 'hex' and (int(row["SIZE IN BYTES"]) == 2 or int(row["SIZE IN BYTES"]) == 1):
+                value = row["MEASURED VALUE"]
                 value = self.bytes_to_hex(value)
                 # update MEASURED VALUE
-                df.at[index, 'MEASURED VALUE'] = value
+                df.at[index, "MEASURED VALUE"] = value
             
             # if FORMAT is "string" and UNIT is "ASCII"
-            if row['FORMAT'] == 'string' and row['UNIT'] == 'ASCII':
-                value = row['MEASURED VALUE']
+            if row["FORMAT"] == 'string' and row["UNIT"] == "ASCII":
+                value = row["MEASURED VALUE"]
                 string_from_reg = ''.join(chr(int(i, 16)) for i in value)
                 # update MEASURED VALUE
-                df.at[index, 'MEASURED VALUE'] = string_from_reg
+                df.at[index, "MEASURED VALUE"] = string_from_reg
 # BQ40z50-r2
 class BQ4050(battery_gauge):
 # init function
@@ -296,15 +297,15 @@ class BQ4050(battery_gauge):
         super().SBS_update_dataframe(self.data_SBS)
 
     def read_from_4050(self, class_, subclass_):
-        test = self.data_df.loc[(self.data_df['Class'] == class_) & (self.data_df['Subclass'] == subclass_)]
+        test = self.data_df.loc[(self.data_df["CLASS"] == class_) & (self.data_df["SUBCLASS"] == subclass_)]
         # print out all rows up to the rows where there is more than 32 bytes between any two rows (Address column)
         k = 0
         for i in range(1,len(test)):
-            if test["Address"].iloc[i] - test["Address"].iloc[i-1] > 32:
-                #print(test.iloc[k:i])
-                max_address = test["Address"].iloc[i-1]
-                min_address = test["Address"].iloc[k]
-                type_max_address = test.loc[test["Address"] == max_address, "Type"].values[0]	
+            if test["ADDRESS"].iloc[i] - test["ADDRESS"].iloc[i-1] > 32:
+                #print(test.iloc[k:i])"UNITS"
+                max_address = test["ADDRESS"].iloc[i-1]
+                min_address = test["ADDRESS"].iloc[k]
+                type_max_address = test.loc[test["ADDRESS"] == max_address, "TYPE"].values[0]	
                 num_bytes = max_address + int(type_max_address[1:]) - min_address
                 if num_bytes % 32 == 0:
                     num_reads = num_bytes // 32
@@ -317,7 +318,7 @@ class BQ4050(battery_gauge):
                 address_read = [min_address >> 8, min_address & 0xFF]
                 
                 super().write_block(0x44, address_read)
-                time.sleep(0.1)
+                time.sleep(DELAY)
                 
                 temp_data = []
                 for j in range(num_reads):
@@ -328,21 +329,21 @@ class BQ4050(battery_gauge):
                 # for each row in test[k:i]
                 
                 for j in range(k,i):
-                    offset = test["Address"].iloc[j] - min_address
+                    offset = test["ADDRESS"].iloc[j] - min_address
                     #print("offset: ", offset)
-                    # place temp_data[offset:offset+type_size] in test["Measured Value"].iloc[j]
-                    type_size = int(test["Type"].iloc[j][1:])	
-                    #test["Measured Value"].iloc[j] = temp_data[offset:offset+type_size]
+                    # place temp_data[offset:offset+type_size] in test["MEASURED VALUE"].iloc[j]
+                    type_size = int(test["TYPE"].iloc[j][1:])	
+                    #test["MEASURED VALUE"].iloc[j] = temp_data[offset:offset+type_size]
                     self.measured_values.append(temp_data[offset:offset+type_size])
                 k = i
 
-        max_address = test["Address"].iloc[len(test)-1]
-        min_address = test["Address"].iloc[k]
+        max_address = test["ADDRESS"].iloc[len(test)-1]
+        min_address = test["ADDRESS"].iloc[k]
         # convert min address to hex like this 0x4600 -> [0x46, 0x00]
         address_read = [min_address >> 8, min_address & 0xFF]
         super().write_block(0x44, address_read)
-        time.sleep(0.1)
-        type_max_address = test.loc[test["Address"] == max_address, "Type"].values[0]
+        time.sleep(DELAY)
+        type_max_address = test.loc[test["ADDRESS"] == max_address, "TYPE"].values[0]
         num_bytes = max_address + int(type_max_address[1:]) - min_address	
         if num_bytes % 32 == 0:
             num_reads = num_bytes // 32
@@ -354,48 +355,48 @@ class BQ4050(battery_gauge):
             temp_data.extend(temp[3:])
         #print(temp_data)
         for j in range(k,len(test)):
-            offset = test["Address"].iloc[j] - min_address
+            offset = test["ADDRESS"].iloc[j] - min_address
             #print("offset: ", offset)
-            # place temp_data[offset:offset+type_size] in test["Measured Value"].iloc[j]
-            type_size = int(test["Type"].iloc[j][1:])	
-            #test["Measured Value"].iloc[j] = temp_data[offset:offset+type_size]
+            # place temp_data[offset:offset+type_size] in test["MEASURED VALUE"].iloc[j]
+            type_size = int(test["TYPE"].iloc[j][1:])	
+            #test["MEASURED VALUE"].iloc[j] = temp_data[offset:offset+type_size]
             self.measured_values.append(temp_data[offset:offset+type_size])
         return 
 
     def read_all_dataflash_4050(self):
         # print all sublaclasses (one of each) to see how many different subclasses there are
-        all_classes = self.data_df["Class"].unique()
-        all_subclasses = self.data_df["Subclass"].unique()
+        all_classes = self.data_df["CLASS"].unique()
+        all_subclasses = self.data_df["SUBCLASS"].unique()
         
         for i in all_classes:
-            for j in self.data_df.loc[self.data_df['Class'] == i]["Subclass"].unique():
+            for j in self.data_df.loc[self.data_df["CLASS"] == i]["SUBCLASS"].unique():
                 self.read_from_4050(i,j)
 
-        # place mesured values in data_df column "Measured Value"
+        # place mesured values in data_df column "MEASURED VALUE"
         #print("len(self.measured_values): ", len(self.measured_values))
         #print("shape of data_df: ", self.data_df.shape)
-        # place measured values in data_df (column "Measured Value")
-        self.data_df["Measured Value"] = self.measured_values
+        # place measured values in data_df (column "MEASURED VALUE")
+        self.data_df["MEASURED VALUE"] = self.measured_values
         # if type is I2, convert to int
         for i in range(len(self.data_df)):	
-            if self.data_df["Type"].iloc[i] == "I2":
-                self.data_df["Measured Value"].iloc[i] = self.to_signed_int_dataflash(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["Type"].iloc[i] == "U2":
-                self.data_df["Measured Value"].iloc[i] = self.to_unsigned_int_dataflash(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["Type"].iloc[i] == "H1" or self.data_df["Type"].iloc[i] == "H2" or self.data_df["Type"].iloc[i] == "H4":
-                self.data_df["Measured Value"].iloc[i] = self.bytes_to_hex_dataflash(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["Type"].iloc[i] == "F4":
-                #self.data_df["Measured Value"].iloc[i] = self.bytes_to_float(self.data_df["Measured Value"].iloc[i])
+            if self.data_df["TYPE"].iloc[i] == "I2":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_signed_int_dataflash(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "U2":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_unsigned_int_dataflash(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "H1" or self.data_df["TYPE"].iloc[i] == "H2" or self.data_df["TYPE"].iloc[i] == "H4":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.bytes_to_hex_dataflash(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "F4":
+                #self.data_df["MEASURED VALUE"].iloc[i] = self.bytes_to_float(self.data_df["MEASURED VALUE"].iloc[i])
                 # do nothing
                 pass	
             # elif first letter of Type is S (string)
-            elif self.data_df["Type"].iloc[i][0] == "S":
-                string_from_reg = ''.join(chr(int(i, 16)) for i in self.data_df["Measured Value"].iloc[i])
-                self.data_df["Measured Value"].iloc[i] = string_from_reg
-            elif self.data_df["Type"].iloc[i] == "U1":
-                self.data_df["Measured Value"].iloc[i] = int(self.data_df["Measured Value"].iloc[i][0], 16)
-            elif self.data_df["Type"].iloc[i] == "I1":
-                self.data_df["Measured Value"].iloc[i] = self.to_signed_byte(self.data_df["Measured Value"].iloc[i][0])
+            elif self.data_df["TYPE"].iloc[i][0] == "S":
+                string_from_reg = ''.join(chr(int(i, 16)) for i in self.data_df["MEASURED VALUE"].iloc[i])
+                self.data_df["MEASURED VALUE"].iloc[i] = string_from_reg
+            elif self.data_df["TYPE"].iloc[i] == "U1":
+                self.data_df["MEASURED VALUE"].iloc[i] = int(self.data_df["MEASURED VALUE"].iloc[i][0], 16)
+            elif self.data_df["TYPE"].iloc[i] == "I1":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_signed_byte(self.data_df["MEASURED VALUE"].iloc[i][0])
         return
 
 
@@ -452,11 +453,11 @@ class BQ3060(battery_gauge):
 
     # read dataflash from bq3060
     def read_from_3060(self, class_, subclass_):
-        test = self.data_df.loc[(self.data_df['CLASS'] == class_) & (self.data_df['SUBCLASS ID'] == subclass_)]
+        test = self.data_df.loc[(self.data_df["CLASS"] == class_) & (self.data_df['SUBCLASS ID'] == subclass_)]
         # subclass ID: number of bytes according to the datasheet for BQ3060
         # bugs = {82: 10, 107: 3, 59: 8, 65: 1}
         two_reads = [34,48,85,106]
-        DELAY = 0.02
+        
         
         time.sleep(DELAY)
         super().write_word(0x77, [int(subclass_), 0x00])
@@ -479,7 +480,7 @@ class BQ3060(battery_gauge):
         
         for j in range(len(test)):
             offset = int(test["OFFSET"].iloc[j])
-            type_size = int(test["DATA TYPE"].iloc[j][1:])	
+            type_size = int(test["TYPE"].iloc[j][1:])	
             self.measured_values.append(DC1[offset:offset+type_size])
         return
             
@@ -489,30 +490,30 @@ class BQ3060(battery_gauge):
         all_classes = self.data_df["CLASS"].unique()
         all_subclasses = self.data_df["SUBCLASS ID"].unique()
         for i in all_classes:
-            for j in self.data_df.loc[self.data_df['CLASS'] == i]["SUBCLASS ID"].unique():
+            for j in self.data_df.loc[self.data_df["CLASS"] == i]["SUBCLASS ID"].unique():
                 #print("i: ", i, "j: ", j)
                 self.read_from_3060(i,j)
 
-        self.data_df["Measured Value"] = self.measured_values
+        self.data_df["MEASURED VALUE"] = self.measured_values
         for i in range(len(self.data_df)):	
-            if self.data_df["DATA TYPE"].iloc[i] == "I2":
-                self.data_df["Measured Value"].iloc[i] = self.to_signed_int(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["DATA TYPE"].iloc[i] == "U2":
-                self.data_df["Measured Value"].iloc[i] = self.to_unsigned_int(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["DATA TYPE"].iloc[i] == "H1" or self.data_df["DATA TYPE"].iloc[i] == "H2" or self.data_df["DATA TYPE"].iloc[i] == "H4":
-                self.data_df["Measured Value"].iloc[i] = self.bytes_to_hex(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["DATA TYPE"].iloc[i] == "F4":
-                #self.data_df["Measured Value"].iloc[i] = self.bytes_to_float_dataflash(self.data_df["Measured Value"].iloc[i])
+            if self.data_df["TYPE"].iloc[i] == "I2":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_signed_int(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "U2":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_unsigned_int(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "H1" or self.data_df["TYPE"].iloc[i] == "H2" or self.data_df["TYPE"].iloc[i] == "H4":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.bytes_to_hex(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "F4":
+                #self.data_df["MEASURED VALUE"].iloc[i] = self.bytes_to_float_dataflash(self.data_df["MEASURED VALUE"].iloc[i])
                 # do nothing
                 pass	
             # elif first letter of DATA TYPE is S (string)
-            elif self.data_df["DATA TYPE"].iloc[i][0] == "S":
-                string_from_reg = ''.join(chr(int(i, 16)) for i in self.data_df["Measured Value"].iloc[i])
-                self.data_df["Measured Value"].iloc[i] = string_from_reg
-            elif self.data_df["DATA TYPE"].iloc[i] == "U1":
-                self.data_df["Measured Value"].iloc[i] = int(self.data_df["Measured Value"].iloc[i][0], 16)
-            elif self.data_df["DATA TYPE"].iloc[i] == "I1":
-                self.data_df["Measured Value"].iloc[i] = self.to_signed_byte(self.data_df["Measured Value"].iloc[i][0])
+            elif self.data_df["TYPE"].iloc[i][0] == "S":
+                string_from_reg = ''.join(chr(int(i, 16)) for i in self.data_df["MEASURED VALUE"].iloc[i])
+                self.data_df["MEASURED VALUE"].iloc[i] = string_from_reg
+            elif self.data_df["TYPE"].iloc[i] == "U1":
+                self.data_df["MEASURED VALUE"].iloc[i] = int(self.data_df["MEASURED VALUE"].iloc[i][0], 16)
+            elif self.data_df["TYPE"].iloc[i] == "I1":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_signed_byte(self.data_df["MEASURED VALUE"].iloc[i][0])
         return
 
 
@@ -586,15 +587,15 @@ class BQ78350(battery_gauge):
         super().SBS_update_dataframe(self.data_SBS)
 
     def read_from_78350(self, class_, subclass_):
-        test = self.data_df.loc[(self.data_df['Class'] == class_) & (self.data_df['Subclass'] == subclass_)]
+        test = self.data_df.loc[(self.data_df["CLASS"] == class_) & (self.data_df["SUBCLASS"] == subclass_)]
         # print out all rows up to the rows where there is more than 32 bytes between any two rows (Address column)
         k = 0
         for i in range(1,len(test)):
-            if test["Address"].iloc[i] - test["Address"].iloc[i-1] > 32:
+            if test["ADDRESS"].iloc[i] - test["ADDRESS"].iloc[i-1] > 32:
                 #print(test.iloc[k:i])
-                max_address = test["Address"].iloc[i-1]
-                min_address = test["Address"].iloc[k]
-                type_max_address = test.loc[test["Address"] == max_address, "Type"].values[0]	
+                max_address = test["ADDRESS"].iloc[i-1]
+                min_address = test["ADDRESS"].iloc[k]
+                type_max_address = test.loc[test["ADDRESS"] == max_address, "TYPE"].values[0]	
                 num_bytes = max_address + int(type_max_address[1:]) - min_address
                 if num_bytes % 32 == 0:
                     num_reads = num_bytes // 32
@@ -607,7 +608,7 @@ class BQ78350(battery_gauge):
                 address_read = [min_address >> 8, min_address & 0xFF]
                 
                 super().write_block(0x44, address_read)
-                time.sleep(0.1)
+                time.sleep(DELAY)
                 
                 temp_data = []
                 for j in range(num_reads):
@@ -618,23 +619,23 @@ class BQ78350(battery_gauge):
                 # for each row in test[k:i]
                 
                 for j in range(k,i):
-                    offset = test["Address"].iloc[j] - min_address
+                    offset = test["ADDRESS"].iloc[j] - min_address
                     #print("offset: ", offset)
-                    # place temp_data[offset:offset+type_size] in test["Measured Value"].iloc[j]
-                    type_size = int(test["Type"].iloc[j][1:])	
-                    #test["Measured Value"].iloc[j] = temp_data[offset:offset+type_size]
+                    # place temp_data[offset:offset+type_size] in test["MEASURED VALUE"].iloc[j]
+                    type_size = int(test["TYPE"].iloc[j][1:])	
+                    #test["MEASURED VALUE"].iloc[j] = temp_data[offset:offset+type_size]
                     # print address, type, measured value
-                    #print(test["Address"].iloc[j], test["Type"].iloc[j], temp_data[offset:offset+type_size])
+                    #print(test["ADDRESS"].iloc[j], test["TYPE"].iloc[j], temp_data[offset:offset+type_size])
                     self.measured_values.append(temp_data[offset:offset+type_size])
                 k = i
 
-        max_address = test["Address"].iloc[len(test)-1]
-        min_address = test["Address"].iloc[k]
+        max_address = test["ADDRESS"].iloc[len(test)-1]
+        min_address = test["ADDRESS"].iloc[k]
         # convert min address to hex like this 0x4600 -> [0x46, 0x00]
         address_read = [min_address >> 8, min_address & 0xFF]
         super().write_block(0x44, address_read)
-        time.sleep(0.1)
-        type_max_address = test.loc[test["Address"] == max_address, "Type"].values[0]
+        time.sleep(DELAY)
+        type_max_address = test.loc[test["ADDRESS"] == max_address, "TYPE"].values[0]
         num_bytes = max_address + int(type_max_address[1:]) - min_address	
         if num_bytes % 32 == 0:
             num_reads = num_bytes // 32
@@ -646,56 +647,56 @@ class BQ78350(battery_gauge):
             temp_data.extend(temp[3:])
         #print(temp_data)
         for j in range(k,len(test)):
-            offset = test["Address"].iloc[j] - min_address
+            offset = test["ADDRESS"].iloc[j] - min_address
             #print("offset: ", offset)
-            # place temp_data[offset:offset+type_size] in test["Measured Value"].iloc[j]
-            type_size = int(test["Type"].iloc[j][1:])	
-            #test["Measured Value"].iloc[j] = temp_data[offset:offset+type_size]
+            # place temp_data[offset:offset+type_size] in test["MEASURED VALUE"].iloc[j]
+            type_size = int(test["TYPE"].iloc[j][1:])	
+            #test["MEASURED VALUE"].iloc[j] = temp_data[offset:offset+type_size]
             self.measured_values.append(temp_data[offset:offset+type_size])
         return 
 
     def read_all_dataflash_78350(self):
         # print all sublaclasses (one of each) to see how many different subclasses there are
-        all_classes = self.data_df["Class"].unique()
-        all_subclasses = self.data_df["Subclass"].unique()
+        all_classes = self.data_df["CLASS"].unique()
+        all_subclasses = self.data_df["SUBCLASS"].unique()
         
         for i in all_classes:
             #print("Class: ", i)
-            for j in self.data_df.loc[self.data_df['Class'] == i]["Subclass"].unique():
+            for j in self.data_df.loc[self.data_df["CLASS"] == i]["SUBCLASS"].unique():
                 #print("Subclass: ", j)
                 self.read_from_78350(i,j)
 
-        # place mesured values in data_df column "Measured Value"
+        # place mesured values in data_df column "MEASURED VALUE"
         #print("len(self.measured_values): ", len(self.measured_values))
         #print("shape of data_df: ", self.data_df.shape)
-        # place measured values in data_df (column "Measured Value")
-        self.data_df["Measured Value"] = self.measured_values
+        # place measured values in data_df (column "MEASURED VALUE")
+        self.data_df["MEASURED VALUE"] = self.measured_values
         # if type is I2, convert to int
         for i in range(len(self.data_df)):	
-            if self.data_df["Type"].iloc[i] == "I2":
-                self.data_df["Measured Value"].iloc[i] = self.to_signed_int_dataflash(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["Type"].iloc[i] == "U2":
-                self.data_df["Measured Value"].iloc[i] = self.to_unsigned_int_dataflash(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["Type"].iloc[i] == "U4":
-                self.data_df["Measured Value"].iloc[i] = self.to_unsigned_long_dataflash(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["Type"].iloc[i] == "I4":
-                self.data_df["Measured Value"].iloc[i] = self.to_signed_long_dataflash(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["Type"].iloc[i] == "H1" or self.data_df["Type"].iloc[i] == "H2" or self.data_df["Type"].iloc[i] == "H4":
-                self.data_df["Measured Value"].iloc[i] = self.bytes_to_hex_dataflash(self.data_df["Measured Value"].iloc[i])
-            elif self.data_df["Type"].iloc[i] == "F4":
+            if self.data_df["TYPE"].iloc[i] == "I2":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_signed_int_dataflash(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "U2":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_unsigned_int_dataflash(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "U4":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_unsigned_long_dataflash(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "I4":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_signed_long_dataflash(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "H1" or self.data_df["TYPE"].iloc[i] == "H2" or self.data_df["TYPE"].iloc[i] == "H4":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.bytes_to_hex_dataflash(self.data_df["MEASURED VALUE"].iloc[i])
+            elif self.data_df["TYPE"].iloc[i] == "F4":
                 print("F4")
-                print(self.data_df["Measured Value"].iloc[i])
-                #self.data_df["Measured Value"].iloc[i] = self.bytes_to_float(self.data_df["Measured Value"].iloc[i])
+                print(self.data_df["MEASURED VALUE"].iloc[i])
+                #self.data_df["MEASURED VALUE"].iloc[i] = self.bytes_to_float(self.data_df["MEASURED VALUE"].iloc[i])
                 # do nothing
                 pass	
             # elif first letter of Type is S (string)
-            elif self.data_df["Type"].iloc[i][0] == "S":
-                string_from_reg = ''.join(chr(int(i, 16)) for i in self.data_df["Measured Value"].iloc[i])
-                self.data_df["Measured Value"].iloc[i] = string_from_reg
-            elif self.data_df["Type"].iloc[i] == "U1":
-                self.data_df["Measured Value"].iloc[i] = int(self.data_df["Measured Value"].iloc[i][0], 16)
-            elif self.data_df["Type"].iloc[i] == "I1":
-                self.data_df["Measured Value"].iloc[i] = self.to_signed_byte(self.data_df["Measured Value"].iloc[i][0])
+            elif self.data_df["TYPE"].iloc[i][0] == "S":
+                string_from_reg = ''.join(chr(int(i, 16)) for i in self.data_df["MEASURED VALUE"].iloc[i])
+                self.data_df["MEASURED VALUE"].iloc[i] = string_from_reg
+            elif self.data_df["TYPE"].iloc[i] == "U1":
+                self.data_df["MEASURED VALUE"].iloc[i] = int(self.data_df["MEASURED VALUE"].iloc[i][0], 16)
+            elif self.data_df["TYPE"].iloc[i] == "I1":
+                self.data_df["MEASURED VALUE"].iloc[i] = self.to_signed_byte(self.data_df["MEASURED VALUE"].iloc[i][0])
 
         return
 

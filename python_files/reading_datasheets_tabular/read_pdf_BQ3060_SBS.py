@@ -70,7 +70,7 @@ SBS_3060.loc[SBS_3060['FORMAT'] == 'signed int', 'FORMAT'] = 'integer'
 
 print(SBS_3060[-40:])
 
-with open('SBS_BQ3060.pkl', 'wb') as f:
+with open('..\pkl_files\SBS_BQ3060.pkl', 'wb') as f:
     pickle.dump(SBS_3060, f)
 
 """ for i in SBS_3060.loc[:, "SBS CMD"]:

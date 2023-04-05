@@ -57,7 +57,19 @@ bq78350_df_table.loc[(bq78350_df_table["Subclass"] == "SOT") & (bq78350_df_table
 bq78350_df_table.loc[(bq78350_df_table["Subclass"] == "SOT") & (bq78350_df_table["Name"] == "Threshold"), "Min Check Value"] = 0 """
 
 ########################################################
-print(bq78350_df_table[20:40])
-with open('BQ78350_df.pkl', 'wb') as file:
+
+
+
+# make all column names upper case
+bq78350_df_table.columns = bq78350_df_table.columns.str.upper()
+
+# convert column UNITS to UNIT
+bq78350_df_table.rename(columns={'UNITS': 'UNIT'}, inplace=True)
+
+print(bq78350_df_table.head(10))
+
+
+
+with open('..\pkl_files\BQ78350_df.pkl', 'wb') as file:
     # Dump the dictionary to the file
     pickle.dump(bq78350_df_table, file)

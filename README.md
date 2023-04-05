@@ -10,3 +10,4 @@ Files in this folder communicate with the arduino and tell it what it wants to r
 - reading_datasheets_tabular contains the datasheets for the batteries and the python files used for reading data tables from the datasheets
 - batteries.py contains the code for reading data of the various batteries
 - simple_reads.py is for testing and debugging
+- requirements.txt contains the python packages used for this project. To install the packages type `pip install -r requirements.txt`

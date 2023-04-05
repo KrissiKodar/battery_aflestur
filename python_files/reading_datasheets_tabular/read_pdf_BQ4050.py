@@ -38,10 +38,16 @@ table[2].insert(5, "Measured Value", None)
 # convert Address where the numbers are strings "0x0000" to 32 bit integers
 table[2]["Address"] = table[2]["Address"].apply(lambda x: int(x, 16))
 
+
+
+# make all column names upper case
+table[2].columns = table[2].columns.str.upper()
+
+# convert column UNITS to UNIT
+table[2].rename(columns={"UNITS": "UNIT"}, inplace=True)
+
 print(table[2].head(10))
-
-
 # save table[2] to pickle file
-""" with open('BQ4050_df.pkl', 'wb') as file:
+with open('..\pkl_files\BQ4050_df.pkl', 'wb') as file:
     # Dump the dictionary to the fileq
-    pickle.dump(table[2], file) """
+    pickle.dump(table[2], file)
