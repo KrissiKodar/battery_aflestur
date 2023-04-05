@@ -2,6 +2,7 @@
 This folder contains the c++ code for the arduino that communicates with the batteries through I2C. This folder should not need any changes.
 
 # python_files
+## see inside the "python_files" folder for more detailed information.
 
 Files in this folder communicate with the arduino and tell it what it wants to read from the batteries, it contains:
 - gui.py contains the graphical user interface
