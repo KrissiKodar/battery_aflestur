@@ -23,6 +23,7 @@ class battery_gauge:
         # self.wait_and_print()
         self.ser = ser
     
+    # for startup
     def wait_for_connection(self):
         self.wait_and_print()
         
@@ -50,6 +51,7 @@ class battery_gauge:
 
     # function that only waits and prints out recieved bytes
     # it should wait until at least 1 byte is available
+    # for startup
     def wait_and_print(self):
         print()
         while True:
@@ -61,6 +63,7 @@ class battery_gauge:
                 break
         print()
 
+    # for startup
     def wait_and_get_data(self):
         while True:
             time.sleep(DELAY+0.08)

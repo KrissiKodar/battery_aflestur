@@ -3,8 +3,14 @@ import sys
 import serial
 from serial.tools import list_ports
 from serial import Serial
-
+import pandas as pd
+from tkinter_settings import engine, my_db, connection
 from tkinter_util_func import gui_to_read_battery
+from tkinter import ttk
+
+from sqlalchemy import text
+
+
 
 global scanned_input
 scanned_input = None
@@ -49,6 +55,10 @@ def scan_battery_clicked():
     def on_scan_entry(event):
         scanned_data = scan_entry.get()
         print("Scanned data:", scanned_data)
+        # if scanned data contains two words with a space in between, only use the second word
+        if len(scanned_data.split()) > 1:
+            scanned_data = scanned_data.split()[1]
+        print("Scanned data:", scanned_data)
         # Store the scanned_data in a global variable for later use
         global scanned_input
         scanned_input = scanned_data
@@ -84,17 +94,82 @@ def scan_battery_clicked():
     scan_entry.bind("<Return>", on_scan_entry)
 
 
-
-
 def read_battery_clicked():
+    global scanned_input
     if scanned_input != None:
         read_success = gui_to_read_battery(scanned_input)
+        scanned_input = None
         if read_success:
             print("Battery read successfully")
         else:
             print("Battery read failed")
     else:
         print("No battery scanned")
+
+
+def get_table_names():
+    query = f"SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_catalog = '{my_db}';"
+    table_names = pd.read_sql_query(query, connection)
+    return table_names['table_name'].tolist()
+
+
+def show_all_clicked():
+    def on_table_select(event):
+        selected_table = table_listbox.get(table_listbox.curselection())
+        query = f"SELECT * FROM {selected_table}"
+        battery_data = pd.read_sql_query(query, connection)
+
+        # Clear the treeview before inserting new data
+        for item in tree.get_children():
+            tree.delete(item)
+
+        # Update the column headings and insert the data into the Treeview
+        tree["columns"] = list(battery_data.columns)
+        for col in battery_data.columns:
+            tree.heading(col, text=col)
+
+        for index, row in battery_data.iterrows():
+            tree.insert("", "end", values=row.tolist())
+
+    table_names = get_table_names()
+
+    # Create a new Toplevel window to display the data
+    show_all_top = tk.Toplevel(root)
+    show_all_top.title("All Batteries")
+    show_all_top.geometry("1200x800")
+    set_window_icon(show_all_top)
+
+    # Create a Listbox for table selection
+    table_listbox = tk.Listbox(show_all_top, selectmode="browse")
+    table_listbox.pack(side="left", padx=10, pady=5, fill="y")
+    
+
+    for table in table_names:
+        table_listbox.insert("end", table)
+
+    table_listbox.bind("<<ListboxSelect>>", on_table_select)
+
+    # Create a frame to hold the Treeview and its scrollbars
+    tree_frame = tk.Frame(show_all_top)
+    tree_frame.pack(side="right", fill="both", expand=True)
+
+    # Add horizontal and vertical scrollbars
+    h_scrollbar = ttk.Scrollbar(tree_frame, orient="horizontal")
+    h_scrollbar.pack(side="bottom", fill="x")
+    v_scrollbar = ttk.Scrollbar(tree_frame, orient="vertical")
+    v_scrollbar.pack(side="right", fill="y")
+
+    # Create a Treeview to display the data
+    tree = ttk.Treeview(tree_frame, show="headings", xscrollcommand=h_scrollbar.set, yscrollcommand=v_scrollbar.set)
+    tree.pack(side="left", fill="both", expand=True)
+
+    # Configure the scrollbars to work with the Treeview widget
+    v_scrollbar.config(command=tree.yview)
+    h_scrollbar.config(command=tree.xview)
+
+
+
+
 
 def redirect_stdout():
     sys.stdout = StdoutRedirector(text)
@@ -147,6 +222,8 @@ redirect_stdout()
 exit_button.pack(side="left", padx=10, pady=5)
 incoming_button.pack(side="left", padx=10, pady=5)
 service_button.pack(side="left", padx=10, pady=5)
+show_all_button = tk.Button(frame, text="Show all", command=show_all_clicked, padx=10, pady=5)
+show_all_button.pack(side="left", padx=10, pady=5)
 
 
 
