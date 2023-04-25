@@ -4,6 +4,7 @@ import serial
 from serial.tools import list_ports
 from serial import Serial
 import pandas as pd
+import numpy as np
 from tkinter_settings import engine, my_db, connection
 from tkinter_util_func import gui_to_read_battery
 from tkinter import ttk
@@ -93,7 +94,6 @@ def scan_battery_clicked():
     # Bind the 'Return' key to the on_scan_entry function
     scan_entry.bind("<Return>", on_scan_entry)
 
-
 def read_battery_clicked():
     global scanned_input
     if scanned_input != None:
@@ -105,7 +105,6 @@ def read_battery_clicked():
             print("Battery read failed")
     else:
         print("No battery scanned")
-
 
 def get_table_names():
     query = f"SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_catalog = '{my_db}';"
@@ -167,8 +166,113 @@ def show_all_clicked():
     v_scrollbar.config(command=tree.yview)
     h_scrollbar.config(command=tree.xview)
 
+def compare_two_tables(table1, table2):
+    # if streing before first underscore is the same, then it is the same battery 
+    # if not then return None
+    if table1.split("_")[0] != table2.split("_")[0]:
+        return None
+
+    table1_data = pd.read_sql_query(f"SELECT * FROM {table1}", connection)
+    # table2_data will contain the golden files later
+    table2_data = pd.read_sql_query(f"SELECT * FROM {table2}", connection)
+
+    if table1_data.shape[1] != table2_data.shape[1]:
+        return None
+
+    diff = table1_data["MEASURED VALUE"] != table2_data["MEASURED VALUE"]
+    if "SUBCLASS" in table1_data.columns:
+        # Select the desired columns and create separate columns for the "MEASURED VALUE" from each table
+        diff_df = table1_data.loc[diff, ["CLASS", "SUBCLASS", "NAME", "MEASURED VALUE"]]
+        diff_df["MEASURED VALUE (Table 2)"] = table2_data.loc[diff, "MEASURED VALUE"]
+        # add "UNIT" column
+        diff_df["UNIT"] = table1_data.loc[diff, "UNIT"]
+    else:
+        diff_df = table1_data.loc[diff, ["SBS CMD", "NAME", "MEASURED VALUE"]]
+        diff_df["MEASURED VALUE (Table 2)"] = table2_data.loc[diff, "MEASURED VALUE"]
+        # add "UNIT" column
+        diff_df["UNIT"] = table1_data.loc[diff, "UNIT"]
+    return diff_df
 
 
+def compare_tables_clicked():
+    def on_compare_button_click():
+        if not table1_listbox.curselection() or not table2_listbox.curselection():
+                error_message = "Please select a table from both listboxes before comparing."
+                print(error_message)
+                error_label.config(text=error_message)
+                return
+
+        table1 = table1_listbox.get(table1_listbox.curselection())
+        table2 = table2_listbox.get(table2_listbox.curselection())
+
+        diff_df = compare_two_tables(table1, table2)
+
+        if diff_df is None:
+            error_message = f"Cannot compare {table1} and {table2} as they have a different number of columns."
+            print(error_message)
+            error_label.config(text=error_message)
+            return
+        
+       # Create a new Toplevel window to display the differences
+        diff_top = tk.Toplevel(compare_top)
+        diff_top.title(f"Differences between {table1} and {table2}")
+        diff_top.geometry("1200x800")
+        set_window_icon(diff_top)
+
+        # Create a frame to hold the Treeview and its scrollbars
+        tree_frame = tk.Frame(diff_top)
+        tree_frame.pack(fill="both", expand=True)
+
+        # Add horizontal and vertical scrollbars
+        h_scrollbar = ttk.Scrollbar(tree_frame, orient="horizontal")
+        h_scrollbar.pack(side="bottom", fill="x")
+        v_scrollbar = ttk.Scrollbar(tree_frame, orient="vertical")
+        v_scrollbar.pack(side="right", fill="y")
+
+        # Create a Treeview to display the data
+        tree = ttk.Treeview(tree_frame, show="headings", xscrollcommand=h_scrollbar.set, yscrollcommand=v_scrollbar.set)
+        tree.pack(side="left", fill="both", expand=True)
+
+        # Configure the scrollbars to work with the Treeview widget
+        v_scrollbar.config(command=tree.yview)
+        h_scrollbar.config(command=tree.xview)
+
+        # Update the column headings and insert the data into the Treeview
+        tree["columns"] = list(diff_df.columns)
+        for col in diff_df.columns:
+            tree.heading(col, text=col)
+
+        for index, row in diff_df.iterrows():
+            tree.insert("", "end", values=row.tolist())
+
+    compare_top = tk.Toplevel(root)
+    compare_top.title("Compare Tables")
+    compare_top.geometry("500x300")
+    set_window_icon(compare_top)
+
+    table_names = get_table_names()
+
+    # Configure the columns and rows to resize with the window
+    compare_top.grid_columnconfigure(0, weight=1)
+    compare_top.grid_columnconfigure(1, weight=1)
+    compare_top.grid_rowconfigure(0, weight=1)
+
+    # Create two Listboxes for table selection
+    table1_listbox = tk.Listbox(compare_top, selectmode="browse", exportselection=False)
+    table1_listbox.grid(row=0, column=0, padx=10, pady=5, sticky="nsew")
+
+    table2_listbox = tk.Listbox(compare_top, selectmode="browse", exportselection=False)
+    table2_listbox.grid(row=0, column=1, padx=10, pady=5, sticky="nsew")
+
+
+    for table in table_names:
+        table1_listbox.insert("end", table)
+        table2_listbox.insert("end", table)
+    error_label = tk.Label(compare_top, text="", fg="red")
+    error_label.grid(row=2, column=0, columnspan=2, pady=5)
+
+    compare_button = tk.Button(compare_top, text="Compare", command=on_compare_button_click)
+    compare_button.grid(row=1, column=0, columnspan=2, pady=10)
 
 
 def redirect_stdout():
@@ -224,7 +328,8 @@ incoming_button.pack(side="left", padx=10, pady=5)
 service_button.pack(side="left", padx=10, pady=5)
 show_all_button = tk.Button(frame, text="Show all", command=show_all_clicked, padx=10, pady=5)
 show_all_button.pack(side="left", padx=10, pady=5)
-
+compare_button = tk.Button(frame, text="Compare", command=compare_tables_clicked, padx=10, pady=5)
+compare_button.pack(side="left", padx=10, pady=5)
 
 
 # Start the GUI

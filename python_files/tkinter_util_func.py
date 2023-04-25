@@ -123,14 +123,19 @@ def read_battery_data(current_battery, battery_type, serial_number, scanned_inpu
     if battery_type == "bq3060":
         battery_type = "BQ3060"
         process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input)
+        return True
 
-    if "1936.1B" in battery_type:
+    elif "1936.1B" in battery_type:
         battery_type = "BQ4050"
         process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input)
+        return True
 
-    if battery_type == "1737":
+    elif battery_type == "1737":
         battery_type = "BQ78350"
         process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input)
+        return True
+    else:
+        return False
 
 
 
@@ -151,13 +156,20 @@ def gui_to_read_battery(scanned_input):
         serial_number = get_serial_number(startup, ser)
 
         battery = create_battery_object(startup, battery_type, ser)
-        read_battery_data(battery, battery_type, serial_number, scanned_input)
-
-        print("\n\n")
-        print("Done reading battery, connect another battery and press 'Read battery' again")
-        print("\n\n")
-        ser.close()
-        return True
+        read_success = read_battery_data(battery, battery_type, serial_number, scanned_input)
+        if not read_success:
+            print("\n\n")
+            print("Could not read battery data")
+            print("Please connect a battery and press 'Read battery' again")
+            print("\n\n")
+            ser.close()
+            return False
+        else:
+            print("\n\n")
+            print("Done reading battery, connect another battery and press 'Read battery' again")
+            print("\n\n")
+            ser.close()
+            return True
     except Exception as e:
         print("An error occurred:", e)
         return False

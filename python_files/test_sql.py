@@ -39,3 +39,24 @@ def get_table_names():
 
 table_names = get_table_names()
 print(table_names)
+
+
+query1 = f"SELECT * FROM {'BQ4050_0x0001_dataflash'}"
+testt = pd.read_sql_query(query1, connection)
+
+
+
+query2 = f"SELECT * FROM {'BQ4050_705095120210054_0x0036_dataflash'}"
+testt2 = pd.read_sql_query(query2, connection)
+
+
+different_measured = testt2["MEASURED VALUE"] != testt["MEASURED VALUE"]
+print(different_measured)
+
+diff_df = testt2[different_measured]
+print(diff_df)
+
+
+
+
+new_df = pd.concat([testt, testt2], axis=0)
