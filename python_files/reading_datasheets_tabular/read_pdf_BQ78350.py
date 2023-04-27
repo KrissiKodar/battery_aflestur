@@ -66,6 +66,11 @@ bq78350_df_table.columns = bq78350_df_table.columns.str.upper()
 # convert column UNITS to UNIT
 bq78350_df_table.rename(columns={'UNITS': 'UNIT'}, inplace=True)
 
+
+# change column name "MEASURED VALUE" to "MEASURED_VALUE"
+bq78350_df_table.rename(columns={'MEASURED VALUE': 'MEASURED_VALUE'}, inplace=True)
+
+
 print(bq78350_df_table.head(10))
 
 

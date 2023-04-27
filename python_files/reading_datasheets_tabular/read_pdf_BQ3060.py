@@ -34,10 +34,13 @@ table[0].rename(columns={'DATA TYPE': 'TYPE'}, inplace=True)
 table[0].rename(columns={'DEFAULT VALUE': 'DEFAULT'}, inplace=True)
 
 
+
+
+# change column name "MEASURED VALUE" to "MEASURED_VALUE"
+table[0].rename(columns={'MEASURED VALUE': 'MEASURED_VALUE'}, inplace=True)
+
+
 print(table[0].head(10))
-
-
-
 # save table[0] to pickle file
 with open('..\pkl_files\BQ3060_df.pkl', 'wb') as file:
     # Dump the dictionary to the file

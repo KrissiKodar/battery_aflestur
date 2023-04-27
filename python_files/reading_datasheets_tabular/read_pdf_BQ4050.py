@@ -46,6 +46,10 @@ table[2].columns = table[2].columns.str.upper()
 # convert column UNITS to UNIT
 table[2].rename(columns={"UNITS": "UNIT"}, inplace=True)
 
+
+# change column name "MEASURED VALUE" to "MEASURED_VALUE"
+table[2].rename(columns={'MEASURED VALUE': 'MEASURED_VALUE'}, inplace=True)
+
 print(table[2].head(10))
 # save table[2] to pickle file
 with open('..\pkl_files\BQ4050_df.pkl', 'wb') as file:

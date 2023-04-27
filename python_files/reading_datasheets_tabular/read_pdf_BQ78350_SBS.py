@@ -67,6 +67,14 @@ print(SBS_78350.loc[SBS_78350["SBS CMD"] == "0x2F"].iloc[0:10])
 
 # remove row where "NAME" is "Reserved"
 SBS_78350 = SBS_78350[SBS_78350.NAME != "Reserved"]
+
+# change column nmae "MEASURED VALUE" to "MEASURED_VALUE"
+SBS_78350.rename(columns={"MEASURED VALUE": "MEASURED_VALUE"}, inplace=True)
+# change column name "SIZE IN BYTES" to "SIZE_IN_BYTES"
+SBS_78350.rename(columns={"SIZE IN BYTES": "SIZE_IN_BYTES"}, inplace=True)
+# change column name "SBS CMD" to "SBS_CMD"
+SBS_78350.rename(columns={"SBS CMD": "SBS_CMD"}, inplace=True)
+
 print(SBS_78350[45:65])
-""" with open('..\pkl_files\SBS_BQ78350.pkl', 'wb') as f:
-    pickle.dump(SBS_78350, f) """
+with open('..\pkl_files\SBS_BQ78350.pkl', 'wb') as f:
+    pickle.dump(SBS_78350, f)

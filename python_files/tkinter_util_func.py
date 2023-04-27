@@ -5,6 +5,7 @@ import pandas as pd
 from serial import Serial
 from serial.tools import list_ports
 from sqlalchemy import create_engine
+from sqlalchemy import text
 
 from batteries import *
 from tkinter_settings import BAUD, engine
@@ -45,7 +46,7 @@ def get_serial_number(startup, ser):
 
 def create_battery_object(startup, battery_type, ser):
     """Create a battery object based on the battery type."""
-    if battery_type == "bq3060":
+    if "bq3060" in battery_type:
         small_delay()
         with open('pkl_files\BQ3060_df.pkl', 'rb') as file:
             # Load the dictionary from the file
@@ -69,7 +70,7 @@ def create_battery_object(startup, battery_type, ser):
         small_delay()
         return current_battery
     
-    if battery_type == "1737":
+    elif "1737" in battery_type or "1636" in battery_type:
         small_delay()
         with open('pkl_files\BQ78350_df.pkl', 'rb') as file:
             # Load the dictionary from the file
@@ -91,36 +92,47 @@ def process_battery_data(current_battery, battery_type, serial_number, engine, s
     # read basic SBS data
     current_battery.read_basic_SBS_new()
     print(f"Done reading SBS data for {battery_type}...")
-
-    # save the SBS data to a pickle file
-    with open(f'measured_data_pkl_files\{battery_type}_{scanned_input}_{serial_number}_SBS.pkl', 'wb') as file:
-        pickle.dump(current_battery.data_SBS, file)
-    print(f"Done saving SBS data for {battery_type} (pickle file, pandas dataframe)...")
-
-    # send the SBS data to the SQL database
-    current_battery.data_SBS.to_sql(f'{battery_type}_{scanned_input}_{serial_number}_SBS', engine, if_exists='replace')
-    print(f"Done sending SBS data for {battery_type} to server...")
     small_delay()
-
     # read the dataflash
     current_battery.read_all_dataflash()
     print(f"Done reading dataflash for {battery_type}...")
 
-    # save the dataflash to a pickle file
-    with open(f'measured_data_pkl_files\{battery_type}_{scanned_input}_{serial_number}_dataflash.pkl', 'wb') as file:
-        pickle.dump(current_battery.data_df, file)
-    print(f"Done saving dataflash for {battery_type} (pickle file, pandas dataframe)...")
+    connection = engine.connect()
+    serial_number = scanned_input
+    # Insert the general battery information into the BatteryData table
+    # Insert the general battery information into the BatteryData table
+    battery_data = pd.DataFrame({
+        "SerialNumber": [serial_number],
+        "BatteryType": [battery_type],
+    })
+    battery_data.to_sql("BatteryData", engine, if_exists="append", index=False)
 
-    # send the dataflash to the SQL database
-    current_battery.data_df.to_sql(f'{battery_type}_{scanned_input}_{serial_number}_dataflash', engine, if_exists='replace')
-    print(f"Done sending dataflash for {battery_type} to server...")
+    # get battery_data_id
+    query = text('SELECT max(PkID_BatteryData) FROM BatteryData')
+    result = connection.execute(query)
+    battery_data_id = int(result.fetchone()[0])
+
+    # Insert data from the data_SBS dataframe into the BatteryDataLine_SBS table
+    sbs_data_to_insert = current_battery.data_SBS[['SBS_CMD', 'NAME', 'MEASURED_VALUE', 'UNIT']].copy()
+    sbs_data_to_insert['FkID_BatteryData_SBS'] = battery_data_id
+    sbs_data_to_insert.to_sql("BatteryDataLine_SBS", engine, if_exists="append", index=False)
+
+    # Insert data from the data_df dataframe into the BatteryDataLine_Dataflash table
+    dataflash_data_to_insert = current_battery.data_df[['CLASS', 'SUBCLASS', 'NAME', 'TYPE', 'MEASURED_VALUE', 'UNIT']].copy()
+    dataflash_data_to_insert['FkID_BatteryData_Dataflash'] = battery_data_id
+    dataflash_data_to_insert.to_sql("BatteryDataLine_Dataflash", engine, if_exists="append", index=False)
+
+
+
+    print(f'Battery ID: {battery_data_id}')
+
     print("Add comparison to golden file later...")
 
 
 def read_battery_data(current_battery, battery_type, serial_number, scanned_input):
     """Read battery data and save it to pickle files and SQL database."""
 
-    if battery_type == "bq3060":
+    if "bq3060" in battery_type:
         battery_type = "BQ3060"
         process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input)
         return True
@@ -130,9 +142,13 @@ def read_battery_data(current_battery, battery_type, serial_number, scanned_inpu
         process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input)
         return True
 
-    elif battery_type == "1737":
+    elif "1737" in battery_type or "1636" in battery_type:
         battery_type = "BQ78350"
+        current_battery.unseal_battery()
+        time.sleep(1)
         process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input)
+        time.sleep(1)
+        current_battery.seal_battery()
         return True
     else:
         return False

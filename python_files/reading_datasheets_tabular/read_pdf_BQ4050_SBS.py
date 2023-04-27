@@ -247,6 +247,14 @@ SBS_4050 = SBS_78350
 # print row where column "NAME" is "Authenticate"
 print(SBS_4050.loc[SBS_4050["NAME"] == "Authenticate"])
 
+# change column nmae "MEASURED VALUE" to "MEASURED_VALUE"
+SBS_4050.rename(columns={"MEASURED VALUE": "MEASURED_VALUE"}, inplace=True)
+# change column name "SIZE IN BYTES" to "SIZE_IN_BYTES"
+SBS_4050.rename(columns={"SIZE IN BYTES": "SIZE_IN_BYTES"}, inplace=True)
+# change column name "SBS CMD" to "SBS_CMD"
+SBS_4050.rename(columns={"SBS CMD": "SBS_CMD"}, inplace=True)
+
+
 # save pickle
 with open('..\pkl_files\SBS_BQ4050.pkl', 'wb') as f:
     pickle.dump(SBS_4050, f)

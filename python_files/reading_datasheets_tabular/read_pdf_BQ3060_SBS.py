@@ -70,6 +70,15 @@ SBS_3060.loc[SBS_3060['FORMAT'] == 'signed int', 'FORMAT'] = 'integer'
 
 print(SBS_3060[-40:])
 
+
+# change column nmae "MEASURED VALUE" to "MEASURED_VALUE"
+SBS_3060.rename(columns={"MEASURED VALUE": "MEASURED_VALUE"}, inplace=True)
+# change column name "SIZE IN BYTES" to "SIZE_IN_BYTES"
+SBS_3060.rename(columns={"SIZE IN BYTES": "SIZE_IN_BYTES"}, inplace=True)
+# change column name "SBS CMD" to "SBS_CMD"
+SBS_3060.rename(columns={"SBS CMD": "SBS_CMD"}, inplace=True)
+
+
 with open('..\pkl_files\SBS_BQ3060.pkl', 'wb') as f:
     pickle.dump(SBS_3060, f)
 
