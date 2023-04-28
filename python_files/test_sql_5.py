@@ -35,7 +35,7 @@ print(f'engine: {engine}')
 print(f'connection: {connection}')
 
 
-battery_data_id = '1'
+battery_data_id = '2'
 battery_type = 'BQ4050'
 
 update_dataflash_pass_query = text(f'''
@@ -46,20 +46,25 @@ update_dataflash_pass_query = text(f'''
                 SELECT 1 FROM GoldenFile_{battery_type}_Dataflash_test
                 WHERE BatteryDataLine_Dataflash.CLASS = GoldenFile_{battery_type}_Dataflash_test.CLASS 
                 AND BatteryDataLine_Dataflash.SUBCLASS = GoldenFile_{battery_type}_Dataflash_test.SUBCLASS 
-                AND BatteryDataLine_Dataflash.NAME = GoldenFile_{battery_type}_Dataflash_test.NAME 
-                AND BatteryDataLine_Dataflash.TYPE = GoldenFile_{battery_type}_Dataflash_test.TYPE 
-                AND BatteryDataLine_Dataflash.MEASURED_VALUE = GoldenFile_{battery_type}_Dataflash_test.Optimal_value 
+                AND BatteryDataLine_Dataflash.NAME = GoldenFile_{battery_type}_Dataflash_test.NAME
+                AND (
+                    (GoldenFile_{battery_type}_Dataflash_test.CheckType = 'EQUALITY' 
+                     AND BatteryDataLine_Dataflash.MEASURED_VALUE = GoldenFile_{battery_type}_Dataflash_test.ExactValue)
+                    OR
+                    (GoldenFile_{battery_type}_Dataflash_test.CheckType = 'BOUNDARY'
+                     AND CAST(BatteryDataLine_Dataflash.MEASURED_VALUE AS INT) >= CAST(GoldenFile_{battery_type}_Dataflash_test.MinBoundary AS INT)
+                     AND CAST(BatteryDataLine_Dataflash.MEASURED_VALUE AS INT) <= CAST(GoldenFile_{battery_type}_Dataflash_test.MaxBoundary AS INT))
+                )
             ) THEN 'True'
             WHEN EXISTS (
                 SELECT 1 FROM GoldenFile_{battery_type}_Dataflash_test
                 WHERE BatteryDataLine_Dataflash.CLASS = GoldenFile_{battery_type}_Dataflash_test.CLASS 
                 AND BatteryDataLine_Dataflash.SUBCLASS = GoldenFile_{battery_type}_Dataflash_test.SUBCLASS 
-                AND BatteryDataLine_Dataflash.NAME = GoldenFile_{battery_type}_Dataflash_test.NAME 
-                AND BatteryDataLine_Dataflash.TYPE = GoldenFile_{battery_type}_Dataflash_test.TYPE 
+                AND BatteryDataLine_Dataflash.NAME = GoldenFile_{battery_type}_Dataflash_test.NAME
             ) THEN 'False'
             ELSE 'NA'
         END
-    WHERE BatteryDataLine_Dataflash.FkID_BatteryData_Dataflash = {battery_data_id}
+    WHERE BatteryDataLine_Dataflash.FkID_BatteryData = {battery_data_id}
 ''')
 
 
@@ -70,7 +75,14 @@ SET PASS =
         WHEN EXISTS (
             SELECT 1 FROM GoldenFile_{battery_type}_SBS_test
             WHERE BatteryDataLine_SBS.NAME = GoldenFile_{battery_type}_SBS_test.NAME 
-            AND BatteryDataLine_SBS.MEASURED_VALUE = GoldenFile_{battery_type}_SBS_test.Optimal_value 
+            AND (
+                (GoldenFile_{battery_type}_SBS_test.CheckType = 'EQUALITY' 
+                 AND BatteryDataLine_SBS.MEASURED_VALUE = GoldenFile_{battery_type}_SBS_test.ExactValue)
+                OR
+                (GoldenFile_{battery_type}_SBS_test.CheckType = 'BOUNDARY'
+                 AND CAST(BatteryDataLine_SBS.MEASURED_VALUE AS INT) >= CAST(GoldenFile_{battery_type}_SBS_test.MinBoundary AS INT)
+                 AND CAST(BatteryDataLine_SBS.MEASURED_VALUE AS INT) <= CAST(GoldenFile_{battery_type}_SBS_test.MaxBoundary AS INT))
+            )
         ) THEN 'True'
         WHEN EXISTS (
             SELECT 1 FROM GoldenFile_{battery_type}_SBS_test
@@ -78,16 +90,18 @@ SET PASS =
         ) THEN 'False'
         ELSE 'NA'
     END
-WHERE BatteryDataLine_SBS.FkID_BatteryData_SBS = {battery_data_id}
+WHERE BatteryDataLine_SBS.FkID_BatteryData = {battery_data_id}
 ''')
+
+
 update_battery_data_pass_query = text(f'''
 UPDATE BatteryData
 SET PASS_SBS = (SELECT CASE WHEN COUNT(*) = 0 THEN 1 ELSE 0 END
                 FROM BatteryDataLine_SBS
-                WHERE FkID_BatteryData_SBS = {battery_data_id} AND PASS = 'False'),
+                WHERE FkID_BatteryData = {battery_data_id} AND PASS = 'False'),
     PASS_Dataflash = (SELECT CASE WHEN COUNT(*) = 0 THEN 1 ELSE 0 END
                         FROM BatteryDataLine_Dataflash
-                        WHERE FkID_BatteryData_Dataflash = {battery_data_id} AND PASS = 'False')
+                        WHERE FkID_BatteryData = {battery_data_id} AND PASS = 'False')
 WHERE PkID_BatteryData = {battery_data_id}
 ''')
 

@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import text
 
 from batteries import *
-from tkinter_settings import BAUD, engine
+from tkinter_settings import BAUD, engine, connection
 
 
 def connect_to_serial_port():
@@ -85,7 +85,87 @@ def create_battery_object(startup, battery_type, ser):
     return None
 
 
-def process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input):
+
+def golden_file_checks(battery_type, battery_data_id):
+    update_dataflash_pass_query = text(f'''
+        UPDATE BatteryDataLine_Dataflash
+        SET PASS = 
+            CASE
+                WHEN EXISTS (
+                    SELECT 1 FROM GoldenFile_{battery_type}_Dataflash_test
+                    WHERE BatteryDataLine_Dataflash.CLASS = GoldenFile_{battery_type}_Dataflash_test.CLASS 
+                    AND BatteryDataLine_Dataflash.SUBCLASS = GoldenFile_{battery_type}_Dataflash_test.SUBCLASS 
+                    AND BatteryDataLine_Dataflash.NAME = GoldenFile_{battery_type}_Dataflash_test.NAME
+                    AND (
+                        (GoldenFile_{battery_type}_Dataflash_test.CheckType = 'EQUALITY' 
+                        AND BatteryDataLine_Dataflash.MEASURED_VALUE = GoldenFile_{battery_type}_Dataflash_test.ExactValue)
+                        OR
+                        (GoldenFile_{battery_type}_Dataflash_test.CheckType = 'BOUNDARY'
+                        AND CAST(BatteryDataLine_Dataflash.MEASURED_VALUE AS INT) >= CAST(GoldenFile_{battery_type}_Dataflash_test.MinBoundary AS INT)
+                        AND CAST(BatteryDataLine_Dataflash.MEASURED_VALUE AS INT) <= CAST(GoldenFile_{battery_type}_Dataflash_test.MaxBoundary AS INT))
+                    )
+                ) THEN 'True'
+                WHEN EXISTS (
+                    SELECT 1 FROM GoldenFile_{battery_type}_Dataflash_test
+                    WHERE BatteryDataLine_Dataflash.CLASS = GoldenFile_{battery_type}_Dataflash_test.CLASS 
+                    AND BatteryDataLine_Dataflash.SUBCLASS = GoldenFile_{battery_type}_Dataflash_test.SUBCLASS 
+                    AND BatteryDataLine_Dataflash.NAME = GoldenFile_{battery_type}_Dataflash_test.NAME
+                ) THEN 'False'
+                ELSE 'NA'
+            END
+        WHERE BatteryDataLine_Dataflash.FkID_BatteryData = {battery_data_id}
+    ''')
+
+
+    update_sbs_pass_query = text(f'''
+    UPDATE BatteryDataLine_SBS
+    SET PASS = 
+        CASE
+            WHEN EXISTS (
+                SELECT 1 FROM GoldenFile_{battery_type}_SBS_test
+                WHERE BatteryDataLine_SBS.NAME = GoldenFile_{battery_type}_SBS_test.NAME 
+                AND (
+                    (GoldenFile_{battery_type}_SBS_test.CheckType = 'EQUALITY' 
+                    AND BatteryDataLine_SBS.MEASURED_VALUE = GoldenFile_{battery_type}_SBS_test.ExactValue)
+                    OR
+                    (GoldenFile_{battery_type}_SBS_test.CheckType = 'BOUNDARY'
+                    AND CAST(BatteryDataLine_SBS.MEASURED_VALUE AS INT) >= CAST(GoldenFile_{battery_type}_SBS_test.MinBoundary AS INT)
+                    AND CAST(BatteryDataLine_SBS.MEASURED_VALUE AS INT) <= CAST(GoldenFile_{battery_type}_SBS_test.MaxBoundary AS INT))
+                )
+            ) THEN 'True'
+            WHEN EXISTS (
+                SELECT 1 FROM GoldenFile_{battery_type}_SBS_test
+                WHERE BatteryDataLine_SBS.NAME = GoldenFile_{battery_type}_SBS_test.NAME 
+            ) THEN 'False'
+            ELSE 'NA'
+        END
+    WHERE BatteryDataLine_SBS.FkID_BatteryData = {battery_data_id}
+    ''')
+
+
+    update_battery_data_pass_query = text(f'''
+    UPDATE BatteryData
+    SET PASS_SBS = (SELECT CASE WHEN COUNT(*) = 0 THEN 1 ELSE 0 END
+                    FROM BatteryDataLine_SBS
+                    WHERE FkID_BatteryData = {battery_data_id} AND PASS = 'False'),
+        PASS_Dataflash = (SELECT CASE WHEN COUNT(*) = 0 THEN 1 ELSE 0 END
+                            FROM BatteryDataLine_Dataflash
+                            WHERE FkID_BatteryData = {battery_data_id} AND PASS = 'False')
+    WHERE PkID_BatteryData = {battery_data_id}
+    ''')
+
+    result = connection.execute(update_dataflash_pass_query)
+    print(f"Dataflash affected rows: {result.rowcount}")
+
+    result = connection.execute(update_sbs_pass_query)
+    print(f"SBS affected rows: {result.rowcount}")
+
+    result = connection.execute(update_battery_data_pass_query)
+    print(f"BatteryData affected rows: {result.rowcount}")
+    connection.commit()
+
+
+def process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input, status):
     """Read, save, and send battery data for a given battery type."""
 
     small_delay()
@@ -104,6 +184,7 @@ def process_battery_data(current_battery, battery_type, serial_number, engine, s
     battery_data = pd.DataFrame({
         "SerialNumber": [serial_number],
         "BatteryType": [battery_type],
+        "Status": [status],
     })
     battery_data.to_sql("BatteryData", engine, if_exists="append", index=False)
 
@@ -114,39 +195,40 @@ def process_battery_data(current_battery, battery_type, serial_number, engine, s
 
     # Insert data from the data_SBS dataframe into the BatteryDataLine_SBS table
     sbs_data_to_insert = current_battery.data_SBS[['SBS_CMD', 'NAME', 'MEASURED_VALUE', 'UNIT']].copy()
-    sbs_data_to_insert['FkID_BatteryData_SBS'] = battery_data_id
+    sbs_data_to_insert['FkID_BatteryData'] = battery_data_id
     sbs_data_to_insert.to_sql("BatteryDataLine_SBS", engine, if_exists="append", index=False)
 
     # Insert data from the data_df dataframe into the BatteryDataLine_Dataflash table
     dataflash_data_to_insert = current_battery.data_df[['CLASS', 'SUBCLASS', 'NAME', 'TYPE', 'MEASURED_VALUE', 'UNIT']].copy()
-    dataflash_data_to_insert['FkID_BatteryData_Dataflash'] = battery_data_id
+    dataflash_data_to_insert['FkID_BatteryData'] = battery_data_id
     dataflash_data_to_insert.to_sql("BatteryDataLine_Dataflash", engine, if_exists="append", index=False)
-
-
+    
+    print("Comparing to golden files...")
+    golden_file_checks(battery_type, battery_data_id)
 
     print(f'Battery ID: {battery_data_id}')
 
-    print("Add comparison to golden file later...")
+    
 
 
-def read_battery_data(current_battery, battery_type, serial_number, scanned_input):
+def read_battery_data(current_battery, battery_type, serial_number, scanned_input, status):
     """Read battery data and save it to pickle files and SQL database."""
 
     if "bq3060" in battery_type:
         battery_type = "BQ3060"
-        process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input)
+        process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input, status)
         return True
 
     elif "1936.1B" in battery_type:
         battery_type = "BQ4050"
-        process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input)
+        process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input, status)
         return True
 
     elif "1737" in battery_type or "1636" in battery_type:
         battery_type = "BQ78350"
         current_battery.unseal_battery()
         time.sleep(1)
-        process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input)
+        process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input, status)
         time.sleep(1)
         current_battery.seal_battery()
         return True
@@ -155,7 +237,7 @@ def read_battery_data(current_battery, battery_type, serial_number, scanned_inpu
 
 
 
-def gui_to_read_battery(scanned_input):
+def gui_to_read_battery(scanned_input, status):
     try:
         print(f"The scanned input is: {scanned_input}")
         ser = connect_to_serial_port()
@@ -172,7 +254,7 @@ def gui_to_read_battery(scanned_input):
         serial_number = get_serial_number(startup, ser)
 
         battery = create_battery_object(startup, battery_type, ser)
-        read_success = read_battery_data(battery, battery_type, serial_number, scanned_input)
+        read_success = read_battery_data(battery, battery_type, serial_number, scanned_input, status)
         if not read_success:
             print("\n\n")
             print("Could not read battery data")

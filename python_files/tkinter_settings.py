@@ -13,7 +13,7 @@ BAUD = 250000
 my_uid = "LAPTOP-GG7823IL\dadas"
 my_pwd = "testpass"
 my_host = "LAPTOP-GG7823IL\SQLEXPRESS"
-my_db = "battery_test_5"
+my_db = "battery_test_6"
 my_odbc_driver = "ODBC Driver 17 for SQL Server"
 
 connection_url = URL.create(
