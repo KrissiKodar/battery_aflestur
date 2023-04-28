@@ -166,12 +166,9 @@ def read_battery_clicked():
     else:
         print("No battery scanned")
 
-
-
 def redirect_stdout():
     sys.stdout = StdoutRedirector(text)
     
-
 class StdoutRedirector():
     def __init__(self, text_widget):
         self.text_widget = text_widget
@@ -225,9 +222,6 @@ text.pack(side="bottom", fill="both", expand=True)
 
 # Redirect stdout to the text widget
 redirect_stdout()
-
-
-
 
 # Start the GUI
 root.mainloop()

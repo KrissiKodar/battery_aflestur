@@ -155,15 +155,99 @@ def golden_file_checks(battery_type, battery_data_id):
     ''')
 
     result = connection.execute(update_dataflash_pass_query)
-    print(f"Dataflash affected rows: {result.rowcount}")
+    #print(f"Dataflash affected rows: {result.rowcount}")
 
     result = connection.execute(update_sbs_pass_query)
-    print(f"SBS affected rows: {result.rowcount}")
+    #print(f"SBS affected rows: {result.rowcount}")
 
     result = connection.execute(update_battery_data_pass_query)
-    print(f"BatteryData affected rows: {result.rowcount}")
+    #print(f"BatteryData affected rows: {result.rowcount}")
     connection.commit()
 
+def print_failed_and_passed_checks(battery_type, battery_data_id):
+    # Check if PASS_Dataflash or PASS_SBS is 0 (False)
+    check_pass_query = text(f"""
+    SELECT PASS_SBS, PASS_Dataflash
+    FROM BatteryData
+    WHERE PkID_BatteryData = {battery_data_id}
+    """)
+
+    result = connection.execute(check_pass_query).fetchone()
+    pass_sbs, pass_dataflash = result[0], result[1]
+
+    if pass_sbs == 0 or pass_dataflash == 0:
+        # Get BatteryDataLine_Dataflash rows with PASS not 'NA'
+        dataflash_checks_query = text(f"""
+            SELECT *
+            FROM BatteryDataLine_Dataflash
+            WHERE FkID_BatteryData = {battery_data_id}
+            AND PASS <> 'NA'
+        """)
+
+        dataflash_checks_df = pd.read_sql_query(dataflash_checks_query, connection)
+
+        # Get BatteryDataLine_SBS rows with PASS not 'NA'
+        sbs_checks_query = text(f"""
+            SELECT *
+            FROM BatteryDataLine_SBS
+            WHERE FkID_BatteryData = {battery_data_id}
+            AND PASS <> 'NA'
+        """)
+
+        sbs_checks_df = pd.read_sql_query(sbs_checks_query, connection)
+
+        # Fetch GoldenFile_Dataflash_test rows
+        dataflash_golden_file_query = text(f"""
+            SELECT *
+            FROM GoldenFile_{battery_type}_Dataflash_test
+        """)
+
+        dataflash_golden_file_df = pd.read_sql_query(dataflash_golden_file_query, connection)
+        # Fetch GoldenFile_SBS_test rows
+        sbs_golden_file_query = text(f"""
+            SELECT *
+            FROM GoldenFile_{battery_type}_SBS_test
+        """)
+
+        sbs_golden_file_df = pd.read_sql_query(sbs_golden_file_query, connection)
+        # get the rows in dataflash_golden_file_df where PASS in dataflash_checks_df is "False"
+        # So where the rows are False in dataflash_checks_df, use the "CLASS", "SUBCLASS" and "NAME" columns to get the corresponding rows in dataflash_golden_file_df
+        for index, row in dataflash_checks_df.iterrows():
+            if row['PASS'] == 'False':
+                golden_row = dataflash_golden_file_df.loc[(dataflash_golden_file_df['CLASS'] == row["CLASS"]) & (dataflash_golden_file_df['SUBCLASS'] == row["SUBCLASS"]) & (dataflash_golden_file_df['NAME'] == row["NAME"])]
+                # print value where columns is "ExactValue"
+                ExactValue = golden_row["ExactValue"].values[0]
+                MinBoundary = golden_row["MinBoundary"].values[0]
+                MaxBoundary = golden_row["MaxBoundary"].values[0]
+                checktype = golden_row["CheckType"].values[0]
+                unit = golden_row["UNIT"].values[0]
+                if checktype == "BOUNDARY":
+                    print(f"\nFAILED TEST FOR: {row['CLASS']}, {row['SUBCLASS']}, {row['NAME']} in Dataflash")
+                    print(f"Min boundary is {MinBoundary} {unit} and max boundary is {MaxBoundary} {unit}")
+                    print(f"But the measured value is {row['MEASURED_VALUE']} {unit}\n")
+                else:
+                    print(f"\nFAILED TEST FOR: {row['CLASS']}, {row['SUBCLASS']}, {row['NAME']} in Dataflash")
+                    print(f"Exact value is {ExactValue} {unit}\n")
+                    print(f"But the measured value is {row['MEASURED_VALUE']} {unit}\n")
+
+        for index, row in sbs_checks_df.iterrows():
+            if row['PASS'] == 'False':
+                golden_row = sbs_golden_file_df.loc[(sbs_golden_file_df['NAME'] == row["NAME"])]
+                ExactValue = golden_row["ExactValue"].values[0]
+                MinBoundary = golden_row["MinBoundary"].values[0]
+                MaxBoundary = golden_row["MaxBoundary"].values[0]
+                checktype = golden_row["CheckType"].values[0]
+                unit = golden_row["UNIT"].values[0]
+                if checktype == "BOUNDARY":
+                    print(f"\nFAILED TEST FOR: {row['NAME']} in SBS")
+                    print(f"Min boundary is {MinBoundary} {unit} and max boundary is {MaxBoundary} {unit}")
+                    print(f"But the measured value is {row['MEASURED_VALUE']} {unit}\n")
+                else:
+                    print(f"\nFAILED TEST FOR: {row['NAME']} in SBS")
+                    print(f"Exact value is {ExactValue} {unit}\n")
+                    print(f"But the measured value is {row['MEASURED_VALUE']} {unit}\n")
+    else:
+        print(f"\nALL TESTS PASSED FOR {battery_type}\n")
 
 def process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input, status):
     """Read, save, and send battery data for a given battery type."""
@@ -203,15 +287,21 @@ def process_battery_data(current_battery, battery_type, serial_number, engine, s
     dataflash_data_to_insert['FkID_BatteryData'] = battery_data_id
     dataflash_data_to_insert.to_sql("BatteryDataLine_Dataflash", engine, if_exists="append", index=False)
     
-    print("Comparing to golden files...")
+    print("Comparing to golden files...\n")
     golden_file_checks(battery_type, battery_data_id)
+    print("STARTING PASS/FAIL TESTS\n\n")
+    # check if PASS_SBS and PASS_Dataflash are both 1 (True) if not then print out the failed checks
+    print_failed_and_passed_checks(battery_type, battery_data_id)
 
-    print(f'Battery ID: {battery_data_id}')
+
+
+
+    print(f'\nBattery ID: {battery_data_id}')
 
     
 
 
-def read_battery_data(current_battery, battery_type, serial_number, scanned_input, status):
+def read_battery_data_old(current_battery, battery_type, serial_number, scanned_input, status, product_type):
     """Read battery data and save it to pickle files and SQL database."""
 
     if "bq3060" in battery_type:
@@ -234,10 +324,35 @@ def read_battery_data(current_battery, battery_type, serial_number, scanned_inpu
         return True
     else:
         return False
+    
+
+def read_battery_data(current_battery, battery_type, serial_number, scanned_input, status, product_type):
+    """Read battery data and save it to pickle files and SQL database."""
+
+    if product_type == 'Rheo':
+        battery_type = "BQ3060"
+        process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input, status)
+        return True
+
+    elif product_type == 'Navi':
+        battery_type = "BQ4050"
+        process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input, status)
+        return True
+
+    elif product_type == 'Powerknee':
+        battery_type = "BQ78350"
+        current_battery.unseal_battery()
+        time.sleep(1)
+        process_battery_data(current_battery, battery_type, serial_number, engine, scanned_input, status)
+        time.sleep(1)
+        current_battery.seal_battery()
+        return True
+    else:
+        return False
 
 
 
-def gui_to_read_battery(scanned_input, status):
+def gui_to_read_battery(scanned_input, status, product_type):
     try:
         print(f"The scanned input is: {scanned_input}")
         ser = connect_to_serial_port()
@@ -254,7 +369,7 @@ def gui_to_read_battery(scanned_input, status):
         serial_number = get_serial_number(startup, ser)
 
         battery = create_battery_object(startup, battery_type, ser)
-        read_success = read_battery_data(battery, battery_type, serial_number, scanned_input, status)
+        read_success = read_battery_data(battery, battery_type, serial_number, scanned_input, status, product_type)
         if not read_success:
             print("\n\n")
             print("Could not read battery data")
@@ -270,6 +385,7 @@ def gui_to_read_battery(scanned_input, status):
             return True
     except Exception as e:
         print("An error occurred:", e)
+        print("Check that the correct product type is selected!")
         return False
 
 

@@ -407,9 +407,11 @@ class BQ4050(battery_gauge):
             elif self.data_df["TYPE"].iloc[i] == "H1" or self.data_df["TYPE"].iloc[i] == "H2" or self.data_df["TYPE"].iloc[i] == "H4":
                 self.data_df["MEASURED_VALUE"].iloc[i] = self.bytes_to_hex_dataflash(self.data_df["MEASURED_VALUE"].iloc[i])
             elif self.data_df["TYPE"].iloc[i] == "F4":
-                #self.data_df["MEASURED_VALUE"].iloc[i] = self.bytes_to_float(self.data_df["MEASURED_VALUE"].iloc[i])
-                # do nothing
-                pass	
+                # byte to floating point conversion
+                value = (self.data_df["MEASURED_VALUE"].iloc[i])[::-1]
+                value = ''.join(value)
+                value = struct.unpack('!f', bytes.fromhex(value))[0]
+                self.data_df["MEASURED_VALUE"].iloc[i] = value	
             # elif first letter of Type is S (string)
             elif self.data_df["TYPE"].iloc[i][0] == "S":
                 string_from_reg = ''.join(chr(int(i, 16)) for i in self.data_df["MEASURED_VALUE"].iloc[i])
@@ -531,8 +533,9 @@ class BQ3060(battery_gauge):
             elif self.data_df["TYPE"].iloc[i] == "H1" or self.data_df["TYPE"].iloc[i] == "H2" or self.data_df["TYPE"].iloc[i] == "H4":
                 self.data_df["MEASURED_VALUE"].iloc[i] = self.bytes_to_hex(self.data_df["MEASURED_VALUE"].iloc[i])
             elif self.data_df["TYPE"].iloc[i] == "F4":
-                #self.data_df["MEASURED_VALUE"].iloc[i] = self.bytes_to_float_dataflash(self.data_df["MEASURED_VALUE"].iloc[i])
-                # do nothing
+                # add byte to floating point conversion later
+                #print("F4")
+                #print(self.data_df["MEASURED_VALUE"].iloc[i])
                 pass	
             # elif first letter of DATA TYPE is S (string)
             elif self.data_df["TYPE"].iloc[i][0] == "S":
@@ -772,8 +775,9 @@ class BQ78350(battery_gauge):
             elif self.data_df["TYPE"].iloc[i] == "H1" or self.data_df["TYPE"].iloc[i] == "H2" or self.data_df["TYPE"].iloc[i] == "H4":
                 self.data_df["MEASURED_VALUE"].iloc[i] = self.bytes_to_hex_dataflash(self.data_df["MEASURED_VALUE"].iloc[i])
             elif self.data_df["TYPE"].iloc[i] == "F4":
-                print("F4")
-                print(self.data_df["MEASURED_VALUE"].iloc[i])
+                # add byte to floating point conversion later
+                #print("F4")
+                #print(self.data_df["MEASURED_VALUE"].iloc[i])
                 #self.data_df["MEASURED_VALUE"].iloc[i] = self.bytes_to_float(self.data_df["MEASURED_VALUE"].iloc[i])
                 # do nothing
                 pass	
