@@ -123,6 +123,12 @@ CREATE TABLE GoldenFile_BQ78350_SBS_test
 INSERT INTO GoldenFile_BQ4050_Dataflash_test (CLASS, SUBCLASS, NAME, CheckType, MinBoundary, MaxBoundary, UNIT)
 VALUES ('Permanent Fail', 'SOT', 'Threshold', 'BOUNDARY', '3282', '3482', '0.1°K');
 ```
+How to update:
+```
+--UPDATE GoldenFile_BQ4050_Dataflash_test 
+--SET MinBoundary = '2000', MaxBoundary = '2500', UNIT = '0.1°K'
+--WHERE CLASS = 'Permanent Fail' AND SUBCLASS = 'SOT' AND NAME = 'Threshold';
+```
 ### Exact values
 ```
 INSERT INTO GoldenFile_BQ4050_Dataflash_test (CLASS, SUBCLASS, NAME, CheckType, ExactValue, UNIT)
