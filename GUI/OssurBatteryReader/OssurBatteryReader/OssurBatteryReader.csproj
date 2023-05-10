@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1F741650-405B-459B-B48A-EAA5FA23FF42}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SmartBatteryHack</RootNamespace>
-    <AssemblyName>SmartBatteryHack</AssemblyName>
+    <RootNamespace>OssurBatteryReader</RootNamespace>
+    <AssemblyName>OssurBatteryReader</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

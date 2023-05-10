@@ -575,7 +575,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ossur Battery Reader"; //Smart Battery Hack
+            this.Text = "Ossur Battery Reader";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ControlGroupBox.ResumeLayout(false);

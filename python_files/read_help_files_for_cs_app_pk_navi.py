@@ -46,7 +46,8 @@ def read_from_4050(class_, subclass_, data_df, add_read):
                 #print("offset: ", offset)
                 # place temp_data[offset:offset+type_size] in test["MEASURED_VALUE"].iloc[j]
                 type_size = int(test["TYPE"].iloc[j][1:])
-                new_row  = {'CLASS': class_, 'SUBCLASS': subclass_, 'NAME': test["NAME"].iloc[j], 'CURRENT_ADDRESS': f"0x{min_address:x}", 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE_SIZE': type_size, 'TYPE': test["TYPE"].iloc[j]}
+                actual_address = test["ADDRESS"].iloc[j]
+                new_row  = {'CLASS': class_, 'SUBCLASS': subclass_, 'ADDRESS': f"0x{actual_address:x}", 'NAME': test["NAME"].iloc[j], 'CURRENT_ADDRESS': f"0x{min_address:x}", 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE_SIZE': type_size, 'TYPE': test["TYPE"].iloc[j]}
                 add_read = add_read.append(new_row, ignore_index=True)
                 #test["MEASURED_VALUE"].iloc[j] = temp_data[offset:offset+type_size]
                 #measured_values.append(temp_data[offset:offset+type_size])
@@ -78,7 +79,8 @@ def read_from_4050(class_, subclass_, data_df, add_read):
         #print("offset: ", offset)
         # place temp_data[offset:offset+type_size] in test["MEASURED_VALUE"].iloc[j]
         type_size = int(test["TYPE"].iloc[j][1:])	
-        new_row  = {'CLASS': class_, 'SUBCLASS': subclass_, 'NAME': test["NAME"].iloc[j], 'CURRENT_ADDRESS': f"0x{min_address:x}", 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE_SIZE': type_size, 'TYPE': test["TYPE"].iloc[j]}
+        actual_address = test["ADDRESS"].iloc[j]
+        new_row  = {'CLASS': class_, 'SUBCLASS': subclass_, 'ADDRESS': f"0x{actual_address:x}", 'NAME': test["NAME"].iloc[j], 'CURRENT_ADDRESS': f"0x{min_address:x}", 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE_SIZE': type_size, 'TYPE': test["TYPE"].iloc[j]}
         add_read = add_read.append(new_row, ignore_index=True)
         #test["MEASURED_VALUE"].iloc[j] = temp_data[offset:offset+type_size]
         #measured_values.append(temp_data[offset:offset+type_size])
@@ -96,7 +98,6 @@ def read_all_dataflash(data_df, add_read):
             add_read = read_from_4050(i,j, data_df, add_read)
         #print(f"--------------------------------------------------")
     return add_read
-
 
 def check_go(class_, subclass_, data_df, add_reads):
     test = data_df.loc[(data_df["CLASS"] == class_) & (data_df["SUBCLASS"] == subclass_)]
@@ -121,7 +122,6 @@ def check_go(class_, subclass_, data_df, add_reads):
         last_address = d_address
     return add_reads
 
-
 def check(data_df, add_reads):
     # print all sublaclasses (one of each) to see how many different subclasses there are
     all_classes = data_df["CLASS"].unique()
@@ -143,7 +143,7 @@ if __name__ == "__main__":
     df = pd.read_pickle('pkl_files\BQ4050_df.pkl')
     # Create an empty DataFrame
     #address_reads = pd.DataFrame(columns=['CLASS', 'SUBCLASS', 'ADDRESS'])
-    address_reads = pd.DataFrame(columns=['CLASS', 'SUBCLASS', 'NAME', 'CURRENT_ADDRESS' ,'NUM_READS', 'OFFSET', 'TYPE_SIZE', 'TYPE'])
+    address_reads = pd.DataFrame(columns=['CLASS', 'SUBCLASS', 'ADDRESS', 'NAME', 'CURRENT_ADDRESS' ,'NUM_READS', 'OFFSET', 'TYPE_SIZE', 'TYPE'])
 
     print(address_reads)
     # Print the first few rows of the dataframe to verify that it was loaded correctly
@@ -155,4 +155,25 @@ if __name__ == "__main__":
     address_reads = address_reads.rename(columns={'OFFSET': 'FROM'})
     address_reads = address_reads.rename(columns={'TYPE_SIZE': 'TO'})
     print(address_reads[:20])
-    address_reads.to_csv('example.csv', index=False)
+
+    # Convert the ADDRESS column to integers
+    address_reads['ADDRESS'] = address_reads['ADDRESS'].apply(lambda x: int(x, 16))
+
+    # Compute the remainder of the ADDRESS column with respect to 32
+    address_reads['OFFSET'] = address_reads['ADDRESS'] % 32
+
+    # Round down the ADDRESS column to the nearest 32-byte boundary
+    address_reads['ADDRESS'] = address_reads['ADDRESS'].apply(lambda x: x & ~0x1F)
+
+    # Replace the FROM column with the OFFSET column
+    address_reads['ADDRESS'] = address_reads['ADDRESS'].apply(lambda x: hex(x))
+
+    # Drop the TO and CURRENT_ADDRESS columns
+    address_reads.drop(['TO', 'CURRENT_ADDRESS', 'FROM'], axis=1, inplace=True)
+
+
+    # Swap the locations of columns B and C
+    address_reads = address_reads.reindex(columns=['CLASS', 'SUBCLASS', 'NAME', 'ADDRESS', 'OFFSET', 'NUM_READS', 'TYPE'])
+
+    # Save the modified DataFrame to a new CSV file
+    address_reads.to_csv('BQ4050_read_help.csv', index=False)

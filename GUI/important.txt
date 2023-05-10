@@ -1,7 +1,5 @@
 Í Dataflash read-inu frá BQ3060 eru byte-in ekki flippuð
 
-Í Dataflash read-inu frá BQ4050 eru byte-in flippuð!!!!
+Í Dataflash read-inu frá BQ4050 eru byte-in flippuð.
 
-Virðist ekki vera flippað hjá BQ78350!!!!!!!
-
-new_csv_test2.py i aflestur --> býr til csv-ið fyrir read help á BQ4050 (ætti að vera mjög svipaður kóði fyrir BQ78350)
+Í Dataflash read-inu frá BQ78350 virðast byte-in ekki vera flippuð.

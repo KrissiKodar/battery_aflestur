@@ -1,0 +1,470 @@
+CLASS,SUBCLASS,ADDRESS,NAME,CURRENT_ADDRESS,NUM_READS,FROM,TO,TYPE,OFFSET
+Calibration,Current,0x4000,CC Gain,0x4000,1,0,4,F4,0
+Calibration,Current,0x4000,Capacity Gain,0x4000,1,4,8,F4,4
+Calibration,Voltage,0x4000,Cell1 Offset,0x4008,1,0,1,I1,8
+Calibration,Voltage,0x4000,Cell2 Offset,0x4008,1,1,2,I1,9
+Calibration,Voltage,0x4000,Cell3 Offset,0x4008,1,2,3,I1,10
+Calibration,Voltage,0x4000,Cell4 Offset,0x4008,1,3,4,I1,11
+Calibration,Voltage,0x4000,Cell5 Offset,0x4008,1,4,5,I1,12
+Calibration,Voltage,0x4000,Cell6 Offset,0x4008,1,5,6,I1,13
+Calibration,Voltage,0x4000,Cell7 Offset,0x4008,1,6,7,I1,14
+Calibration,Voltage,0x4000,Cell8 Offset,0x4008,1,7,8,I1,15
+Calibration,Voltage,0x4000,Cell9 Offset,0x4008,1,8,9,I1,16
+Calibration,Voltage,0x4000,Cell10 Offset,0x4008,1,9,10,I1,17
+Calibration,Voltage,0x4000,Cell11 Offset,0x4008,1,10,11,I1,18
+Calibration,Voltage,0x4000,Cell12 Offset,0x4008,1,11,12,I1,19
+Calibration,Voltage,0x4000,Cell13 Offset,0x4008,1,12,13,I1,20
+Calibration,Voltage,0x4000,Cell14 Offset,0x4008,1,13,14,I1,21
+Calibration,Voltage,0x4000,Cell15 Offset,0x4008,1,14,15,I1,22
+Calibration,Current Offset,0x4000,CC Offset,0x4018,1,0,2,I2,24
+Calibration,Current Offset,0x4000,Coulomb Counter Offset Samples,0x4018,1,2,4,U2,26
+Calibration,Temperature,0x4000,T1 Temp Offset,0x401e,1,0,1,I1,30
+Calibration,Temperature,0x4000,T2 Temp Offset,0x401e,1,1,2,I1,31
+Calibration,Temperature,0x4020,T3 Temp Offset,0x401e,1,2,3,I1,0
+Calibration,Temperature,0x4020,Gauge Internal Temp Offset,0x401e,1,3,4,I1,1
+Calibration,Ext Cell Voltage,0x4020,Ext Cell Divider Gain,0x4022,1,0,2,I2,2
+Calibration,VAux Voltage,0x4020,VAux Gain,0x4024,1,0,4,I4,4
+Calibration,Cell Temperature Model,0x4540,Coeff a1,0x454f,1,0,2,I2,15
+Calibration,Cell Temperature Model,0x4540,Coeff a2,0x454f,1,2,4,I2,17
+Calibration,Cell Temperature Model,0x4540,Coeff a3,0x454f,1,4,6,I2,19
+Calibration,Cell Temperature Model,0x4540,Coeff a4,0x454f,1,6,8,I2,21
+Calibration,Cell Temperature Model,0x4540,Coeff a5,0x454f,1,8,10,I2,23
+Calibration,Cell Temperature Model,0x4540,Coeff b1,0x454f,1,10,12,I2,25
+Calibration,Cell Temperature Model,0x4540,Coeff b2,0x454f,1,12,14,I2,27
+Calibration,Cell Temperature Model,0x4540,Coeff b3,0x454f,1,14,16,I2,29
+Calibration,Cell Temperature Model,0x4540,Coeff b4,0x454f,1,16,18,I2,31
+Calibration,Cell Temperature Model,0x4560,Rc0,0x454f,1,18,20,I2,1
+Calibration,Cell Temperature Model,0x4560,Adc0,0x454f,1,20,22,I2,3
+Calibration,Fet Temperature Model,0x4560,Coeff a1,0x4569,1,0,2,I2,9
+Calibration,Fet Temperature Model,0x4560,Coeff a2,0x4569,1,2,4,I2,11
+Calibration,Fet Temperature Model,0x4560,Coeff a3,0x4569,1,4,6,I2,13
+Calibration,Fet Temperature Model,0x4560,Coeff a4,0x4569,1,6,8,I2,15
+Calibration,Fet Temperature Model,0x4560,Coeff a5,0x4569,1,8,10,I2,17
+Calibration,Fet Temperature Model,0x4560,Coeff b1,0x4569,1,10,12,I2,19
+Calibration,Fet Temperature Model,0x4560,Coeff b2,0x4569,1,12,14,I2,21
+Calibration,Fet Temperature Model,0x4560,Coeff b3,0x4569,1,14,16,I2,23
+Calibration,Fet Temperature Model,0x4560,Coeff b4,0x4569,1,16,18,I2,25
+Calibration,Fet Temperature Model,0x4560,Rc0,0x4569,1,18,20,I2,27
+Calibration,Fet Temperature Model,0x4560,Adc0,0x4569,1,20,22,I2,29
+Calibration,Fet Temperature Model,0x4560,Rpad,0x4569,1,22,24,I2,31
+Calibration,Fet Temperature Model,0x4580,Rint,0x4569,1,24,26,I2,1
+Calibration,Current Deadband,0x4300,Deadband,0x4318,1,0,1,U1,24
+Calibration,Current Deadband,0x4300,Coulomb Counter Deadband,0x4318,1,1,2,U1,25
+Settings,Protection,0x44c0,Protection Configuration,0x44c5,1,0,1,H1,5
+Settings,Protection,0x44c0,Enabled Protections A,0x44c5,1,1,2,H1,6
+Settings,Protection,0x44c0,Enabled Protections B,0x44c5,1,2,3,H1,7
+Settings,Protection,0x44c0,Enabled Protections C,0x44c5,1,3,4,H1,8
+Settings,Protection,0x44c0,Enabled Removal Recovery A,0x44c5,1,5,6,H1,10
+Settings,Protection,0x44c0,Enabled Removal Recovery B,0x44c5,1,6,7,H1,11
+Settings,Permanent Failure,0x4500,Enabled PF A,0x451d,1,0,1,H1,29
+Settings,Permanent Failure,0x4500,Enabled PF B,0x451d,1,1,2,H1,30
+Settings,Configuration,0x4440,FET Options,0x445f,3,0,2,H2,31
+Settings,Configuration,0x4460,Sbs Gauging Configuration,0x445f,3,2,3,H1,1
+Settings,Configuration,0x4460,Smb Configuration,0x445f,3,3,4,H1,2
+Settings,Configuration,0x4460,Power Config,0x445f,3,19,20,H1,18
+Settings,Configuration,0x4480,LED Configuration,0x445f,3,45,46,H1,12
+Settings,Configuration,0x44a0,Temperature Enable,0x445f,3,74,75,H1,9
+Settings,Configuration,0x44a0,Temperature Mode,0x445f,3,75,76,H1,10
+Settings,Configuration,0x44a0,DA Configuration,0x445f,3,76,77,H1,11
+Settings,Configuration,0x44a0,AFE Cell Map,0x445f,3,77,79,H2,12
+Settings,Configuration,0x4580,CEDV Gauging Configuration,0x458b,1,0,2,H2,11
+Settings,Configuration,0x45c0,SOC Flag Config,0x45d4,1,0,2,H2,20
+Settings,Configuration,0x4600,Balancing Configuration,0x460c,1,0,1,H1,12
+Settings,Fuse,0x4440,PF SAFE A,0x4458,1,0,1,H1,24
+Settings,Fuse,0x4440,PF SAFE B,0x4458,1,1,2,H1,25
+Settings,Fuse,0x4440,PF SAFE C,0x4458,1,2,3,H1,26
+Settings,Fuse,0x4440,Fuse Blow Timeout,0x4458,1,6,7,U1,30
+Settings,Aux SMB Address,0x4460,Addr Reads,0x4463,1,0,1,U1,3
+Settings,Aux SMB Address,0x4460,SMBTAR_ADDR0,0x4463,1,1,2,H1,4
+Settings,Aux SMB Address,0x4460,SMBTAR_ADDR1,0x4463,1,2,3,H1,5
+Settings,Aux SMB Address,0x4460,SMBTAR_ADDR2,0x4463,1,3,4,H1,6
+Settings,Aux SMB Address,0x4460,SMBTAR_ADDR3,0x4463,1,4,5,H1,7
+Settings,Aux SMB Address,0x4460,SMBTAR_ADDR4,0x4463,1,5,6,H1,8
+Settings,Aux SMB Address,0x4460,SMBTAR_ADDR5,0x4463,1,6,7,H1,9
+Settings,Aux SMB Address,0x4460,SMBTAR_ADDR6,0x4463,1,7,8,H1,10
+Settings,Aux SMB Address,0x4460,SMBTAR_ADDR7,0x4463,1,8,9,H1,11
+Settings,SMB Master Mode,0x4460,Host Address,0x446e,1,0,1,H1,14
+Settings,SMB Master Mode,0x4460,Charger Address,0x446e,1,1,2,H1,15
+Settings,SMB Master Mode,0x4460,Alarm Timer,0x446e,1,2,3,U1,16
+Settings,SMB Master Mode,0x4460,Charger Request Timer,0x446e,1,3,4,U1,17
+Settings,Manufacturing,0x42c0,Mfg Status init,0x42c8,1,0,2,H2,8
+Protections,CUV,0x44c0,Threshold,0x44cc,1,0,2,I2,12
+Protections,CUV,0x44c0,Delay,0x44cc,1,2,3,U1,14
+Protections,CUV,0x44c0,Recovery,0x44cc,1,3,5,I2,15
+Protections,COV,0x44c0,Threshold,0x44d1,1,0,2,I2,17
+Protections,COV,0x44c0,Delay,0x44d1,1,2,3,U1,19
+Protections,COV,0x44c0,Recovery,0x44d1,1,3,5,I2,20
+Protections,OCC,0x44c0,Threshold,0x44d6,1,0,2,I2,22
+Protections,OCC,0x44c0,Delay,0x44d6,1,2,3,U1,24
+Protections,OCC,0x44c0,Recovery Threshold,0x44d6,1,3,5,I2,25
+Protections,OCC,0x44c0,Recovery Delay,0x44d6,1,5,6,U1,27
+Protections,OCD,0x44c0,Threshold,0x44dc,1,0,2,I2,28
+Protections,OCD,0x44c0,Delay,0x44dc,1,2,3,U1,30
+Protections,OCD,0x44c0,Recovery Threshold,0x44dc,1,3,5,I2,31
+Protections,OCD,0x44e0,Recovery Delay,0x44dc,1,5,6,U1,1
+Protections,OCDL,0x44e0,Latch Limit,0x44e2,1,0,1,U1,2
+Protections,OCDL,0x44e0,Counter Dec Delay,0x44e2,1,1,2,U1,3
+Protections,OCDL,0x44e0,Reset,0x44e2,1,2,3,U1,4
+Protections,AOLD,0x44a0,Threshold and Delay,0x44b1,1,0,1,H1,17
+Protections,AOLD,0x44e0,Latch Limit,0x44e5,1,0,1,U1,5
+Protections,AOLD,0x44e0,Counter Dec Delay,0x44e5,1,1,2,U1,6
+Protections,AOLD,0x44e0,Recovery,0x44e5,1,2,3,U1,7
+Protections,AOLD,0x44e0,Reset,0x44e5,1,3,4,U1,8
+Protections,ASCD,0x44a0,Threshold and Delay,0x44b0,1,0,1,H1,16
+Protections,ASCD,0x44e0,Latch Limit,0x44e9,1,0,1,U1,9
+Protections,ASCD,0x44e0,Counter Dec Delay,0x44e9,1,1,2,U1,10
+Protections,ASCD,0x44e0,Recovery,0x44e9,1,2,3,U1,11
+Protections,ASCD,0x44e0,Reset,0x44e9,1,3,4,U1,12
+Protections,OTC,0x44e0,Threshold,0x44ed,1,0,2,I2,13
+Protections,OTC,0x44e0,Delay,0x44ed,1,2,3,U1,15
+Protections,OTC,0x44e0,Recovery,0x44ed,1,3,5,I2,16
+Protections,OTD,0x44e0,Threshold,0x44f2,1,0,2,I2,18
+Protections,OTD,0x44e0,Delay,0x44f2,1,2,3,U1,20
+Protections,OTD,0x44e0,Recovery,0x44f2,1,3,5,I2,21
+Protections,OTF,0x44e0,Threshold,0x44f7,1,0,2,I2,23
+Protections,OTF,0x44e0,Delay,0x44f7,1,2,3,U1,25
+Protections,OTF,0x44e0,Recovery,0x44f7,1,3,5,I2,26
+Protections,UTC,0x44e0,Threshold,0x44fc,1,0,2,I2,28
+Protections,UTC,0x44e0,Delay,0x44fc,1,2,3,U1,30
+Protections,UTC,0x44e0,Recovery,0x44fc,1,3,5,I2,31
+Protections,UTD,0x4500,Threshold,0x4501,1,0,2,I2,1
+Protections,UTD,0x4500,Delay,0x4501,1,2,3,U1,3
+Protections,UTD,0x4500,Recovery,0x4501,1,3,5,I2,4
+Protections,AFE External Override,0x4500,Delay,0x4506,1,0,1,U1,6
+Protections,AFE External Override,0x4500,Recovery,0x4506,1,1,2,U1,7
+Protections,PTO,0x4500,Charge Threshold,0x4508,1,0,2,I2,8
+Protections,PTO,0x4500,Suspend Threshold,0x4508,1,2,4,I2,10
+Protections,PTO,0x4500,Delay,0x4508,1,4,6,U2,12
+Protections,PTO,0x4500,Reset,0x4508,1,6,8,I2,14
+Protections,CTO,0x4500,Charge Threshold,0x4510,1,0,2,I2,16
+Protections,CTO,0x4500,Suspend Threshold,0x4510,1,2,4,I2,18
+Protections,CTO,0x4500,Delay,0x4510,1,4,6,U2,20
+Protections,CTO,0x4500,Reset,0x4510,1,6,8,I2,22
+Protections,OC,0x4500,Threshold,0x4518,1,0,2,I2,24
+Protections,OC,0x4500,Recovery,0x4518,1,2,4,I2,26
+Protections,OC,0x4500,RSOC Recovery,0x4518,1,4,5,U1,28
+Permanent Fail,SOCC,0x4520,Threshold,0x4521,1,0,2,I2,1
+Permanent Fail,SOCC,0x4520,Delay,0x4521,1,2,3,U1,3
+Permanent Fail,SOCD,0x4520,Threshold,0x4524,1,0,2,I2,4
+Permanent Fail,SOCD,0x4520,Delay,0x4524,1,2,3,U1,6
+Permanent Fail,SOT,0x4520,Threshold,0x4527,1,0,2,I2,7
+Permanent Fail,SOT,0x4520,Delay,0x4527,1,2,3,U1,9
+Permanent Fail,SOTF,0x4520,Threshold,0x452a,1,0,2,I2,10
+Permanent Fail,SOTF,0x4520,Delay,0x452a,1,2,3,U1,12
+Permanent Fail,Open Thermistor,0x4520,Threshold,0x452d,1,0,2,I2,13
+Permanent Fail,Open Thermistor,0x4520,Delay,0x452d,1,2,3,U1,15
+Permanent Fail,VIMR,0x4520,Check Voltage,0x4530,1,0,2,I2,16
+Permanent Fail,VIMR,0x4520,Check Current,0x4530,1,2,4,I2,18
+Permanent Fail,VIMR,0x4520,Delta Threshold,0x4530,1,4,6,I2,20
+Permanent Fail,VIMR,0x4520,Delta Delay,0x4530,1,6,7,U1,22
+Permanent Fail,VIMR,0x4520,Duration,0x4530,1,7,9,U2,23
+Permanent Fail,CFET,0x4520,OFF Threshold,0x4539,1,0,2,I2,25
+Permanent Fail,CFET,0x4520,OFF Delay,0x4539,1,2,3,U1,27
+Permanent Fail,DFET,0x4520,OFF Threshold,0x453c,1,0,2,I2,28
+Permanent Fail,DFET,0x4520,OFF Delay,0x453c,1,2,3,U1,30
+Permanent Fail,AFER,0x4520,Threshold,0x453f,1,0,1,U1,31
+Permanent Fail,AFER,0x4540,Delay Period,0x453f,1,1,2,U1,0
+Permanent Fail,AFER,0x4540,Compare Period,0x453f,1,2,3,U1,1
+Permanent Fail,AFEC,0x4540,Threshold,0x4542,1,0,1,U1,2
+Permanent Fail,AFEC,0x4540,Delay Period,0x4542,1,1,2,U1,3
+Permanent Fail,AFE XREADY,0x4540,Threshold,0x4544,1,0,1,U1,4
+Permanent Fail,AFE XREADY,0x4540,Delay Period,0x4544,1,1,2,U1,5
+Permanent Fail,AFE External Override,0x4540,Delay,0x4546,1,0,1,U1,6
+Permanent Fail,AFE SOV/AFE SUV,0x44a0,SOV and SUV Delay,0x44b2,1,0,1,H1,18
+Permanent Fail,AFE SOV,0x44a0,Threshold,0x44b7,1,0,2,I2,23
+Permanent Fail,AFE SUV,0x44a0,Threshold,0x44b9,1,0,2,I2,25
+Charge Algorithm,Temperature Ranges,0x45c0,Charge Inhibit/Suspend Low Temp,0x45df,1,0,1,I1,31
+Charge Algorithm,Temperature Ranges,0x45e0,Precharge Temp,0x45df,1,1,2,I1,0
+Charge Algorithm,Temperature Ranges,0x45e0,Charge Inhibit High Temp,0x45df,1,2,3,I1,1
+Charge Algorithm,Temperature Ranges,0x45e0,Charge Suspend High Temp,0x45df,1,3,4,I1,2
+Charge Algorithm,Temperature Ranges,0x45e0,Hysteresis Temp,0x45df,1,4,5,I1,3
+Charge Algorithm,Fast Charging,0x45e0,Voltage,0x45e4,1,0,2,I2,4
+Charge Algorithm,Fast Charging,0x45e0,Current,0x45e4,1,2,4,I2,6
+Charge Algorithm,Pre-Charging,0x45e0,Current,0x45e8,1,0,2,I2,8
+Charge Algorithm,Pre-Charging,0x45e0,Start Voltage,0x45e8,1,2,4,I2,10
+Charge Algorithm,Pre-Charging,0x45e0,Recovery Voltage,0x45e8,1,4,6,I2,12
+Charge Algorithm,Termination Config,0x45e0,Charge Term Taper Current,0x45ee,1,0,2,I2,14
+Charge Algorithm,Termination Config,0x45e0,Charge Term Voltage,0x45ee,1,4,6,I2,18
+Charge Algorithm,Cell Balancing Config,0x4600,Cell Balance Threshold,0x460d,1,0,2,I2,13
+Charge Algorithm,Cell Balancing Config,0x4600,Cell Balance Window,0x460d,1,2,4,I2,15
+Charge Algorithm,Cell Balancing Config,0x4600,Cell Balance Min,0x460d,1,4,5,U1,17
+Charge Algorithm,Cell Balancing Config,0x4600,Cell Balance Interval,0x460d,1,5,6,U1,18
+Fuel Gauging,Current Thresholds,0x44a0,Dsg Current Threshold,0x44bd,1,0,2,I2,29
+Fuel Gauging,Current Thresholds,0x44a0,Chg Current Threshold,0x44bd,1,2,4,I2,31
+Fuel Gauging,Current Thresholds,0x44c0,Quit Current,0x44bd,1,4,6,I2,1
+Fuel Gauging,Current Thresholds,0x44c0,Dsg Relax Time,0x44bd,1,6,7,U1,3
+Fuel Gauging,Current Thresholds,0x44c0,Chg Relax Time,0x44bd,1,7,8,U1,4
+Fuel Gauging,Design,0x45c0,Design Capacity mAh,0x45cc,1,0,2,I2,12
+Fuel Gauging,Design,0x45c0,Design Capacity cWh,0x45cc,1,2,4,I2,14
+Fuel Gauging,Design,0x45c0,Design Voltage,0x45cc,1,4,6,I2,16
+Fuel Gauging,Cycle,0x45c0,Cycle Count Percentage,0x45d2,1,0,1,U1,18
+Fuel Gauging,FD,0x45c0,Set % RSOC Threshold,0x45d6,1,0,1,U1,22
+Fuel Gauging,FD,0x45c0,Clear % RSOC Threshold,0x45d6,1,1,2,U1,23
+Fuel Gauging,FC,0x45c0,Set % RSOC Threshold,0x45d8,1,0,1,U1,24
+Fuel Gauging,FC,0x45c0,Clear % RSOC Threshold,0x45d8,1,1,2,U1,25
+Fuel Gauging,TD,0x45c0,Set % RSOC Threshold,0x45da,1,0,1,U1,26
+Fuel Gauging,TD,0x45c0,Clear % RSOC Threshold,0x45da,1,1,2,U1,27
+Fuel Gauging,TC,0x45c0,Set % RSOC Threshold,0x45dc,1,0,1,U1,28
+Fuel Gauging,TC,0x45c0,Clear % RSOC Threshold,0x45dc,1,1,2,U1,29
+Fuel Gauging,State,0x42c0,Learned Full Charge Capacity,0x42c2,1,0,2,I2,2
+Fuel Gauging,State,0x42c0,Dod at EDV2,0x42c2,1,2,4,I2,4
+Fuel Gauging,State,0x42c0,Cycle Count,0x42c2,1,4,6,U2,6
+Fuel Gauging,CEDV cfg,0x4580,EMF,0x458d,2,0,2,U2,13
+Fuel Gauging,CEDV cfg,0x4580,C0,0x458d,2,2,4,U2,15
+Fuel Gauging,CEDV cfg,0x4580,R0,0x458d,2,4,6,U2,17
+Fuel Gauging,CEDV cfg,0x4580,T0,0x458d,2,6,8,U2,19
+Fuel Gauging,CEDV cfg,0x4580,R1,0x458d,2,8,10,U2,21
+Fuel Gauging,CEDV cfg,0x4580,TC,0x458d,2,10,11,U1,23
+Fuel Gauging,CEDV cfg,0x4580,C1,0x458d,2,11,12,U1,24
+Fuel Gauging,CEDV cfg,0x4580,Age Factor,0x458d,2,12,13,U1,25
+Fuel Gauging,CEDV cfg,0x4580,Fixed EDV 0,0x458d,2,13,15,I2,26
+Fuel Gauging,CEDV cfg,0x4580,EDV 0 Hold Time,0x458d,2,15,16,U1,28
+Fuel Gauging,CEDV cfg,0x4580,Fixed EDV 1,0x458d,2,16,18,I2,29
+Fuel Gauging,CEDV cfg,0x4580,EDV 1 Hold Time,0x458d,2,18,19,U1,31
+Fuel Gauging,CEDV cfg,0x45a0,Fixed EDV 2,0x458d,2,19,21,I2,0
+Fuel Gauging,CEDV cfg,0x45a0,EDV 2 Hold Time,0x458d,2,21,22,U1,2
+Fuel Gauging,CEDV cfg,0x45a0,Battery Low %,0x458d,2,26,28,U2,7
+Fuel Gauging,CEDV cfg,0x45a0,Min Delta V Filter,0x458d,2,30,32,I2,11
+Fuel Gauging,CEDV cfg,0x45a0,FCC Learn Up,0x458d,2,32,34,I2,13
+Fuel Gauging,CEDV cfg,0x45a0,FCC Learn Down,0x458d,2,34,36,I2,15
+Fuel Gauging,CEDV cfg,0x45a0,Learning Low Temp,0x458d,2,39,41,I2,20
+Fuel Gauging,CEDV cfg,0x45a0,Requested Learning cycle count,0x458d,2,48,49,U1,29
+Fuel Gauging,CEDV cfg,0x45a0,OverLoad Current,0x458d,2,49,51,I2,30
+Fuel Gauging,CEDV cfg,0x45c0,Self Discharge Rate,0x458d,2,53,54,U1,2
+Fuel Gauging,CEDV cfg,0x45c0,Electronics Load,0x458d,2,54,56,I2,3
+Fuel Gauging,CEDV cfg,0x45c0,Near Full,0x458d,2,56,58,I2,5
+Fuel Gauging,CEDV cfg,0x45c0,Reserve Capacity,0x458d,2,58,60,I2,7
+Fuel Gauging,CEDV cfg,0x45c0,RemCap Init Percent,0x458d,2,62,63,U1,11
+Power,Power,0x4460,Valid Update Voltage,0x4473,1,0,2,I2,19
+Power,Shutdown,0x4460,Shutdown Voltage,0x4475,1,0,2,I2,21
+Power,Shutdown,0x4460,Shutdown Time,0x4475,1,2,3,U1,23
+Power,Shutdown,0x4460,PF Shutdown Voltage,0x4475,1,3,5,I2,24
+Power,Shutdown,0x4460,PF Shutdown Time,0x4475,1,5,6,U1,26
+Power,Shutdown,0x4460,Charger Present Threshold,0x4475,1,6,8,I2,27
+Power,Sleep,0x4460,Sleep Current,0x447d,1,0,2,I2,29
+Power,Sleep,0x4460,Bus Timeout,0x447d,1,2,3,U1,31
+Power,Sleep,0x4480,Voltage Time,0x447d,1,7,8,U1,4
+Power,Sleep,0x4480,Current Time,0x447d,1,8,9,U1,5
+Power,Ship,0x4480,FET Off Time,0x4487,1,0,1,U1,7
+Power,Ship,0x4480,Delay,0x4487,1,1,2,U1,8
+Power,Ship,0x4480,Auto Ship Time,0x4487,1,2,4,U2,9
+Power,KEYIN,0x4480,Time,0x448b,1,0,1,U1,11
+PF Status,Device Status Data,0x41c0,Safety Alert A,0x41c0,1,0,1,H1,0
+PF Status,Device Status Data,0x41c0,Safety Status A,0x41c0,1,1,2,H1,1
+PF Status,Device Status Data,0x41c0,Safety Alert B,0x41c0,1,2,3,H1,2
+PF Status,Device Status Data,0x41c0,Safety Status B,0x41c0,1,3,4,H1,3
+PF Status,Device Status Data,0x41c0,Safety Alert C,0x41c0,1,4,5,H1,4
+PF Status,Device Status Data,0x41c0,Safety Status C,0x41c0,1,5,6,H1,5
+PF Status,Device Status Data,0x41c0,PF Alert A,0x41c0,1,8,9,H1,8
+PF Status,Device Status Data,0x41c0,PF Status A,0x41c0,1,9,10,H1,9
+PF Status,Device Status Data,0x41c0,PF Alert B,0x41c0,1,10,11,H1,10
+PF Status,Device Status Data,0x41c0,PF Status B,0x41c0,1,11,12,H1,11
+PF Status,Device Status Data,0x41c0,PF Alert C,0x41c0,1,12,13,H1,12
+PF Status,Device Status Data,0x41c0,PF Status C,0x41c0,1,13,14,H1,13
+PF Status,Device Status Data,0x41c0,Fuse Flag,0x41c0,1,16,18,H2,16
+PF Status,Device Status Data,0x41c0,Operation Status A,0x41c0,1,18,20,H2,18
+PF Status,Device Status Data,0x41c0,Operation Status B,0x41c0,1,20,22,H2,20
+PF Status,Device Status Data,0x41c0,Temp Range,0x41c0,1,22,23,H1,22
+PF Status,Device Status Data,0x41c0,Charging Status,0x41c0,1,23,24,H1,23
+PF Status,Device Status Data,0x41c0,Gauging Status,0x41c0,1,24,25,H1,24
+PF Status,Device Status Data,0x41c0,CEDV Status,0x41c0,1,25,26,H1,25
+PF Status,Device Voltage Data,0x41c0,Cell 1 Voltage,0x41da,2,0,2,I2,26
+PF Status,Device Voltage Data,0x41c0,Cell 2 Voltage,0x41da,2,2,4,I2,28
+PF Status,Device Voltage Data,0x41c0,Cell 3 Voltage,0x41da,2,4,6,I2,30
+PF Status,Device Voltage Data,0x41e0,Cell 4 Voltage,0x41da,2,6,8,I2,0
+PF Status,Device Voltage Data,0x41e0,Cell 5 Voltage,0x41da,2,8,10,I2,2
+PF Status,Device Voltage Data,0x41e0,Cell 6 Voltage,0x41da,2,10,12,I2,4
+PF Status,Device Voltage Data,0x41e0,Cell 7 Voltage,0x41da,2,12,14,I2,6
+PF Status,Device Voltage Data,0x41e0,Cell 8 Voltage,0x41da,2,14,16,I2,8
+PF Status,Device Voltage Data,0x41e0,Cell 9 Voltage,0x41da,2,16,18,I2,10
+PF Status,Device Voltage Data,0x41e0,Cell 10 Voltage,0x41da,2,18,20,I2,12
+PF Status,Device Voltage Data,0x41e0,Cell 11 Voltage,0x41da,2,20,22,I2,14
+PF Status,Device Voltage Data,0x41e0,Cell 12 Voltage,0x41da,2,22,24,I2,16
+PF Status,Device Voltage Data,0x41e0,Cell 13 Voltage,0x41da,2,24,26,I2,18
+PF Status,Device Voltage Data,0x41e0,Cell 14 Voltage,0x41da,2,26,28,I2,20
+PF Status,Device Voltage Data,0x41e0,Cell 15 Voltage,0x41da,2,28,30,I2,22
+PF Status,Device Voltage Data,0x41e0,Battery Direct Voltage,0x41da,2,32,34,I2,26
+PF Status,Device Current Data,0x41e0,Current,0x41fe,1,0,2,I2,30
+PF Status,Device Temperature Data,0x4200,TS1 Temperature,0x4200,1,0,2,I2,0
+PF Status,Device Temperature Data,0x4200,TS2 Temperature,0x4200,1,2,4,I2,2
+PF Status,Device Temperature Data,0x4200,TS3 Temperature,0x4200,1,4,6,I2,4
+PF Status,Device Temperature Data,0x4200,Gauge Internal Temperature,0x4200,1,6,8,I2,6
+PF Status,AFE Regs,0x4200,AFE SYS Stat,0x4208,1,0,1,H1,8
+PF Status,AFE Regs,0x4200,AFE Cell Balance1,0x4208,1,1,2,H1,9
+PF Status,AFE Regs,0x4200,AFE Cell Balance2,0x4208,1,2,3,H1,10
+PF Status,AFE Regs,0x4200,AFE Cell Balance3,0x4208,1,3,4,H1,11
+PF Status,AFE Regs,0x4200,AFE Sys Control1,0x4208,1,4,5,H1,12
+PF Status,AFE Regs,0x4200,AFE Sys Control2,0x4208,1,5,6,H1,13
+PF Status,AFE Regs,0x4200,AFE Protection1,0x4208,1,6,7,H1,14
+PF Status,AFE Regs,0x4200,AFE Protection2,0x4208,1,7,8,H1,15
+PF Status,AFE Regs,0x4200,AFE Protection3,0x4208,1,8,9,H1,16
+PF Status,AFE Regs,0x4200,AFE OV Trip,0x4208,1,9,10,H1,17
+PF Status,AFE Regs,0x4200,AFE UV Trip,0x4208,1,10,11,H1,18
+Black Box,Safety Status,0x4180,1st Status Status A,0x4180,1,0,1,H1,0
+Black Box,Safety Status,0x4180,1st Status Status B,0x4180,1,1,2,H1,1
+Black Box,Safety Status,0x4180,1st Safety Status C,0x4180,1,2,3,H1,2
+Black Box,Safety Status,0x4180,1st Time to Next Event,0x4180,1,4,5,U1,4
+Black Box,Safety Status,0x4180,2nd Status Status A,0x4180,1,5,6,H1,5
+Black Box,Safety Status,0x4180,2nd Status Status B,0x4180,1,6,7,H1,6
+Black Box,Safety Status,0x4180,2nd Safety Status C,0x4180,1,7,8,H1,7
+Black Box,Safety Status,0x4180,2nd Time to Next Event,0x4180,1,9,10,U1,9
+Black Box,Safety Status,0x4180,3rd Status Status A,0x4180,1,10,11,H1,10
+Black Box,Safety Status,0x4180,3rd Status Status B,0x4180,1,11,12,H1,11
+Black Box,Safety Status,0x4180,3rd Safety Status C,0x4180,1,12,13,H1,12
+Black Box,Safety Status,0x4180,3rd Time to Next Event,0x4180,1,14,15,U1,14
+Black Box,PF Status,0x4180,1st PF Status A,0x418f,1,0,1,H1,15
+Black Box,PF Status,0x4180,1st PF Status B,0x418f,1,1,2,H1,16
+Black Box,PF Status,0x4180,1st PF Status C,0x418f,1,2,3,H1,17
+Black Box,PF Status,0x4180,1st Time to Next Event,0x418f,1,4,5,U1,19
+Black Box,PF Status,0x4180,2nd PF Status A,0x418f,1,5,6,H1,20
+Black Box,PF Status,0x4180,2nd PF Status B,0x418f,1,6,7,H1,21
+Black Box,PF Status,0x4180,2nd PF Status C,0x418f,1,7,8,H1,22
+Black Box,PF Status,0x4180,2nd Time to Next Event,0x418f,1,9,10,U1,24
+Black Box,PF Status,0x4180,3rd PF Status A,0x418f,1,10,11,H1,25
+Black Box,PF Status,0x4180,3rd PF Status B,0x418f,1,11,12,H1,26
+Black Box,PF Status,0x4180,3rd PF Status C,0x418f,1,12,13,H1,27
+Black Box,PF Status,0x4180,3rd Time to Next Event,0x418f,1,14,15,U1,29
+System Data,Manufacturer Data,0x4040,Manufacturer Info A Length,0x4040,2,0,1,U1,0
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A01,0x4040,2,1,2,H1,1
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A02,0x4040,2,2,3,H1,2
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A03,0x4040,2,3,4,H1,3
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A04,0x4040,2,4,5,H1,4
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A05,0x4040,2,5,6,H1,5
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A06,0x4040,2,6,7,H1,6
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A07,0x4040,2,7,8,H1,7
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A08,0x4040,2,8,9,H1,8
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A09,0x4040,2,9,10,H1,9
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A10,0x4040,2,10,11,H1,10
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A11,0x4040,2,11,12,H1,11
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A12,0x4040,2,12,13,H1,12
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A13,0x4040,2,13,14,H1,13
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A14,0x4040,2,14,15,H1,14
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A15,0x4040,2,15,16,H1,15
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A16,0x4040,2,16,17,H1,16
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A17,0x4040,2,17,18,H1,17
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A18,0x4040,2,18,19,H1,18
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A19,0x4040,2,19,20,H1,19
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A20,0x4040,2,20,21,H1,20
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A21,0x4040,2,21,22,H1,21
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A22,0x4040,2,22,23,H1,22
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A23,0x4040,2,23,24,H1,23
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A24,0x4040,2,24,25,H1,24
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A25,0x4040,2,25,26,H1,25
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A26,0x4040,2,26,27,H1,26
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A27,0x4040,2,27,28,H1,27
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A28,0x4040,2,28,29,H1,28
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A29,0x4040,2,29,30,H1,29
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A30,0x4040,2,30,31,H1,30
+System Data,Manufacturer Data,0x4040,Manufacturer Info Block A31,0x4040,2,31,32,H1,31
+System Data,Manufacturer Data,0x4060,Manufacturer Info Block A32,0x4040,2,32,33,H1,0
+SBS Configuration,Data,0x4060,Manufacture Date,0x406b,2,0,2,U2,11
+SBS Configuration,Data,0x4060,Serial Number,0x406b,2,2,4,H2,13
+SBS Configuration,Data,0x4060,Manufacturer Name,0x406b,2,4,25,S21,15
+SBS Configuration,Data,0x4080,Device Name,0x406b,2,25,46,S21,4
+SBS Configuration,Data,0x4080,Device Chemistry,0x406b,2,46,51,S5,25
+SBS Configuration,Data,0x4480,Remaining AH Cap. Alarm,0x449f,1,0,2,I2,31
+SBS Configuration,Data,0x44a0,Remaining WH Cap. Alarm,0x449f,1,2,4,I2,1
+SBS Configuration,Data,0x44a0,Remaining Time Alarm,0x449f,1,4,6,U2,3
+SBS Configuration,Data,0x44a0,Initial Battery Mode,0x449f,1,6,8,H2,5
+SBS Configuration,Data,0x44a0,Specification Information,0x449f,1,8,10,H2,7
+LED Support,LED Config,0x4480,LED Flash Period,0x448d,1,0,2,U2,13
+LED Support,LED Config,0x4480,LED Blink Period,0x448d,1,2,4,U2,15
+LED Support,LED Config,0x4480,LED Delay,0x448d,1,4,6,U2,17
+LED Support,LED Config,0x4480,LED Hold Time,0x448d,1,6,7,U1,19
+LED Support,LED Config,0x4480,LED Flash Alarm,0x448d,1,7,8,I1,20
+LED Support,LED Config,0x4480,LED Thresh 1,0x448d,1,8,9,I1,21
+LED Support,LED Config,0x4480,LED Thresh 2,0x448d,1,9,10,I1,22
+LED Support,LED Config,0x4480,LED Thresh 3,0x448d,1,10,11,I1,23
+LED Support,LED Config,0x4480,LED Thresh 4,0x448d,1,11,12,I1,24
+LED Support,LED Config,0x4480,LED Thresh 5,0x448d,1,12,13,I1,25
+LED Support,LED Config,0x4480,LCD Refresh Rate,0x448d,1,13,14,U1,26
+Lifetimes,Voltage,0x40c0,Cell 1 Max Voltage,0x40c0,3,0,2,I2,0
+Lifetimes,Voltage,0x40c0,Cell 2 Max Voltage,0x40c0,3,2,4,I2,2
+Lifetimes,Voltage,0x40c0,Cell 3 Max Voltage,0x40c0,3,4,6,I2,4
+Lifetimes,Voltage,0x40c0,Cell 4 Max Voltage,0x40c0,3,6,8,I2,6
+Lifetimes,Voltage,0x40c0,Cell 5 Max Voltage,0x40c0,3,8,10,I2,8
+Lifetimes,Voltage,0x40c0,Cell 6 Max Voltage,0x40c0,3,10,12,I2,10
+Lifetimes,Voltage,0x40c0,Cell 7 Max Voltage,0x40c0,3,12,14,I2,12
+Lifetimes,Voltage,0x40c0,Cell 8 Max Voltage,0x40c0,3,14,16,I2,14
+Lifetimes,Voltage,0x40c0,Cell 9 Max Voltage,0x40c0,3,16,18,I2,16
+Lifetimes,Voltage,0x40c0,Cell 10 Max Voltage,0x40c0,3,18,20,I2,18
+Lifetimes,Voltage,0x40c0,Cell 11 Max Voltage,0x40c0,3,20,22,I2,20
+Lifetimes,Voltage,0x40c0,Cell 12 Max Voltage,0x40c0,3,22,24,I2,22
+Lifetimes,Voltage,0x40c0,Cell 13 Max Voltage,0x40c0,3,24,26,I2,24
+Lifetimes,Voltage,0x40c0,Cell 14 Max Voltage,0x40c0,3,26,28,I2,26
+Lifetimes,Voltage,0x40c0,Cell 15 Max Voltage,0x40c0,3,28,30,I2,28
+Lifetimes,Voltage,0x40e0,Cell 1 Min Voltage,0x40c0,3,32,34,I2,0
+Lifetimes,Voltage,0x40e0,Cell 2 Min Voltage,0x40c0,3,34,36,I2,2
+Lifetimes,Voltage,0x40e0,Cell 3 Min Voltage,0x40c0,3,36,38,I2,4
+Lifetimes,Voltage,0x40e0,Cell 4 Min Voltage,0x40c0,3,38,40,I2,6
+Lifetimes,Voltage,0x40e0,Cell 5 Min Voltage,0x40c0,3,40,42,I2,8
+Lifetimes,Voltage,0x40e0,Cell 6 Min Voltage,0x40c0,3,42,44,I2,10
+Lifetimes,Voltage,0x40e0,Cell 7 Min Voltage,0x40c0,3,44,46,I2,12
+Lifetimes,Voltage,0x40e0,Cell 8 Min Voltage,0x40c0,3,46,48,I2,14
+Lifetimes,Voltage,0x40e0,Cell 9 Min Voltage,0x40c0,3,48,50,I2,16
+Lifetimes,Voltage,0x40e0,Cell 10 Min Voltage,0x40c0,3,50,52,I2,18
+Lifetimes,Voltage,0x40e0,Cell 11 Min Voltage,0x40c0,3,52,54,I2,20
+Lifetimes,Voltage,0x40e0,Cell 12 Min Voltage,0x40c0,3,54,56,I2,22
+Lifetimes,Voltage,0x40e0,Cell 13 Min Voltage,0x40c0,3,56,58,I2,24
+Lifetimes,Voltage,0x40e0,Cell 14 Min Voltage,0x40c0,3,58,60,I2,26
+Lifetimes,Voltage,0x40e0,Cell 15 Min Voltage,0x40c0,3,60,62,I2,28
+Lifetimes,Voltage,0x4100,Max Delta Cell Voltage,0x40c0,3,64,66,I2,0
+Lifetimes,Current,0x4100,Max Charge Current,0x4102,1,0,2,I2,2
+Lifetimes,Current,0x4100,Max Discharge Current,0x4102,1,2,4,I2,4
+Lifetimes,Current,0x4100,Max Avg Dsg Current,0x4102,1,4,6,I2,6
+Lifetimes,Current,0x4100,Max Avg Dsg Power,0x4102,1,6,8,I2,8
+Lifetimes,Temperature,0x4100,Max Temp Cell,0x410a,1,0,1,I1,10
+Lifetimes,Temperature,0x4100,Min Temp Cell,0x410a,1,1,2,I1,11
+Lifetimes,Temperature,0x4100,Max Delta Cell Temp,0x410a,1,2,3,I1,12
+Lifetimes,Temperature,0x4100,Max Temp Fet,0x410a,1,3,4,I1,13
+Lifetimes,Gauge Temperature,0x4100,Max Temp Int Sensor,0x410e,1,0,1,I1,14
+Lifetimes,Gauge Temperature,0x4100,Min Temp Int Sensor,0x410e,1,1,2,I1,15
+Lifetimes,Safety Events,0x4100,No Of COV Events,0x4110,2,0,2,U2,16
+Lifetimes,Safety Events,0x4100,Last COV Event,0x4110,2,2,4,U2,18
+Lifetimes,Safety Events,0x4100,No Of CUV Events,0x4110,2,4,6,U2,20
+Lifetimes,Safety Events,0x4100,Last CUV Event,0x4110,2,6,8,U2,22
+Lifetimes,Safety Events,0x4100,No Of OCD Events,0x4110,2,8,10,U2,24
+Lifetimes,Safety Events,0x4100,Last OCD Event,0x4110,2,10,12,U2,26
+Lifetimes,Safety Events,0x4100,No Of OCC Events,0x4110,2,12,14,U2,28
+Lifetimes,Safety Events,0x4100,Last OCC Event,0x4110,2,14,16,U2,30
+Lifetimes,Safety Events,0x4120,No Of AOLD Events,0x4110,2,16,18,U2,0
+Lifetimes,Safety Events,0x4120,Last AOLD Event,0x4110,2,18,20,U2,2
+Lifetimes,Safety Events,0x4120,No Of ASCD Events,0x4110,2,20,22,U2,4
+Lifetimes,Safety Events,0x4120,Last ASCD Event,0x4110,2,22,24,U2,6
+Lifetimes,Safety Events,0x4120,No Of OTC Events,0x4110,2,24,26,U2,8
+Lifetimes,Safety Events,0x4120,Last OTC Event,0x4110,2,26,28,U2,10
+Lifetimes,Safety Events,0x4120,No Of OTD Events,0x4110,2,28,30,U2,12
+Lifetimes,Safety Events,0x4120,Last OTD Event,0x4110,2,30,32,U2,14
+Lifetimes,Safety Events,0x4120,No Of OTF Events,0x4110,2,32,34,U2,16
+Lifetimes,Safety Events,0x4120,Last OTF Event,0x4110,2,34,36,U2,18
+Lifetimes,Charging Events,0x4120,No Valid Charge Term,0x4134,1,0,2,U2,20
+Lifetimes,Charging Events,0x4120,Last Valid Charge Term,0x4134,1,2,4,U2,22
+Lifetimes,Gauging Events,0x4120,No of FCC Updates,0x4138,1,0,2,U2,24
+Lifetimes,Gauging Events,0x4120,Last FCC Update,0x4138,1,2,4,U2,26
+Lifetimes,Power Events,0x4120,No Of Shutdowns,0x413c,1,0,1,U1,28
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 1,0x4140,1,0,1,U1,0
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 2,0x4140,1,1,2,U1,1
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 3,0x4140,1,2,3,U1,2
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 4,0x4140,1,3,4,U1,3
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 5,0x4140,1,4,5,U1,4
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 6,0x4140,1,5,6,U1,5
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 7,0x4140,1,6,7,U1,6
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 8,0x4140,1,7,8,U1,7
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 9,0x4140,1,8,9,U1,8
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 10,0x4140,1,9,10,U1,9
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 11,0x4140,1,10,11,U1,10
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 12,0x4140,1,11,12,U1,11
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 13,0x4140,1,12,13,U1,12
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 14,0x4140,1,13,14,U1,13
+Lifetimes,Cell Balancing,0x4140,Cb Time Cell 15,0x4140,1,14,15,U1,14
+Lifetimes,Time,0x4140,Total Fw Runtime,0x4150,1,0,2,U2,16
+Lifetimes,Time,0x4140,Time Spent In UT,0x4150,1,2,4,U2,18
+Lifetimes,Time,0x4140,Time Spent In LT,0x4150,1,4,6,U2,20
+Lifetimes,Time,0x4140,Time Spent In ST,0x4150,1,6,8,U2,22
+Lifetimes,Time,0x4140,Time Spent In HT,0x4150,1,8,10,U2,24
+Lifetimes,Time,0x4140,Time Spent In OT,0x4150,1,10,12,U2,26
+Lifetimes,Time,0x4140,Time Since Last Charge,0x4150,1,12,14,U2,28
+GPIO,GPIO Config,0x4480,GPIO Configuration,0x449b,1,0,1,H1,27
+GPIO,GPIO Config,0x4480,GPIO Output Enable,0x449b,1,1,2,H1,28
+GPIO,GPIO Config,0x4480,GPIO Default Output Enable,0x449b,1,2,3,H1,29
+GPIO,GPIO Config,0x4480,GPIO Type,0x449b,1,3,4,H1,30
