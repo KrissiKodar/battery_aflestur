@@ -1,0 +1,7 @@
+Selected radio button: System.Windows.Forms.RadioButton, Checked: True
+
+Selected radio button: System.Windows.Forms.RadioButton, Checked: False
+
+Selected radio button: System.Windows.Forms.RadioButton, Checked: True
+
+Selected radio button: System.Windows.Forms.RadioButton, Checked: False

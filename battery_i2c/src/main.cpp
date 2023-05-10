@@ -292,7 +292,7 @@ void read_rom_byte(void)
             }
         
             byte_buffer_ptr = 0; // reset buffer pointer to the beginning
-            send_usb_packet(read_data, sd_read_rom_byte, byte_payload, byte_payload_size);
+            send_usb_packet(read_data, read_rheo, byte_payload, byte_payload_size);
         }
 
         address++;
@@ -305,7 +305,7 @@ void read_rom_byte(void)
     send_usb_packet(ok_error, ok, ack, 1);
 }
 
-void read_rom_block(void)
+void read_rom_block_old(void)
 {
     uint16_t address = 0;
     uint8_t block_size = 0x20;
@@ -338,7 +338,7 @@ void read_rom_block(void)
             block_payload[2 + i] = block_buffer[1 + i]; // skip first length byte from the block_buffer
         }
 
-        send_usb_packet(read_data, sd_read_rom_block, block_payload, block_payload_length);
+        send_usb_packet(read_data, read_navi, block_payload, block_payload_length);
 
         address += block_size;
         if (address == 0x0800) address = 0x4000; // skip the followin values because they are repeating until 0x4000; unique data length is only 0x0800
@@ -349,6 +349,175 @@ void read_rom_block(void)
     delay(100);
     send_usb_packet(ok_error, ok, ack, 1);
 }
+
+void read_rom_block_pk(void)
+{
+    /////////// UNSEAL BATTERY ///////////
+    // first unseal the powerknee battery
+    uint16_t unseal_key_first  = 0x0414;
+    uint16_t unseal_key_second = 0x3672;
+
+    write_word(0x00, unseal_key_first);
+    delay(20);
+    write_word(0x00, unseal_key_second);
+    delay(20);
+
+    // then go to full access
+
+    uint16_t full_access_first  = 0xFFFF;
+    uint16_t full_access_second = 0xFFFF;
+
+    write_word(0x00, full_access_first);
+    delay(200);
+    write_word(0x00, full_access_second);
+    delay(200);
+
+    //////////////////////////////////////
+
+    uint16_t address = 0x4000;
+    uint8_t block_size = 0x20 + 2;
+    uint8_t block_buffer_size = block_size + 1 + 2; // +1 block size byte +2 uneccessary address bytes
+    uint8_t block_buffer[block_buffer_size];
+    uint8_t block_payload_length = block_size + 2; // +2 address bytes at the beginning + block without length byte
+    uint8_t block_payload[block_payload_length];
+    uint8_t command = 0x44;
+    bool done = false;
+
+    // Send write block with command 0x44 and the starting address
+    //uint8_t write_data_buf[2] = {(address >> 8) & 0xFF, address & 0xFF};
+    uint8_t write_data_buf[2] = {address & 0xFF, (address >> 8) & 0xFF};
+    write_block(command, write_data_buf, 2);
+    delay(20);
+
+    while (!done)
+    {
+        wdt_reset(); // reset watchdog timer here so no autoreset occurs; this while-loop blocks the main loop for more than 4 seconds
+
+        // Read block with command 0x44
+        read_block(command, block_buffer);
+
+        block_payload[0] = (address >> 8) & 0xFF;
+        block_payload[1] = address & 0xFF;
+
+        for (uint8_t i = 0; i < block_size; i++)
+        {
+            block_payload[2 + i] = block_buffer[1 + 2 + i]; // skip first length byte from the block_buffer also skip first two (uneccessary address bytes)
+        }
+
+        send_usb_packet(read_data, read_powerknee, block_payload, block_payload_length);
+
+        address += block_size - 2;
+        if (address >= 0x6000) done = true;
+    }
+
+    delay(100);
+    ///////////// SEAL BATTERY /////////////////
+    uint16_t seal_word = 0x0030;
+    write_word(0x00, seal_word);
+    delay(100);
+    send_usb_packet(ok_error, ok, ack, 1);
+}
+
+
+void read_rom_block_navi(void)
+{
+    uint16_t address = 0x4000;
+    uint8_t block_size = 0x20 + 2;
+    uint8_t block_buffer_size = block_size + 1 + 2; // +1 block size byte +2 uneccessary address bytes
+    uint8_t block_buffer[block_buffer_size];
+    uint8_t block_payload_length = block_size + 2; // +2 address bytes at the beginning + block without length byte
+    uint8_t block_payload[block_payload_length];
+    uint8_t command = 0x44;
+    bool done = false;
+
+    // Send write block with command 0x44 and the starting address
+    //uint8_t write_data_buf[2] = {(address >> 8) & 0xFF, address & 0xFF};
+    uint8_t write_data_buf[2] = {address & 0xFF, (address >> 8) & 0xFF};
+    write_block(command, write_data_buf, 2);
+    delay(20);
+
+    while (!done)
+    {
+        wdt_reset(); // reset watchdog timer here so no autoreset occurs; this while-loop blocks the main loop for more than 4 seconds
+
+        // Read block with command 0x44
+        read_block(command, block_buffer);
+
+        block_payload[0] = (address >> 8) & 0xFF;
+        block_payload[1] = address & 0xFF;
+
+        for (uint8_t i = 0; i < block_size; i++)
+        {
+            block_payload[2 + i] = block_buffer[1 + 2 + i]; // skip first length byte from the block_buffer also skip first two (uneccessary address bytes)
+        }
+
+        send_usb_packet(read_data, read_navi, block_payload, block_payload_length);
+
+        address += block_size - 2;
+        if (address >= 0x6000) done = true;
+    }
+
+    delay(100);
+    send_usb_packet(ok_error, ok, ack, 1);
+}
+
+
+void read_rom_block_3060(void)
+{
+    //uint16_t address = 0x4000;
+    uint8_t block_size = 0x20 + 1; // + 1 for SUBCLASS ID
+    uint8_t block_buffer_size = block_size + 1; // +1 block size byte
+    uint8_t block_buffer[block_buffer_size];
+    uint8_t block_payload_length = block_size + 1; //+ 2; // +2 address bytes at the beginning + block without length byte
+    uint8_t block_payload[block_payload_length];
+    //uint8_t command = 0x44;
+    bool done = false;
+
+    uint8_t len_all_subclases = 30;
+    uint16_t all_subclasses[len_all_subclases] = {0, 1, 2, 16, 17, 18, 19, 20, 32, 33, 34, 36, 37, 38, 
+                                                  48, 49, 56, 59, 64, 65, 68, 85, 81, 82, 96, 97, 104, 
+                                                  105, 106, 107};
+    uint8_t len_two_reads = 4;
+    uint16_t two_reads[len_two_reads] = {34, 48, 85, 106};
+
+    for (uint8_t i = 0; i < len_all_subclases; i++)
+    {
+        wdt_reset();
+        write_word(0x77, all_subclasses[i]);
+        delay(20);
+
+        read_block(0x78, block_buffer);
+        block_payload[0] = all_subclasses[i] & 0xFF;
+        for (uint8_t k = 0; k < block_size; k++)
+        {
+            //block_payload[2 + k] = block_buffer[1 + k]; // skip first length byte from the block_buffer
+            block_payload[1 + k] = block_buffer[1 + k];
+        }
+
+        delay(20);
+        send_usb_packet(read_data, read_rheo, block_payload, block_payload_length);
+        for (uint8_t j = 0; j < len_two_reads; j++)
+        {
+            if (two_reads[j] == all_subclasses[i])
+            {
+                read_block(0x79, block_buffer);
+                block_payload[0] = all_subclasses[i] & 0xFF;
+                for (uint8_t t = 0; t < block_size; t++)
+                {
+                    //block_payload[2 + t] = block_buffer[1 + t]; // skip first length byte from the block_buffer
+                    block_payload[1 + t] = block_buffer[1 + t];
+                }
+                delay(20);
+                send_usb_packet(read_data, read_rheo, block_payload, block_payload_length);
+            }
+        }
+    }
+
+    delay(100);
+    send_usb_packet(ok_error, ok, ack, 1);
+}
+
+
 
 void update_timestamp(uint8_t *target)
 {
@@ -738,14 +907,19 @@ void handle_usb_data(void)
                             send_usb_packet(read_data, sd_read_block, response, response_length);
                             break;
                         }
-                        case sd_read_rom_byte: // 0x04 - read rom byte
+                        case read_rheo: // 0x04 - read Rheo
                         {
-                            read_rom_byte();
+                            read_rom_block_3060();
                             break;
                         }
-                        case sd_read_rom_block: // 0x05 - read rom block
+                        case read_navi: // 0x05 - read Navi
                         {
-                            read_rom_block();
+                            read_rom_block_navi();
+                            break;
+                        }
+                        case read_powerknee: // 0x06 - read Powerknee
+                        {
+                            read_rom_block_pk();
                             break;
                         }
                         default: // other values are not used

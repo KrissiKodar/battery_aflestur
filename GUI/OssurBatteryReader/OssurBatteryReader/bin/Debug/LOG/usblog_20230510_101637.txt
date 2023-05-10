@@ -1,0 +1,67 @@
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Handshake response
+3D 00 08 81 00 53 42 48 41 43 4B 35
+
+[INFO] Handshake OK: SBHACK
+
+[INFO] Device connected (COM3)
+
+[RX->] Device settings
+3D 00 05 83 01 03 00 00 8C
+
+[INFO] Word byte-order: reverse read/write
+
+[INFO] Design voltage: 0.0 V
+
+[<-TX] SMBus register dump request
+3D 00 04 02 03 00 20 29
+
+[RX->] SMBus register dump (00-20)
+3D 00 71 82 03 00 20 00 07 03 01 01 2C 02 00 0A 03 60 01 04 00 00 05 FF FF 06 FF FF 07 00 01 08 
+0B 98 09 08 3F 0A 00 00 0B 00 00 0C 00 64 0D 00 2D 0E 00 2A 0F 05 95 10 0C 7A 11 FF FF 12 FF FF 
+13 FF FF 14 0B B8 15 09 D8 16 00 C0 17 00 02 18 0D 7A 19 0E 10 1A 01 31 1B 4F 93 1C 00 00 1D FC 
+52 1E FC 52 1F FC 52 20 0A 57 61 6D 74 65 63 68 6E 69 6B 9B 3D
+
+[INFO] SMBus register dump details (00-20):
+[00]: 07 03 // ManufacturerAccess: 07 03
+[01]: 01 2C // RemainingCapacityAlarm: 300 mAh
+[02]: 00 0A // RemainingTimeAlarm: 10 minutes
+[03]: 60 01 // BatteryMode: 0110000000000001
+[04]: 00 00 // AtRate: 0 minutes
+[05]: FF FF // AtRateTimeToFull: 65535 minutes
+[06]: FF FF // AtRateTimeToEmpty: 65535 minutes
+[07]: 00 01 // AtRateOK: true
+[08]: 0B 98 // Temperature: 26.95°C
+[09]: 08 3F // Voltage: 2.111 V
+[0A]: 00 00 // Current: 0 A
+[0B]: 00 00 // AverageCurrent: 0 A
+[0C]: 00 64 // MaxError: 100%
+[0D]: 00 2D // RelativeStateOfCharge: 45%
+[0E]: 00 2A // AbsoluteStateOfCharge: 42%
+[0F]: 05 95 // RemainingCapacity: 1429 mAh
+[10]: 0C 7A // FullChargeCapacity: 3194 mAh
+[11]: FF FF // RunTimeToEmpty: 65535 minutes
+[12]: FF FF // AverageTimeToEmpty: 65535 minutes
+[13]: FF FF // AverageTimeToFull: 65535 minutes
+[14]: 0B B8 // ChargingCurrent: 3 A
+[15]: 09 D8 // ChargingVoltage: 2.52 V
+[16]: 00 C0 // BatteryStatus: 0000000011000000
+[17]: 00 02 // CycleCount: 2
+[18]: 0D 7A // DesignCapacity: 3450 mAh
+[19]: 0E 10 // DesignVoltage: 3.6 V
+[1A]: 01 31 // SpecificationInfo: 0000000100110001
+[1B]: 4F 93 // ManufactureDate: 2019.12.19
+[1C]: 00 00 // SerialNumber: 00 00
+[1D]: FC 52 // FC 52
+[1E]: FC 52 // FC 52
+[1F]: FC 52 // FC 52
+[20]: 0A 57 // ManufacturerName: 0A 57
+[21]: 6D 74 // DeviceName: 6D 74
+[22]: 63 68 // DeviceChemistry: 63 68
+[23]: 69 6B // ManufacturerData: 69 6B
+
+[INFO] Device disconnected (COM3)

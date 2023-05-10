@@ -188,8 +188,9 @@
 #define sd_read_byte            0x01
 #define sd_read_word            0x02
 #define sd_read_block           0x03
-#define sd_read_rom_byte        0x04
-#define sd_read_rom_block       0x05
+#define read_rheo               0x04
+#define read_navi               0x05
+#define read_powerknee          0x06
 
 // SUB-DATA CODE byte
 // Command 0x05 (write_data)

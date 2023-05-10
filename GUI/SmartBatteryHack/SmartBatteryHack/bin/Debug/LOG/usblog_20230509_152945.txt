@@ -1,0 +1,18 @@
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Handshake response
+3D 00 08 81 00 53 42 48 41 43 4B 35
+
+[INFO] Handshake OK: SBHACK
+
+[INFO] Device connected (COM3)
+
+[RX->] Device settings
+3D 00 05 83 01 03 00 00 8C
+
+[INFO] Word byte-order: reverse read/write
+
+[INFO] Design voltage: 0.0 V

@@ -1,0 +1,72 @@
+SBS_CMD,MODE,NAME,FORMAT,SIZE_IN_BYTES,MEASURED_VALUE,MIN,MAX,DEFAULT,UNIT
+0x00,R/W,ManufacturerAccess,hex,2,,0x0000,0xffff,—,
+0x01,R/W,RemainingCapacityAlarm,unsigned int,2,,0,65535,300,mAh or 10mWh
+0x02,R/W,RemainingTimeAlarm,unsigned int,2,,0,65535,10,min
+0x03,R/W,BatteryMode,hex,2,,0x0000,0xe383,—,
+0x04,R/W,AtRate,integer,2,,–32768,32767,—,mA or
+0x05,R,AtRateTimeToFull,unsigned int,2,,0,65534,—,min
+0x06,R,AtRateTimeToEmpty,unsigned int,2,,0,65534,—,min
+0x07,R,AtRateOK,unsigned int,2,,0,65535,—,
+0x08,R,Temperature,unsigned int,2,,0,65535,—,0.1°K
+0x09,R,Voltage,unsigned int,2,,0,65535,—,mV
+0x0a,R,Current,integer,2,,–32768,32767,—,mA
+0x0b,R,AverageCurrent,integer,2,,–32768,32767,—,mA
+0x0c,R,MaxError,unsigned int,1,,0%,100%,—,
+0x0d,R,RelativeStateOfCharge,unsigned int,1,,0%,100%,—,
+0x0e,R,AbsoluteStateOfCharge,unsigned int,1,,0,100+%,—,
+0x0f,R/W,RemainingCapacity,unsigned int,2,,0,65535,—,mAh or 10mWh
+0x10,R,FullChargeCapacity,unsigned int,2,,0,65535,—,mAh or 10mWh
+0x11,R,RunTimeToEmpty,unsigned int,2,,0,65534,—,min
+0x12,R,AverageTimeToEmpty,unsigned int,2,,0,65534,—,min
+0x13,R,AverageTimeToFull,unsigned int,2,,0,65534,—,min
+0x14,R,ChargingCurrent,unsigned int,2,,0,65534,—,mA
+0x15,R,ChargingVoltage,unsigned int,2,,0,65534,—,mV
+0x16,R,BatteryStatus,unsigned int,2,,0x0000,0xdbff,—,
+0x17,R/W,CycleCount,unsigned int,2,,0,65535,—,
+0x18,R/W,DesignCapacity,unsigned int,2,,0,65535,4400,mAh or 10mWh
+0x19,R/W,DesignVoltage,unsigned int,2,,0,65535,14400,mV
+0x1a,R/W,SpecificationInfo,hex,2,,0x0000,0xffff,0x0031,
+0x1b,R/W,ManufactureDate,unsigned int,2,,—,—,01-Jan-1980,ASCII
+0x1c,R/W,SerialNumber,hex,2,,0x0000,0xffff,0x0001,
+0x20,R/W,ManufacturerName,string,11,,—,—,Texas Inst.,ASCII
+0x21,R/W,DeviceName,string,7,,—,—,bq3060,ASCII
+0x22,R/W,DeviceChemistry,string,4,,—,—,LION,ASCII
+0x23,R/W,ManufacturerData,string,14,,—,—,—,ASCII
+0x2f,R/W,Authenticate,string,20,,—,—,—,ASCII
+0x3c,R,CellVoltage4,unsigned int,2,,0,65535,—,mV
+0x3d,R,CellVoltage3,unsigned int,2,,0,65535,—,mV
+0x3e,R,CellVoltage2,unsigned int,2,,0,65535,—,mV
+0x3f,R,CellVoltage1,unsigned int,2,,0,65535,—,mV
+0x45,R,AFEData,string,11,,—,—,—,ASCII
+0x46,R/W,FETControl,hex,1,,0x00,0x1e,—,
+0x47,R,PendingEDV,unsigned int,2,,0,65535,—,mV
+0x4f,R,StateOfHealth,unsigned int,1,,0%,100%,—,
+0x50,R,SafetyAlert,hex,2,,0x0000,0xffff,—,
+0x51,R,SafetyStatus,hex,2,,0x0000,0xffff,—,
+0x52,R,PFAlert,hex,2,,0x0000,0x9fff,—,
+0x53,R,PFStatus,hex,2,,0x0000,0x9fff,—,
+0x54,R,OperationStatus,hex,2,,0x0000,0xf7f7,—,
+0x55,R,ChargingStatus,hex,2,,0x0000,0xffff,—,
+0x57,R,ResetData,hex,2,,0x0000,0xffff,—,
+0x58,R,WDResetData,unsigned int,2,,0,65535,—,
+0x5a,R,PackVoltage,unsigned int,2,,0,65535,—,mV
+0x5d,R,AverageVoltage,unsigned int,2,,0,65535,—,mV
+0x60,R/W,UnSealKey,hex,4,,0x00000,0xffffffff,—,
+0x61,R/W,FullAccessKey,hex,4,,0x00000,0xffffffff,—,
+0x62,R/W,PFKey,hex,4,,0x00000,0xffffffff,—,
+0x63,R/W,AuthenKey3,hex,4,,0x00000,0xffffffff,—,
+0x64,R/W,AuthenKey2,hex,4,,0x00000,0xffffffff,—,
+0x65,R/W,AuthenKey1,hex,4,,0x00000,0xffffffff,—,
+0x66,R/W,AuthenKey0,hex,4,,0x00000,0xffffffff,—,
+0x70,R/W,ManufacturerInfo,string,8,,—,—,—,ASCII
+0x71,R/W,SenseResistor,unsigned int,2,,0,65535,—,μΩ
+0x72,,TempRange,hex,2,,,,,
+0x77,R/W,DataFlashSubClassID,hex,2,,0x0000,0xffff,—,
+0x78,R/W,DataFlashSubClassPage1,hex,32,,—,—,—,
+0x79,R/W,DataFlashSubClassPage2,hex,32,,—,—,—,
+0x7a,R/W,DataFlashSubClassPage3,hex,32,,—,—,—,
+0x7b,R/W,DataFlashSubClassPage4,hex,32,,—,—,—,
+0x7c,R/W,DataFlashSubClassPage5,hex,32,,—,—,—,
+0x7d,R/W,DataFlashSubClassPage6,hex,32,,—,—,—,
+0x7e,R/W,DataFlashSubClassPage7,hex,32,,—,—,—,
+0x7f,R/W,DataFlashSubClassPage8,hex,32,,—,—,—,

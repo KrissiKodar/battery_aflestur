@@ -1,0 +1,771 @@
+CLASS,SUBCLASS,ADDRESS,NAME,TYPE,MEASURED VALUE,MIN VALUE,MAX VALUE,DEFAULT,UNIT
+Calibration,Voltage,16384,Cell Gain,I2,12181,–32767,32767,12101,—
+Calibration,Voltage,16386,Pack Gain,U2,49625,0,65535,49669,—
+Calibration,Voltage,16388,BAT Gain,U2,49477,0,65535,48936,—
+Calibration,Current,16390,CC Gain,F4,"['2e', '9a', 'a0', '3f']",1.00E–01,4.00E+00,3.58422,—
+Calibration,Current,16394,Capacity Gain,F4,"['cd', 'ba', 'b6', '48']",2.98262E+0 4,1.193046E +06,1069035. 256,—
+Calibration,Current Offset,16398,CC Offset,I2,0,–32767,32767,0,—
+Calibration,Current Offset,16400,Coulomb Counter Offset Samples,U2,64,0,65535,64,—
+Calibration,Current Offset,16402,Board Offset,I2,0,–32768,32767,0,—
+Calibration,Current Offset,16576,CC Auto Config,H1,0x07,0x00,0x07,0x03,Hex
+Calibration,Current Offset,16577,CC Auto Offset,I2,-71,–10000,10000,0,—
+Calibration,Temperature,16404,Internal Temp Offset,I1,0,–128,127,0,0.1°C
+Calibration,Temperature,16405,External1 Temp Offset,I1,0,–128,127,0,0.1°C
+Calibration,Temperature,16406,External2 Temp Offset,I1,0,–128,127,0,0.1°C
+Calibration,Temperature,16407,External3 Temp Offset,I1,0,–128,127,0,0.1°C
+Calibration,Temperature,16408,External4 Temp Offset,I1,0,–128,127,0,0.1°C
+Calibration,Internal Temp Model,17984,Int Gain,I2,-12143,–32768,32767,–12143,—
+Calibration,Internal Temp Model,17986,Int base offset,I2,6232,–32768,32767,6232,—
+Calibration,Internal Temp Model,17988,Int Minimum AD,I2,0,–32768,32767,0,—
+Calibration,Internal Temp Model,17990,Int Maximum Temp,I2,6232,0,32767,6232,0.1°K
+Calibration,Cell Temperature Model,17992,Coeff a1,I2,-11759,–32768,32767,–11130,—
+Calibration,Cell Temperature Model,17994,Coeff a2,I2,19948,–32768,32767,19142,—
+Calibration,Cell Temperature Model,17996,Coeff a3,I2,-20349,–32768,32767,–19262,—
+Calibration,Cell Temperature Model,17998,Coeff a4,I2,28811,–32768,32767,28203,—
+Calibration,Cell Temperature Model,18000,Coeff a5,I2,1261,–32768,32767,892,—
+Calibration,Cell Temperature Model,18002,Coeff b1,I2,-90,–32768,32767,328,—
+Calibration,Cell Temperature Model,18004,Coeff b2,I2,162,–32768,32767,–605,—
+Calibration,Cell Temperature Model,18006,Coeff b3,I2,-2646,–32768,32767,–2443,—
+Calibration,Cell Temperature Model,18008,Coeff b4,I2,4543,–32768,32767,4696,—
+Calibration,Cell Temperature Model,18010,Rc0,I2,11703,–32768,32767,11703,—
+Calibration,Cell Temperature Model,18012,Adc0,I2,11703,–32768,32767,11703,—
+Calibration,Cell Temperature Model,18014,Rpad,I2,0,–32768,32767,0,—
+Calibration,Cell Temperature Model,18016,Rint,I2,0,–32768,32767,0,—
+Calibration,Fet Temperature Model,18018,Coeff a1,I2,-11130,–32768,32767,–11130,—
+Calibration,Fet Temperature Model,18020,Coeff a2,I2,19142,–32768,32767,19142,—
+Calibration,Fet Temperature Model,18022,Coeff a3,I2,-19262,–32768,32767,–19262,—
+Calibration,Fet Temperature Model,18024,Coeff a4,I2,28203,–32768,32767,28203,—
+Calibration,Fet Temperature Model,18026,Coeff a5,I2,892,–32768,32767,892,—
+Calibration,Fet Temperature Model,18028,Coeff b1,I2,328,–32768,32767,328,—
+Calibration,Fet Temperature Model,18030,Coeff b2,I2,-605,–32768,32767,–605,—
+Calibration,Fet Temperature Model,18032,Coeff b3,I2,-2443,–32768,32767,–2443,—
+Calibration,Fet Temperature Model,18034,Coeff b4,I2,4696,–32768,32767,4696,—
+Calibration,Fet Temperature Model,18036,Rc0,I2,11703,–32768,32767,11703,—
+Calibration,Fet Temperature Model,18038,Adc0,I2,11703,–32768,32767,11703,—
+Calibration,Fet Temperature Model,18040,Rpad,I2,0,–32768,32767,0,—
+Calibration,Fet Temperature Model,18042,Rint,I2,0,–32768,32767,0,—
+Calibration,Current Deadband,18054,Deadband,U1,3,0,255,3,mA
+Calibration,Current Deadband,18055,Coulomb Counter Deadband,U1,9,0,255,9,116 nV
+Settings,Configuration,18567,FET Options,H1,0x64,0x0,0xFF,0x20,Hex
+Settings,Configuration,18568,SBS Gauging Configuration,H1,0x04,0x0,0x0F,0x04,Hex
+Settings,Configuration,18569,Sbs Configuration,H1,0x20,0x0,0xFF,0x20,Hex
+Settings,Configuration,18570,Auth Config,H1,0x00,0x0,0x04,0x00,Hex
+Settings,Configuration,18571,Power Config,H2,0x0004,0x0,0x03BF,0x0000,Hex
+Settings,Configuration,18573,IO Config,H1,0x00,0x0,0x03,0x00,Hex
+Settings,Configuration,18612,LED Configuration,H2,0x00D0,0x0,0x0FFF,0x00D0,Hex
+Settings,Configuration,18669,SOC Flag Config A,H2,0x0C8C,0x0,0x0FFF,0x0C8C,Hex
+Settings,Configuration,18671,SOC Flag Config B,H1,0x8C,0x0,0xFF,0x8C,Hex
+Settings,Configuration,18696,Balancing Configuration,H1,0x03,0x0,0xFF,0x01,Hex
+Settings,Configuration,18711,IT Gauging Configuration,H2,0xD0FE,0x0,0xFFFF,0xD0FE,Hex
+Settings,Configuration,18715,IT Gauging Ext,H2,0x001A,0x0000,0x00FF,0x001A,Hex
+Settings,Configuration,18954,Charging Configuration,H1,0x00,0x0,0xFF,0x0,Hex
+Settings,Configuration,19067,Temperature Enable,H1,0x06,0x0,0x1F,0x06,Hex
+Settings,Configuration,19068,Temperature Mode,H1,0x00,0x0,0x1F,0x04,Hex
+Settings,Configuration,19069,DA Configuration,H2,0x0013,0x0,0xFFFF,0x0012,Hex
+Settings,Fuse,18560,PF Fuse A,H1,0x02,0x0,0xFF,0x0,Hex
+Settings,Fuse,18561,PF Fuse B,H1,0x00,0x0,0xFF,0x0,Hex
+Settings,Fuse,18562,PF Fuse C,H1,0x01,0x0,0xFF,0x0,Hex
+Settings,Fuse,18563,PF Fuse D,H1,0x00,0x0,0xFF,0x0,Hex
+Settings,Fuse,18564,Min Blow Fuse Voltage,I2,3500,0,65535,3500,mV
+Settings,Fuse,18566,Fuse Blow Timeout,U1,30,0,255,30,s
+Settings,BTP,18574,Init Discharge Set,I2,150,0,32767,150,mAh
+Settings,BTP,18576,Init Charge Set,I2,175,0,32767,175,mAh
+Settings,SMBus,18578,Address,H1,0x16,0x0,0xFF,0x16,—
+Settings,SMBus,18579,Address Check,H1,0xEA,0x0,0xFF,0xEA,—
+Settings,Protection,18743,Protection Configuration,H1,0x00,0x0,0x03,0x0,Hex
+Settings,Protection,18744,Enabled Protections A,H1,0xFF,0x0,0xFF,0xFF,Hex
+Settings,Protection,18745,Enabled Protections B,H1,0x7D,0x0,0xFF,0x7F,Hex
+Settings,Protection,18746,Enabled Protections C,H1,0x05,0x0,0xFF,0xD5,Hex
+Settings,Protection,18747,Enabled Protections D,H1,0x2F,0x0,0xFF,0x0F,Hex
+Settings,Permanent Failure,18879,Enabled PF A,H1,0x02,0x0,0xFF,0x0,Hex
+Settings,Permanent Failure,18880,Enabled PF B,H1,0x00,0x0,0xFF,0x0,Hex
+Settings,Permanent Failure,18881,Enabled PF C,H1,0x01,0x0,0xFF,0x0,Hex
+Settings,Permanent Failure,18882,Enabled PF D,H1,0x00,0x0,0xFF,0x0,Hex
+Settings,AFE,19072,AFE Protection Control,H1,0x71,0x0,0xFF,0x70,Hex
+Settings,AFE,19078,ZVCHG Exit Threshold,I2,2200,0,8000,2200,mV
+Settings,Manufacturing,17920,Mfg Status init,H2,0x01F8,0x0,0xFFFF,0x0000,Hex
+Advanced Charge Algorithm,Temperature Ranges,18955,T1 Temp,I2,2732,2332,3932,2732,0.1°K
+Advanced Charge Algorithm,Temperature Ranges,18957,T2 Temp,I2,2852,2332,3932,2852,0.1°K
+Advanced Charge Algorithm,Temperature Ranges,18959,T5 Temp,I2,2932,2332,3932,2932,0.1°K
+Advanced Charge Algorithm,Temperature Ranges,18961,T6 Temp,I2,2982,2332,3932,2982,0.1°K
+Advanced Charge Algorithm,Temperature Ranges,18963,T3 Temp,I2,3032,2332,3932,3032,0.1°K
+Advanced Charge Algorithm,Temperature Ranges,18965,T4 Temp,I2,3282,2332,3932,3282,0.1°K
+Advanced Charge Algorithm,Temperature Ranges,18967,Hysteresis Temp,I2,10,0,150,10,0.1°K
+Advanced Charge Algorithm,Low Temp Charging,18969,Voltage,I2,4200,0,32767,4000,mV
+Advanced Charge Algorithm,Low Temp Charging,18971,Current Low,I2,132,0,32767,132,mA
+Advanced Charge Algorithm,Low Temp Charging,18973,Current Med,I2,352,0,32767,352,mA
+Advanced Charge Algorithm,Low Temp Charging,18975,Current High,I2,264,0,32767,264,mA
+Advanced Charge Algorithm,Standard Temp Low Charging,18977,Voltage,I2,4200,0,32767,4200,mV
+Advanced Charge Algorithm,Standard Temp Low Charging,18979,Current Low,I2,1980,0,32767,1980,mA
+Advanced Charge Algorithm,Standard Temp Low Charging,18981,Current Med,I2,4004,0,32767,4004,mA
+Advanced Charge Algorithm,Standard Temp Low Charging,18983,Current High,I2,2992,0,32767,2992,mA
+Advanced Charge Algorithm,Standard Temp High Charging,18985,Voltage,I2,4200,0,32767,4200,mV
+Advanced Charge Algorithm,Standard Temp High Charging,18987,Current Low,I2,1980,0,32767,1980,mA
+Advanced Charge Algorithm,Standard Temp High Charging,18989,Current Med,I2,4004,0,32767,4004,mA
+Advanced Charge Algorithm,Standard Temp High Charging,18991,Current High,I2,2992,0,32767,2992,mA
+Advanced Charge Algorithm,High Temp Charging,18993,Voltage,I2,4200,,,,mV
+Advanced Charge Algorithm,High Temp Charging,18995,Current Low,I2,1012,,,,mA
+Advanced Charge Algorithm,High Temp Charging,18997,Current Med,I2,1980,,,,mA
+Advanced Charge Algorithm,High Temp Charging,18999,Current High,I2,1496,,,,mA
+Advanced Charge Algorithm,Rec Temp Charging,19001,Voltage,I2,4200,,,,mV
+Advanced Charge Algorithm,Rec Temp Charging,19003,Current Low,I2,2508,,,,mA
+Advanced Charge Algorithm,Rec Temp Charging,19005,Current Med,I2,4488,,,,mA
+Advanced Charge Algorithm,Rec Temp Charging,19007,Current High,I2,3520,,,,mA
+Advanced Charge Algorithm,Pre-Charging,19009,Current,I2,88,,,,mA
+Advanced Charge Algorithm,Maintenance Charging,19011,Current,I2,44,,,,mA
+Advanced Charge Algorithm,Voltage Range,19013,Precharge Start Voltage,I2,2000,,,,mV
+Advanced Charge Algorithm,Voltage Range,19015,Charging Voltage Low,I2,2500,,,,mV
+Advanced Charge Algorithm,Voltage Range,19017,Charging Voltage Med,I2,3600,,,,mV
+Advanced Charge Algorithm,Voltage Range,19019,Charging Voltage High,I2,4000,,,,mV
+Advanced Charge Algorithm,Voltage Range,19021,Charging Voltage Hysteresis,U1,0,,,,mV
+Advanced Charge Algorithm,SOC Range,19022,Charging SOC Med,U1,50,,,,%
+Advanced Charge Algorithm,SOC Range,19023,Charging SOC High,U1,75,,,,%
+Advanced Charge Algorithm,SOC Range,19024,Charging SOC Hysteresis,U1,1,,,,%
+Advanced Charge Algorithm,Degrade Mode 1,19025,Cycle Threshold,U2,50,,,,—
+Advanced Charge Algorithm,Degrade Mode 1,19027,SOH Threshold,U1,95,,,,%
+Advanced Charge Algorithm,Degrade Mode 1,19028,Voltage Degradation,I2,10,,,,mV
+Advanced Charge Algorithm,Degrade Mode 1,19030,Current Degradation,U1,10,,,,%
+Advanced Charge Algorithm,Degrade Mode 2,19031,Cycle Threshold,U2,150,,,,—
+Advanced Charge Algorithm,Degrade Mode 2,19033,SOH Threshold,U1,80,,,,%
+Advanced Charge Algorithm,Degrade Mode 2,19034,Voltage Degradation,I2,40,,,,mV
+Advanced Charge Algorithm,Degrade Mode 2,19036,Current Degradation,U1,20,,,,%
+Advanced Charge Algorithm,Degrade Mode 3,19037,Cycle Threshold,U2,350,,,,—
+Advanced Charge Algorithm,Degrade Mode 3,19039,SOH Threshold,U1,60,,,,%
+Advanced Charge Algorithm,Degrade Mode 3,19040,Voltage Degradation,I2,70,,,,mV
+Advanced Charge Algorithm,Degrade Mode 3,19042,Current Degradation,U1,40,,,,%
+Advanced Charge Algorithm,CS Degrade,19043,Temperature Threshold,I2,3232,,,,0.1°K
+Advanced Charge Algorithm,CS Degrade,19045,Voltage Threshold,I2,4200,0,32767,4200,mV
+Advanced Charge Algorithm,CS Degrade,19047,Time Interval,U2,300,0,14400,300,s
+Advanced Charge Algorithm,CS Degrade,19049,Delta Voltage,I2,25,0,32767,25,mV
+Advanced Charge Algorithm,CS Degrade,19051,Min CV,I2,3000,0,32767,3000,mV
+Advanced Charge Algorithm,Termination Config,19053,Charge Term Taper Current,I2,50,0,32767,250,mA
+Advanced Charge Algorithm,Termination Config,19057,Charge Term Voltage,I2,75,0,32767,75,mV
+Advanced Charge Algorithm,Charging Rate of Change,19060,Current Rate,U1,1,1,255,1,steps
+Advanced Charge Algorithm,Charging Rate of Change,19061,Voltage Rate,U1,1,1,255,1,steps
+Advanced Charge Algorithm,Charge Loss Compensation,19062,CCC Current Threshold,I2,3520,0,32767,3520,mA
+Advanced Charge Algorithm,Charge Loss Compensation,19064,CCC Voltage Threshold,I2,4200,0,32767,4200,mV
+Advanced Charge Algorithm,IR Correction,19066,Averaging Interval,U1,12,1,255,12,s
+Advanced Charge Algorithm,Cell Balancing Config,18697,Bal Time/mAh Cell 1,U2,121,0,65535,367,s/mAh
+Advanced Charge Algorithm,Cell Balancing Config,18699,Bal Time/mAh Cell 2-4,U2,126,0,65535,514,s/mAh
+Advanced Charge Algorithm,Cell Balancing Config,18701,Min Start Balance Delta,U1,3,0,255,3,mV
+Advanced Charge Algorithm,Cell Balancing Config,18702,Relax Balance Interval,U4,"['50', '46', '00', '00']",0,429496729 5,18000,s
+Advanced Charge Algorithm,Cell Balancing Config,18706,Min Rsoc for Balancing,U1,80,0,100,80,%
+Advanced Charge Algorithm,Cell Balancing Config,18707,Start Rsoc for Bal in Sleep,U1,95,0,100,95,%
+Advanced Charge Algorithm,Cell Balancing Config,18708,End Rsoc for Bal in Sleep,U1,60,0,100,60,%
+Advanced Charge Algorithm,Cell Balancing Config,18709,Start Time for Bal in Sleep,U2,100,0,65520,100,hrs
+Power,Power,18580,Valid Update Voltage,I2,3500,0,32767,3500,mV
+Power,Shutdown,18582,Shutdown Voltage,I2,2400,0,32767,1750,mV
+Power,Shutdown,18584,Shutdown Time,U1,60,0,255,10,s
+Power,Shutdown,18585,PF Shutdown Voltage,I2,2400,0,32767,1750,mV
+Power,Shutdown,18587,PF Shutdown Time,U1,60,0,255,10,s
+Power,Shutdown,18588,PS Shutdown Voltage,I2,2500,0,32767,2500,mV
+Power,Shutdown,18590,PS NoLoadResCap Threshold,I2,0,0,32767,0,mAh
+Power,Shutdown,18592,Charger Present Threshold,I2,16500,0,32767,3000,mV
+Power,Shutdown,18594,Valid Wake up Comm Check Delay,U1,100,0,255,100,s
+Power,Sleep,18595,Sleep Current,I2,10,0,32767,10,mA
+Power,Sleep,18597,Bus Timeout,U1,5,0,255,5,s
+Power,Sleep,18602,Voltage Time,U1,20,1,20,5,s
+Power,Sleep,18603,Current Time,U1,10,1,60,20,s
+Power,Sleep,18604,Wake Comparator,H1,0x00,0x0,0xFF,0x0,Hex
+Power,Ship,18605,FET Off Time,U1,10,0,127,10,s
+Power,Ship,18606,Delay,U1,20,0,254,20,s
+Power,Ship,18607,Auto Ship Time,U2,1440,0,65535,1440,min
+Power,Power Off,18609,Timeout,U2,0,0,65535,30,min
+Power,Manual FET Control,18611,MFC Delay,U1,60,0,255,60,0.25 s
+Power,IATA,18644,IATA Config,H1,0x03,0x0,0xFF,0x03,—
+Power,IATA,18645,IATA Delay Time,U2,10,0,65535,10,s
+Power,IATA,18647,IATA RSOC Threshold,U1,30,0,100,30,%
+Power,IATA,18648,IATA DeltaV Threshold,U1,50,0,255,50,mV
+Power,IATA,18649,IATA Delta RSOC,U1,3,0,100,3,%
+Power,IATA,18650,IATA Wake AbsRsoc,U1,10,0,100,10,%
+Power,IATA,18651,IATA Min Temperature,I2,2832,2332,3932,2832,0.1°K
+Power,IATA,18653,IATA Max Temperature,I2,3132,2332,3932,3132,0.1°K
+Power,IATA,18655,IATA Min Voltage,I2,3000,0,32767,3000,mV
+Power,IATA,18657,IATA Max Voltage,I2,3600,0,32767,3600,mV
+Power,IATA STORE,17664,IATA RM mAh,I2,0,0,32767,0,mAh
+Power,IATA STORE,17666,IATA RM cWh,I2,0,0,32767,0,cWh
+Power,IATA STORE,17668,IATA FCC mAh,I2,0,0,32767,0,mAh
+Power,IATA STORE,17670,IATA FCC cWh,I2,0,0,32767,0,cWh
+Power,IATA STORE,17672,IATA Flag,H1,0x00,0x0,0xFF,0x0,—
+Power,Unintended Wakeup,18659,Delay,U1,2,0,240,2,s
+Power,Unintended Wakeup,18660,Count,U1,3,0,255,3,—
+LED Support,LED Config,18614,LED Flash Period,U2,512,32,65535,512,488 μs
+LED Support,LED Config,18616,LED Blink Period,U2,1024,32,65535,1024,488 μs
+LED Support,LED Config,18618,LED Delay,U2,100,16,65535,100,488 μs
+LED Support,LED Config,18620,LED Hold Time,U1,16,1,63,16,0.25 s
+LED Support,LED Config,18621,LED FC Time,U1,4,0,96,4,15 mins
+LED Support,LED Config,18622,CHG Flash Alarm,I1,10,0,100,10,%
+LED Support,LED Config,18623,CHG Thresh 1,I1,0,0,100,0,%
+LED Support,LED Config,18624,CHG Thresh 2,I1,20,0,100,20,%
+LED Support,LED Config,18625,CHG Thresh 3,I1,40,0,100,40,%
+LED Support,LED Config,18626,CHG Thresh 4,I1,60,0,100,60,%
+LED Support,LED Config,18627,CHG Thresh 5,I1,80,0,100,80,%
+LED Support,LED Config,18628,DSG Flash Alarm,I1,10,0,100,10,%
+LED Support,LED Config,18629,DSG Thresh 1,I1,0,0,100,0,%
+LED Support,LED Config,18630,DSG Thresh 2,I1,20,0,100,20,%
+LED Support,LED Config,18631,DSG Thresh 3,I1,40,0,100,40,%
+LED Support,LED Config,18632,DSG Thresh 4,I1,60,0,100,60,%
+LED Support,LED Config,18633,DSG Thresh 5,I1,80,0,100,80,%
+System Data,Manufacturer Data,16448,Manufacturer Info A Length,U1,28,1,32,32,—
+System Data,Manufacturer Data,16449,Manufacturer Info Block A01,H1,0x31,0x0,0xFF,0x61,Hex
+System Data,Manufacturer Data,16450,Manufacturer Info Block A02,H1,0x39,0x0,0xFF,0x62,Hex
+System Data,Manufacturer Data,16451,Manufacturer Info Block A03,H1,0x33,0x0,0xFF,0x63,Hex
+System Data,Manufacturer Data,16452,Manufacturer Info Block A04,H1,0x36,0x0,0xFF,0x64,Hex
+System Data,Manufacturer Data,16453,Manufacturer Info Block A05,H1,0x44,0x0,0xFF,0x65,Hex
+System Data,Manufacturer Data,16454,Manufacturer Info Block A06,H1,0x31,0x0,0xFF,0x66,Hex
+System Data,Manufacturer Data,16455,Manufacturer Info Block A07,H1,0x35,0x0,0xFF,0x67,Hex
+System Data,Manufacturer Data,16456,Manufacturer Info Block A08,H1,0x31,0x0,0xFF,0x68,Hex
+System Data,Manufacturer Data,16457,Manufacturer Info Block A09,H1,0x32,0x0,0xFF,0x69,Hex
+System Data,Manufacturer Data,16458,Manufacturer Info Block A10,H1,0x30,0x0,0xFF,0x6A,Hex
+System Data,Manufacturer Data,16459,Manufacturer Info Block A11,H1,0x32,0x0,0xFF,0x6B,Hex
+System Data,Manufacturer Data,16460,Manufacturer Info Block A12,H1,0x31,0x0,0xFF,0x6C,Hex
+System Data,Manufacturer Data,16461,Manufacturer Info Block A13,H1,0x30,0x0,0xFF,0x6D,Hex
+System Data,Manufacturer Data,16462,Manufacturer Info Block A14,H1,0x30,0x0,0xFF,0x6E,Hex
+System Data,Manufacturer Data,16463,Manufacturer Info Block A15,H1,0x35,0x0,0xFF,0x6F,Hex
+System Data,Manufacturer Data,16464,Manufacturer Info Block A16,H1,0x34,0x0,0xFF,0x70,Hex
+System Data,Manufacturer Data,16465,Manufacturer Info Block A17,H1,0x30,0x0,0xFF,0x71,Hex
+System Data,Manufacturer Data,16466,Manufacturer Info Block A18,H1,0x30,0x0,0xFF,0x72,Hex
+System Data,Manufacturer Data,16467,Manufacturer Info Block A19,H1,0x30,0x0,0xFF,0x73,Hex
+System Data,Manufacturer Data,16468,Manufacturer Info Block A20,H1,0x30,0x0,0xFF,0x74,Hex
+System Data,Manufacturer Data,16469,Manufacturer Info Block A21,H1,0x31,0x0,0xFF,0x75,Hex
+System Data,Manufacturer Data,16470,Manufacturer Info Block A22,H1,0x42,0x0,0xFF,0x76,Hex
+System Data,Manufacturer Data,16471,Manufacturer Info Block A23,H1,0x2D,0x0,0xFF,0x77,Hex
+System Data,Manufacturer Data,16472,Manufacturer Info Block A24,H1,0x36,0x0,0xFF,0x7A,Hex
+System Data,Manufacturer Data,16473,Manufacturer Info Block A25,H1,0x44,0x0,0xFF,0x78,Hex
+System Data,Manufacturer Data,16474,Manufacturer Info Block A26,H1,0x00,0x0,0xFF,0x79,Hex
+System Data,Manufacturer Data,16475,Manufacturer Info Block A27,H1,0x00,0x0,0xFF,0x30,Hex
+System Data,Manufacturer Data,16476,Manufacturer Info Block A28,H1,0x00,0x0,0xFF,0x31,Hex
+System Data,Manufacturer Data,16477,Manufacturer Info Block A29,H1,0x32,0x0,0xFF,0x32,Hex
+System Data,Manufacturer Data,16478,Manufacturer Info Block A30,H1,0x33,0x0,0xFF,0x33,Hex
+System Data,Manufacturer Data,16479,Manufacturer Info Block A31,H1,0x34,0x0,0xFF,0x34,Hex
+System Data,Manufacturer Data,16480,Manufacturer Info Block A32,H1,0x35,0x0,0xFF,0x35,Hex
+System Data,Manufacturer Info B,16482,Manufacturer Info Block B01,H1,0x01,0x0,0xFF,0x01,Hex
+System Data,Manufacturer Info B,16483,Manufacturer Info Block B02,H1,0x23,0x0,0xFF,0x23,Hex
+System Data,Manufacturer Info B,16484,Manufacturer Info Block B03,H1,0x45,0x0,0xFF,0x45,Hex
+System Data,Manufacturer Info B,16485,Manufacturer Info Block B04,H1,0x67,0x0,0xFF,0x67,Hex
+System Data,Integrity,16486,Static DF Signature,H2,0x0000,0x0,0x7FFF,0x0,Hex
+System Data,Integrity,16488,Static Chem DF Signature,H2,0x62FA,0x0,0x7FFF,0x73B5,Hex
+System Data,Integrity,16490,All DF Signature,H2,0x0000,0x0,0x7FFF,0x0,Hex
+SBS Configuration,Data,16492,Manufacture Date,U2,21396,0,65535,0,date
+SBS Configuration,Data,16494,Serial Number,H2,0x0036,0x0,0xFFFF,0x0001,Hex
+SBS Configuration,Data,16496,Manufacturer Name,S21,"
+Wamtechnik          ",x,x,Texas Instrumen ts,—
+SBS Configuration,Data,16517,Device Name,S21,	1936.1B-6           ,x,x,bq40z50- R2,—
+SBS Configuration,Data,16538,Device Chemistry,S5,LION,x,x,LION,—
+SBS Configuration,Data,18634,Remaining AH Cap. Alarm,I2,300,0,32767,300,mAh
+SBS Configuration,Data,18636,Remaining WH Cap. Alarm,I2,432,0,32767,432,cWh
+SBS Configuration,Data,18638,Remaining Time Alarm,U2,10,0,65535,10,min
+SBS Configuration,Data,18640,Initial Battery Mode,H2,0x0081,0x0,0xFFFF,0x0081,Hex
+SBS Configuration,Data,18642,Specification Information,H2,0x0031,0x0,0xFFFF,0x0031,Hex
+Lifetimes,Voltage,17280,Cell 1 Max Voltage,I2,3831,0,32767,0,mV
+Lifetimes,Voltage,17282,Cell 2 Max Voltage,I2,3834,0,32767,0,mV
+Lifetimes,Voltage,17284,Cell 3 Max Voltage,I2,3826,0,32767,0,mV
+Lifetimes,Voltage,17286,Cell 4 Max Voltage,I2,3830,0,32767,0,mV
+Lifetimes,Voltage,17288,Cell 1 Min Voltage,I2,2400,0,32767,32767,mV
+Lifetimes,Voltage,17290,Cell 2 Min Voltage,I2,2439,0,32767,32767,mV
+Lifetimes,Voltage,17292,Cell 3 Min Voltage,I2,2440,0,32767,32767,mV
+Lifetimes,Voltage,17294,Cell 4 Min Voltage,I2,2409,0,32767,32767,mV
+Lifetimes,Voltage,17296,Max Delta Cell Voltage,I2,63,0,32767,0,mV
+Lifetimes,Current,17298,Max Charge Current,I2,1335,0,32767,0,mA
+Lifetimes,Current,17300,Max Discharge Current,I2,-95,–32768,0,0,mA
+Lifetimes,Current,17302,Max Avg Dsg Current,I2,-93,–32768,,0,mA
+Lifetimes,Current,17304,Max Avg Dsg Power,I2,-106,–32768,,0,cW
+Lifetimes,Temperature,17306,Max Temp Cell,I1,33,–128,,–128,°C
+Lifetimes,Temperature,17307,Min Temp Cell,I1,7,–128,,127,°C
+Lifetimes,Temperature,17308,Max Delta Cell Temp,I1,1,–128,,0,°C
+Lifetimes,Temperature,17309,Max Temp Int Sensor,I1,33,–128,,–128,°C
+Lifetimes,Temperature,17310,Min Temp Int Sensor,I1,7,–128,,127,°C
+Lifetimes,Temperature,17311,Max Temp Fet,I1,0,–128,,–128,°C
+Lifetimes,Safety Events,17312,No Of COV Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17314,Last COV Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17316,No Of CUV Events,U2,3,0,,0,events
+Lifetimes,Safety Events,17318,Last CUV Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17320,No Of OCD1 Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17322,Last OCD1 Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17324,No Of OCD2 Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17326,Last OCD2 Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17328,No Of OCC1 Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17330,Last OCC1 Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17332,No Of OCC2 Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17334,Last OCC2 Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17336,No Of AOLD Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17338,Last AOLD Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17340,No Of ASCD Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17342,Last ASCD Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17344,No Of ASCC Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17346,Last ASCC Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17348,No Of OTC Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17350,Last OTC Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17352,No Of OTD Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17354,Last OTD Event,U2,0,0,,0,cycles
+Lifetimes,Safety Events,17356,No Of OTF Events,U2,0,0,,0,events
+Lifetimes,Safety Events,17358,Last OTF Event,U2,0,0,,0,cycles
+Lifetimes,Charging Events,17360,No Valid Charge Term,U2,0,0,,0,events
+Lifetimes,Charging Events,17362,Last Valid Charge Term,U2,0,0,,0,cycles
+Lifetimes,Gauging Events,17364,No Of Qmax Updates,U2,1,0,,0,events
+Lifetimes,Gauging Events,17366,Last Qmax Update,U2,0,0,,0,cycles
+Lifetimes,Gauging Events,17368,No Of Ra Updates,U2,0,0,,0,events
+Lifetimes,Gauging Events,17370,Last Ra Update,U2,0,0,,0,cycles
+Lifetimes,Gauging Events,17372,No Of Ra Disable,U2,3,0,,0,events
+Lifetimes,Gauging Events,17374,Last Ra Disable,U2,0,0,,0,cycles
+Lifetimes,Power Events,17376,No Of Shutdowns,U1,2,0,,0,events
+Lifetimes,Cell Balancing,17380,Cb Time Cell 1,U1,0,0,,0,2 h
+Lifetimes,Cell Balancing,17381,Cb Time Cell 2,U1,0,0,,0,2 h
+Lifetimes,Cell Balancing,17382,Cb Time Cell 3,U1,0,0,,0,2 h
+Lifetimes,Cell Balancing,17383,Cb Time Cell 4,U1,0,0,,0,2 h
+Lifetimes,Time,17384,Total Fw Runtime,U2,1602,0,,0,2 h
+Lifetimes,Time,17386,Time Spent In UT,U2,0,0,,0,2 h
+Lifetimes,Time,17388,Time Spent In LT,U2,2,0,,0,2 h
+Lifetimes,Time,17390,Time Spent In STL,U2,244,0,,0,2 h
+Lifetimes,Time,17392,Time Spent In RT,U2,1341,0,,0,2 h
+Lifetimes,Time,17394,Time Spent In STH,U2,12,0,,0,2 h
+Lifetimes,Time,17396,Time Spent In HT,U2,0,0,65535,0,2 h
+Lifetimes,Time,17398,Time Spent In OT,U2,0,0,65535,0,2 h
+Protections,CUV,18748,Threshold,I2,2750,0,32767,2500,mV
+Protections,CUV,18750,Delay,U1,2,0,255,2,s
+Protections,CUV,18751,Recovery,I2,3200,0,32767,3000,mV
+Protections,CUVC,18753,Threshold,I2,2300,0,32767,2400,mV
+Protections,CUVC,18755,Delay,U1,2,0,255,2,s
+Protections,CUVC,18756,Recovery,I2,2800,0,32767,3000,mV
+Protections,COV,18758,Threshold Low Temp,I2,4250,0,32767,4300,mV
+Protections,COV,18760,Threshold Standard Temp Low,I2,4250,0,32767,4300,mV
+Protections,COV,18762,Threshold Standard Temp High,I2,4250,0,32767,4300,mV
+Protections,COV,18764,Threshold High Temp,I2,4250,0,32767,4300,mV
+Protections,COV,18766,Threshold Rec Temp,I2,4250,0,32767,4300,mV
+Protections,COV,18768,Delay,U1,3,0,255,2,s
+Protections,COV,18769,Recovery Low Temp,I2,4100,0,32767,3900,mV
+Protections,COV,18771,Recovery Standard Temp Low,I2,4100,0,32767,3900,mV
+Protections,COV,18773,Recovery Standard Temp High,I2,4100,0,32767,3900,mV
+Protections,COV,18775,Recovery High Temp,I2,4100,0,32767,3900,mV
+Protections,COV,18777,Recovery Rec Temp,I2,4100,0,32767,3900,mV
+Protections,COV,18779,Latch Limit,U1,0,0,255,0,—
+Protections,COV,18780,Counter Dec Delay,U1,10,0,255,10,s
+Protections,COV,18781,Reset,U1,15,0,255,15,s
+Protections,OCC1,18782,Threshold,I2,1800,–32768,32767,6000,mA
+Protections,OCC1,18784,Delay,U1,3,0,255,6,s
+Protections,OCC2,18785,Threshold,I2,2000,–32768,32767,8000,mA
+Protections,OCC2,18787,Delay,U1,1,0,255,3,s
+Protections,OCC,18788,Recovery Threshold,I2,100,–32768,32767,–200,mA
+Protections,OCC,18790,Recovery Delay,U1,60,0,255,5,s
+Protections,OCD1,18791,Threshold,I2,-6000,–32768,32767,–6000,mA
+Protections,OCD1,18793,Delay,U1,3,0,255,6,s
+Protections,OCD2,18794,Threshold,I2,-8000,–32768,32767,–8000,mA
+Protections,OCD2,18796,Delay,U1,1,0,255,3,s
+Protections,OCD,18797,Recovery Threshold,I2,-100,–32768,32767,200,mA
+Protections,OCD,18799,Recovery Delay,U1,3,0,255,5,s
+Protections,OCD,18800,Latch Limit,U1,0,0,255,0,—
+Protections,OCD,18801,Counter Dec Delay,U1,10,0,255,10,s
+Protections,OCD,18802,Reset,U1,15,0,255,15,s
+Protections,AOLD,18803,Latch Limit,U1,0,0,255,0,—
+Protections,AOLD,18804,Counter Dec Delay,U1,10,0,255,10,s
+Protections,AOLD,18805,Recovery,U1,5,0,255,5,s
+Protections,AOLD,18806,Reset,U1,15,0,255,15,s
+Protections,AOLD,19073,Threshold,H1,0xFA,0x0,0xFF,0xF4,Hex
+Protections,ASCC,18807,Latch Limit,U1,0,0,255,0,—
+Protections,ASCC,18808,Counter Dec Delay,U1,10,0,255,10,s
+Protections,ASCC,18809,Recovery,U1,5,0,255,5,s
+Protections,ASCC,18810,Reset,U1,15,0,255,15,s
+Protections,ASCC,19074,Threshold,H1,0xF3,0x0,0xFF,0x77,Hex
+Protections,ASCD,18811,Latch Limit,U1,0,0,255,0,—
+Protections,ASCD,18812,Counter Dec Delay,U1,10,0,255,10,s
+Protections,ASCD,18813,Recovery,U1,60,0,255,5,s
+Protections,ASCD,18814,Reset,U1,15,0,255,15,s
+Protections,ASCD,19075,Threshold 1,H1,0x33,0x0,0xFF,0x77,Hex
+Protections,ASCD,19076,Threshold 2,H1,0x46,0x0,0xFF,0xE7,Hex
+Protections,OTC,18815,Threshold,I2,3182,2332,3932,3282,0.1°K
+Protections,OTC,18817,Delay,U1,2,0,255,2,s
+Protections,OTC,18818,Recovery,I2,3172,2332,3932,3232,0.1°K
+Protections,OTD,18820,Threshold,I2,3332,2332,3932,3332,0.1°K
+Protections,OTD,18822,Delay,U1,2,0,255,2,s
+Protections,OTD,18823,Recovery,I2,3282,2332,3932,3282,0.1°K
+Protections,OTF,18825,Threshold,I2,3532,2332,3932,3532,0.1°K
+Protections,OTF,18827,Delay,U1,2,0,255,2,s
+Protections,OTF,18828,Recovery,I2,3382,2332,3932,3382,0.1°K
+Protections,UTC,18830,Threshold,I2,2732,2332,3932,2732,0.1°K
+Protections,UTC,18832,Delay,U1,2,0,255,2,s
+Protections,UTC,18833,Recovery,I2,2742,2332,3932,2782,0.1°K
+Protections,UTD,18835,Threshold,I2,2532,2332,3932,2732,0.1°K
+Protections,UTD,18837,Delay,U1,2,0,255,2,s
+Protections,UTD,18838,Recovery,I2,2632,2332,3932,2782,0.1°K
+Protections,HWD,18840,Delay,U1,10,0,255,10,s
+Protections,PTO,18841,Charge Threshold,I2,2000,–32768,32767,2000,mA
+Protections,PTO,18843,Suspend Threshold,I2,1800,–32768,32767,1800,mA
+Protections,PTO,18845,Delay,U2,1800,0,65535,1800,s
+Protections,PTO,18847,Reset,I2,2,0,32767,2,mAh
+Protections,CTO,18849,Charge Threshold,I2,2500,–32768,32767,2500,mA
+Protections,CTO,18851,Suspend Threshold,I2,2000,–32768,32767,2000,mA
+Protections,CTO,18853,Delay,U2,54000,0,65535,54000,s
+Protections,CTO,18855,Reset,I2,2,0,32767,2,mAh
+Protections,OC,18857,Threshold,I2,500,–32768,32767,300,mAh
+Protections,OC,18859,Recovery,I2,2,–32768,32767,2,mAh
+Protections,OC,18861,RSOC Recovery,U1,90,0,100,90,%
+Protections,CHGV,18862,Threshold,I2,500,–32768,32767,500,mV
+Protections,CHGV,18864,Delay,U1,30,0,255,30,s
+Protections,CHGV,18865,Recovery,I2,-500,–32768,32767,–500,mV
+Protections,CHGC,18867,Threshold,I2,500,–32768,32767,500,mA
+Protections,CHGC,18869,Delay,U1,2,0,255,2,s
+Protections,CHGC,18870,Recovery Threshold,I2,100,–32768,32767,100,mA
+Protections,CHGC,18872,Recovery Delay,U1,2,0,255,2,s
+Protections,PCHGC,18873,Threshold,I2,50,–32768,32767,50,mA
+Protections,PCHGC,18875,Delay,U1,2,0,255,2,s
+Protections,PCHGC,18876,Recovery Threshold,I2,10,–32768,32767,10,mA
+Protections,PCHGC,18878,Recovery Delay,U1,2,0,255,2,s
+Permanent Fail,SUV,18883,Threshold,I2,2200,0,32767,2200,mV
+Permanent Fail,SUV,18885,Delay,U1,5,0,255,5,s
+Permanent Fail,SOV,18886,Threshold,I2,4325,0,32767,4500,mV
+Permanent Fail,SOV,18888,Delay,U1,5,0,255,5,s
+Permanent Fail,SOCC,18889,Threshold,I2,10000,–32768,32767,10000,mA
+Permanent Fail,SOCC,18891,Delay,U1,5,0,255,5,s
+Permanent Fail,SOCD,18892,Threshold,I2,-10000,–32768,32767,–10000,mA
+Permanent Fail,SOCD,18894,Delay,U1,5,0,255,5,s
+Permanent Fail,SOT,18895,Threshold,I2,3382,2332,3932,3382,0.1°K
+Permanent Fail,SOT,18897,Delay,U1,5,0,255,5,s
+Permanent Fail,SOTF,18898,Threshold,I2,3732,2332,3932,3732,0.1°K
+Permanent Fail,SOTF,18900,Delay,U1,5,0,255,5,s
+Permanent Fail,Open Thermistor,18901,Threshold,I2,2232,0,32767,2232,0.1°K
+Permanent Fail,Open Thermistor,18903,Delay,U1,5,0,255,5,s
+Permanent Fail,Open Thermistor,18904,Fet Delta,I2,200,0,1500,200,0.1°K
+Permanent Fail,Open Thermistor,18906,Cell Delta,I2,200,0,1500,200,0.1°K
+Permanent Fail,QIM,18908,Delta Threshold,I2,150,0,32767,150,0.1%
+Permanent Fail,QIM,18910,Delay,U1,2,0,255,2,updates
+Permanent Fail,CB,18911,Max Threshold,I2,120,0,32767,120,2 h
+Permanent Fail,CB,18913,Delta Threshold,U1,20,0,255,20,2 h
+Permanent Fail,CB,18914,Delay,U1,2,0,255,2,cycles
+Permanent Fail,VIMR,18915,Check Voltage,I2,3500,0,5000,3500,mV
+Permanent Fail,VIMR,18917,Check Current,I2,10,0,32767,10,mA
+Permanent Fail,VIMR,18919,Delta Threshold,I2,500,0,5000,500,mV
+Permanent Fail,VIMR,18921,Delta Delay,U1,5,0,255,5,s
+Permanent Fail,VIMR,18922,Duration,U2,100,0,65535,100,s
+Permanent Fail,VIMA,18924,Check Voltage,I2,3700,0,5000,3700,mV
+Permanent Fail,VIMA,18926,Check Current,I2,50,0,32767,50,mA
+Permanent Fail,VIMA,18928,Delta Threshold,I2,200,0,5000,200,mV
+Permanent Fail,VIMA,18930,Delay,U1,5,0,255,5,s
+Permanent Fail,IMP,18931,Delta Threshold,I2,300,0,32767,300,%
+Permanent Fail,IMP,18933,Max Threshold,I2,400,0,32767,400,%
+Permanent Fail,IMP,18935,Ra Update Counts,U1,2,0,255,2,Counts
+Permanent Fail,CD,18936,Threshold,I2,0,0,32767,0,mAh
+Permanent Fail,CD,18938,Delay,U1,2,0,255,2,cycles
+Permanent Fail,CFET,18939,OFF Threshold,I2,200,0,500,5,mA
+Permanent Fail,CFET,18941,OFF Delay,U1,12,0,255,5,s
+Permanent Fail,DFET,18942,OFF Threshold,I2,-20,–500,0,–5,mA
+Permanent Fail,DFET,18944,OFF Delay,U1,12,0,255,5,s
+Permanent Fail,FUSE,18945,Threshold,I2,5,0,255,5,mA
+Permanent Fail,FUSE,18947,Delay,U1,5,0,255,5,s
+Permanent Fail,AFER,18948,Threshold,U1,100,0,255,100,—
+Permanent Fail,AFER,18949,Delay Period,U1,2,0,255,2,s
+Permanent Fail,AFER,18950,Compare Period,U1,5,0,255,5,s
+Permanent Fail,AFEC,18951,Threshold,U1,100,0,255,100,—
+Permanent Fail,AFEC,18952,Delay Period,U1,5,0,255,5,s
+Permanent Fail,2LVL,18953,Delay,U1,5,0,255,5,s
+PF Status,Device Status Data,17472,Safety Alert A,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17473,Safety Status A,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17474,Safety Alert B,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17475,Safety Status B,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17476,Safety Alert C,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17477,Safety Status C,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17478,Safety Alert D,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17479,Safety Status D,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17480,PF Alert A,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17481,PF Status A,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17482,PF Alert B,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17483,PF Status B,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17484,PF Alert C,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17485,PF Status C,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17486,PF Alert D,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17487,PF Status D,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17488,Fuse Flag,H2,0x0000,0x0,0xFFFF,0x0,Hex
+PF Status,Device Status Data,17490,Operation Status A,H2,0x0000,0x0,0xFFFF,0x0,Hex
+PF Status,Device Status Data,17492,Operation Status B,H2,0x0000,0x0,0xFFFF,0x0,Hex
+PF Status,Device Status Data,17494,Temp Range,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17495,Charging Status A,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17496,Charging Status B,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17497,Gauging Status,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,Device Status Data,17498,IT Status,H2,0x0000,0x0,0xFFFF,0x0,Hex
+PF Status,Device Voltage Data,17500,Cell 1 Voltage,I2,0,–32768,32767,0,mV
+PF Status,Device Voltage Data,17502,Cell 2 Voltage,I2,0,–32768,32767,0,mV
+PF Status,Device Voltage Data,17504,Cell 3 Voltage,I2,0,–32768,32767,0,mV
+PF Status,Device Voltage Data,17506,Cell 4 Voltage,I2,0,–32768,32767,0,mV
+PF Status,Device Voltage Data,17508,Battery Direct Voltage,I2,0,–32768,32767,0,mV
+PF Status,Device Voltage Data,17510,Pack Voltage,I2,0,–32768,32767,0,mV
+PF Status,Device Current Data,17512,Current,I2,0,–32768,32767,0,mA
+PF Status,Device Temperature Data,17514,Internal Temperature,I2,0,–1,32767,0,0.1°K
+PF Status,Device Temperature Data,17516,External 1 Temperature,I2,0,–1,32767,0,0.1°K
+PF Status,Device Temperature Data,17518,External 2 Temperature,I2,0,–1,32767,0,0.1°K
+PF Status,Device Temperature Data,17520,External 3 Temperature,I2,0,–1,32767,0,0.1°K
+PF Status,Device Temperature Data,17522,External 4 Temperature,I2,0,–1,32767,0,0.1°K
+PF Status,Device Gauging Data,17524,Cell 1 Dod0,I2,0,–32768,32767,0,—
+PF Status,Device Gauging Data,17526,Cell 2 Dod0,I2,0,–32768,32767,0,—
+PF Status,Device Gauging Data,17528,Cell 3 Dod0,I2,0,–32768,32767,0,—
+PF Status,Device Gauging Data,17530,Cell 4 Dod0,I2,0,–32768,32767,0,—
+PF Status,Device Gauging Data,17532,Passed Charge,I2,0,–32768,32767,0,mAh
+PF Status,AFE Regs,17534,AFE Interrupt Status,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17535,AFE FET Status,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17536,AFE RXIN,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17537,AFE Latch Status,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17538,AFE Interrupt Enable,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17539,AFE FET Control,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17540,AFE RXIEN,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17541,AFE RLOUT,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17542,AFE RHOUT,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17543,AFE RHINT,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17544,AFE Cell Balance,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17545,AFE AD/CC Control,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17546,AFE ADC Mux,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17547,AFE LED Output,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17548,AFE State Control,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17549,AFE LED/Wake Control,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17550,AFE Protection Control,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17551,AFE OCD,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17552,AFE SCC,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17553,AFE SCD1,H1,0x00,0x0,0xFF,0x0,Hex
+PF Status,AFE Regs,17554,AFE SCD2,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17408,1st Status Status A,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17409,1st Status Status B,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17410,1st Safety Status C,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17411,1st Safety Status D,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17412,1st Time to Next Event,U1,0,0,255,0,s
+Black Box,Safety Status,17413,2nd Status Status A,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17414,2nd Status Status B,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17415,2nd Safety Status C,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17416,2nd Safety Status D,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17417,2nd Time to Next Event,U1,0,0,255,0,s
+Black Box,Safety Status,17418,3rd Status Status A,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17419,3rd Status Status B,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17420,3rd Safety Status C,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17421,3rd Safety Status D,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,Safety Status,17422,3rd Time to Next Event,U1,0,0,255,0,s
+Black Box,PF Status,17423,1st PF Status A,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17424,1st PF Status B,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17425,1st PF Status C,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17426,1st PF Status D,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17427,1st Time to Next Event,U1,0,0,255,0,s
+Black Box,PF Status,17428,2nd PF Status A,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17429,2nd PF Status B,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17430,2nd PF Status C,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17431,2nd PF Status D,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17432,2nd Time to Next Event,U1,0,0,255,0,s
+Black Box,PF Status,17433,3rd PF Status A,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17434,3rd PF Status B,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17435,3rd PF Status C,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17436,3rd PF Status D,H1,0x00,0x0,0xFF,0x0,Hex
+Black Box,PF Status,17437,3rd Time to Next Event,U1,0,0,255,0,s
+Gas Gauging,Current Thresholds,19081,Dsg Current Threshold,I2,100,–32768,32767,100,mA
+Gas Gauging,Current Thresholds,19083,Chg Current Threshold,I2,50,–32768,32767,50,mA
+Gas Gauging,Current Thresholds,19085,Quit Current,I2,10,0,32767,10,mA
+Gas Gauging,Current Thresholds,19087,Dsg Relax Time,U1,1,0,255,1,s
+Gas Gauging,Current Thresholds,19088,Chg Relax Time,U1,60,0,255,60,s
+Gas Gauging,Design,18661,Design Capacity mAh,I2,3400,100,32767,4400,mAh
+Gas Gauging,Design,18663,Design Capacity cWh,I2,6336,144,32767,6336,cWh
+Gas Gauging,Design,18665,Design Voltage,I2,14540,0,32767,14400,mV
+Gas Gauging,Cycle,18667,Cycle Count Percentage,U1,90,0,100,90,%
+Gas Gauging,FD,18672,Set Voltage Threshold,I2,2600,0,5000,3000,mV
+Gas Gauging,FD,18674,Clear Voltage Threshold,I2,2700,0,5000,3100,mV
+Gas Gauging,FD,18676,Set % RSOC Threshold,U1,0,0,100,0,%
+Gas Gauging,FD,18677,Clear % RSOC Threshold,U1,5,0,100,5,%
+Gas Gauging,FC,18678,Set Voltage Threshold,I2,4200,0,5000,4200,mV
+Gas Gauging,FC,18680,Clear Voltage Threshold,I2,4100,0,5000,4100,mV
+Gas Gauging,FC,18682,Set % RSOC Threshold,U1,100,0,100,100,%
+Gas Gauging,FC,18683,Clear % RSOC Threshold,U1,95,0,100,95,%
+Gas Gauging,TD,18684,Set Voltage Threshold,I2,3200,0,5000,3200,mV
+Gas Gauging,TD,18686,Clear Voltage Threshold,I2,3300,0,5000,3300,mV
+Gas Gauging,TD,18688,Set % RSOC Threshold,U1,6,0,100,6,%
+Gas Gauging,TD,18689,Clear % RSOC Threshold,U1,8,0,100,8,%
+Gas Gauging,TC,18690,Set Voltage Threshold,I2,4200,0,5000,4200,mV
+Gas Gauging,TC,18692,Clear Voltage Threshold,I2,4100,0,5000,4100,mV
+Gas Gauging,TC,18694,Set % RSOC Threshold,U1,100,0,100,100,%
+Gas Gauging,TC,18695,Clear % RSOC Threshold,U1,95,0,100,95,%
+Gas Gauging,State,17158,Qmax Cell 1,I2,3475,0,32767,4400,mAh
+Gas Gauging,State,17160,Qmax Cell 2,I2,3502,0,32767,4400,mAh
+Gas Gauging,State,17162,Qmax Cell 3,I2,3469,0,32767,4400,mAh
+Gas Gauging,State,17164,Qmax Cell 4,I2,3480,0,32767,4400,mAh
+Gas Gauging,State,17166,Qmax Pack,I2,3469,0,32767,4400,mAh
+Gas Gauging,State,17168,Qmax Cycle Count,U2,0,0,65535,0,—
+Gas Gauging,State,17170,Update Status,H1,0x0E,0x0,0x0E,0x0,—
+Gas Gauging,State,17171,Cell 1 Chg Voltage at EoC,I2,4183,0,32767,4200,mV
+Gas Gauging,State,17173,Cell 2 Chg Voltage at EoC,I2,4171,0,32767,4200,mV
+Gas Gauging,State,17175,Cell 3 Chg Voltage at EoC,I2,4191,0,32767,4200,mV
+Gas Gauging,State,17177,Cell 4 Chg Voltage at EoC,I2,4184,0,32767,4200,mV
+Gas Gauging,State,17179,Current at EoC,I2,46,0,32767,250,mA
+Gas Gauging,State,17181,Avg I Last Run,I2,-1934,–32768,32767,–2000,mA
+Gas Gauging,State,17183,Avg P Last Run,I2,-2737,–32768,32767,–3022,cW
+Gas Gauging,State,17185,Delta Voltage,I2,14,–32768,32767,0,mV
+Gas Gauging,State,17187,Temp k,I2,211,0,32767,100,0.1°C/256 cW
+Gas Gauging,State,17189,Temp a,I2,3028,0,32767,1000,s
+Gas Gauging,State,17191,Max Avg I Last Run,I2,-1945,–32768,32767,–2000,mA
+Gas Gauging,State,17193,Max Avg P Last Run,I2,-3071,–32768,32767,–3022,cW
+Gas Gauging,State,17216,Cycle Count,U2,0,0,,0,—
+Gas Gauging,Turbo Cfg,17600,Min Turbo Power,I2,0,–32768,,0,cW
+Gas Gauging,Turbo Cfg,17602,Ten Second Max C Rate,I1,-20,–127,,–20,0.1°C
+Gas Gauging,Turbo Cfg,17603,Ten Millisecond Max C Rate,I1,-40,–127,,–40,0.1°C
+Gas Gauging,Turbo Cfg,17604,High Frequency Resistance,I2,118,0,,36,mΩ
+Gas Gauging,Turbo Cfg,17606,Reserve Energy %,I1,0,0,,0,%
+Gas Gauging,Turbo Cfg,17607,Turbo Adjustment Factor,U1,100,50,,100,%
+Gas Gauging,IT Cfg,17152,Design Resistance,I2,71,1,,96,2–10 Ω
+Gas Gauging,IT Cfg,17154,Pack Resistance,I2,0,0,,0,2–10 Ω
+Gas Gauging,IT Cfg,17156,System Resistance,I2,0,0,,0,2–10 Ω
+Gas Gauging,IT Cfg,18446,Ra Filter,U2,800,0,,800,0.1%
+Gas Gauging,IT Cfg,18449,Ra Max Delta,U1,15,0,,15,%
+Gas Gauging,IT Cfg,18451,Reference Grid,U1,4,0,,4,—
+Gas Gauging,IT Cfg,18452,Resistance Parameter Filter,U2,65142,1,,65142,—
+Gas Gauging,IT Cfg,18454,Near EDV Ra Param Filter,U2,59220,1,,59220,—
+Gas Gauging,IT Cfg,18456,Cell 1 Interconnect Resistance,I2,0,0,,0,2–10 Ω
+Gas Gauging,IT Cfg,18458,Cell 2 Interconnect Resistance,I2,0,0,,0,2–10 Ω
+Gas Gauging,IT Cfg,18460,Cell 3 Interconnect Resistance,I2,0,0,,0,2–10 Ω
+Gas Gauging,IT Cfg,18462,Cell 4 Interconnect Resistance,I2,0,0,,0,2–10 Ω
+Gas Gauging,IT Cfg,18464,Max Current Change %,U1,10,0,,10,%
+Gas Gauging,IT Cfg,18465,Resistance Update Voltage,I2,50,0,,50,mV
+Gas Gauging,IT Cfg,18504,Qmax Delta,U1,5,3,,5,%
+Gas Gauging,IT Cfg,18505,Qmax Upper Bound,U1,130,100,,130,%
+Gas Gauging,IT Cfg,18506,Term Voltage,I2,9000,0,,9000,mV
+Gas Gauging,IT Cfg,18508,Term V Hold Time,U1,1,0,,1,s
+Gas Gauging,IT Cfg,18509,Term Voltage Delta,I2,300,0,,300,mV
+Gas Gauging,IT Cfg,18511,Term Min Cell V,I2,2800,0,,2800,mV
+Gas Gauging,IT Cfg,18520,Max Simulation Iterations,U1,30,20,,30,—
+Gas Gauging,IT Cfg,18539,Fast Scale Start SOC,U1,10,0,,10,%
+Gas Gauging,IT Cfg,18547,Min Delta Voltage,I2,0,–32768,,0,mV
+Gas Gauging,IT Cfg,18549,Max Delta Voltage,I2,200,–32768,,200,mV
+Gas Gauging,IT Cfg,18551,DeltaV Max Voltage Delta,I2,10,–32768,,10,mV
+Gas Gauging,IT Cfg,18717,Load Select,U1,7,0,,7,—
+Gas Gauging,IT Cfg,18718,Fast Scale Load Select,U1,3,0,,3,—
+Gas Gauging,IT Cfg,18719,Load Mode,U1,0,0,,0,—
+Gas Gauging,IT Cfg,18720,User Rate-mA,I2,0,–9000,,0,mA
+Gas Gauging,IT Cfg,18722,User Rate-cW,I2,0,–32768,,0,cW
+Gas Gauging,IT Cfg,18724,Reserve Cap-mAh,I2,0,0,,0,mAh
+Gas Gauging,IT Cfg,18726,Reserve Cap-cWh,I2,0,0,,0,cWh
+Gas Gauging,IT Cfg,18741,Predict Ambient Time,U2,2000,0,,2000,s
+Gas Gauging,Smoothing,18728,Smooth Relax Time,I2,1000,1,,1000,s
+Gas Gauging,Smoothing,18730,Term Smooth Start Cell V Delta,I2,150,0,,150,mV
+Gas Gauging,Smoothing,18732,Term Smooth Final Cell V Delta,I2,100,0,,100,mV
+Gas Gauging,Smoothing,18734,Term Smooth Time,U1,20,1,,20,s
+Gas Gauging,Condition Flag,18735,Max Error Limit,U1,100,0,,100,%
+Gas Gauging,Max Error,18739,Time Cycle Equivalent,U1,12,1,,12,2 h
+Gas Gauging,Max Error,18740,Cycle Delta,U1,5,0,,5,0.01%
+Gas Gauging,SOH,18553,SOH Load Rate,U1,50,0,255,50,0.1 Hr rate
+Ra Table,R_a0,16640,Cell 0 R_a flag,H2,0xFF55,0x0,0xFFFF,0xFF55,—
+Ra Table,R_a0,16642,Cell 0 R_a 0,I2,228,0,32767,67,2–10 Ω
+Ra Table,R_a0,16644,Cell 0 R_a 1,I2,149,0,32767,71,2–10 Ω
+Ra Table,R_a0,16646,Cell 0 R_a 2,I2,163,0,32767,83,2–10 Ω
+Ra Table,R_a0,16648,Cell 0 R_a 3,I2,188,0,32767,110,2–10 Ω
+Ra Table,R_a0,16650,Cell 0 R_a 4,I2,154,0,32767,96,2–10 Ω
+Ra Table,R_a0,16652,Cell 0 R_a 5,I2,159,0,32767,77,2–10 Ω
+Ra Table,R_a0,16654,Cell 0 R_a 6,I2,158,0,32767,96,2–10 Ω
+Ra Table,R_a0,16656,Cell 0 R_a 7,I2,166,0,32767,86,2–10 Ω
+Ra Table,R_a0,16658,Cell 0 R_a 8,I2,165,0,32767,84,2–10 Ω
+Ra Table,R_a0,16660,Cell 0 R_a 9,I2,214,0,32767,82,2–10 Ω
+Ra Table,R_a0,16662,Cell 0 R_a 10,I2,342,0,32767,81,2–10 Ω
+Ra Table,R_a0,16664,Cell 0 R_a 11,I2,563,0,32767,92,2–10 Ω
+Ra Table,R_a0,16666,Cell 0 R_a 12,I2,728,0,32767,103,2–10 Ω
+Ra Table,R_a0,16668,Cell 0 R_a 13,I2,1035,0,32767,123,2–10 Ω
+Ra Table,R_a0,16670,Cell 0 R_a 14,I2,855,0,32767,658,2–10 Ω
+Ra Table,R_a1,16704,Cell 1 R_a flag,H2,0xFF55,0x0,0xFFFF,0xFF55,—
+Ra Table,R_a1,16706,Cell 1 R_a 0,I2,228,0,32767,67,2–10 Ω
+Ra Table,R_a1,16708,Cell 1 R_a 1,I2,149,0,32767,71,2–10 Ω
+Ra Table,R_a1,16710,Cell 1 R_a 2,I2,163,0,32767,83,2–10 Ω
+Ra Table,R_a1,16712,Cell 1 R_a 3,I2,188,0,32767,110,2–10 Ω
+Ra Table,R_a1,16714,Cell 1 R_a 4,I2,154,0,32767,96,2–10 Ω
+Ra Table,R_a1,16716,Cell 1 R_a 5,I2,159,0,32767,77,2–10 Ω
+Ra Table,R_a1,16718,Cell 1 R_a 6,I2,158,0,32767,96,2–10 Ω
+Ra Table,R_a1,16720,Cell 1 R_a 7,I2,166,0,32767,86,2–10 Ω
+Ra Table,R_a1,16722,Cell 1 R_a 8,I2,165,0,32767,84,2–10 Ω
+Ra Table,R_a1,16724,Cell 1 R_a 9,I2,214,0,32767,82,2–10 Ω
+Ra Table,R_a1,16726,Cell 1 R_a 10,I2,342,0,32767,81,2–10 Ω
+Ra Table,R_a1,16728,Cell 1 R_a 11,I2,563,0,32767,92,2–10 Ω
+Ra Table,R_a1,16730,Cell 1 R_a 12,I2,728,0,32767,103,2–10 Ω
+Ra Table,R_a1,16732,Cell 1 R_a 13,I2,1035,0,32767,123,2–10 Ω
+Ra Table,R_a1,16734,Cell 1 R_a 14,I2,855,0,32767,658,2–10 Ω
+Ra Table,R_a2,16768,Cell 2 R_a flag,H2,0xFF55,0x0,0xFFFF,0xFF55,—
+Ra Table,R_a2,16770,Cell 2 R_a 0,I2,228,0,32767,67,2–10 Ω
+Ra Table,R_a2,16772,Cell 2 R_a 1,I2,149,0,32767,71,2–10 Ω
+Ra Table,R_a2,16774,Cell 2 R_a 2,I2,163,0,32767,83,2–10 Ω
+Ra Table,R_a2,16776,Cell 2 R_a 3,I2,188,0,32767,110,2–10 Ω
+Ra Table,R_a2,16778,Cell 2 R_a 4,I2,154,0,32767,96,2–10 Ω
+Ra Table,R_a2,16780,Cell 2 R_a 5,I2,159,0,32767,77,2–10 Ω
+Ra Table,R_a2,16782,Cell 2 R_a 6,I2,158,0,32767,96,2–10 Ω
+Ra Table,R_a2,16784,Cell 2 R_a 7,I2,166,0,32767,86,2–10 Ω
+Ra Table,R_a2,16786,Cell 2 R_a 8,I2,165,0,32767,84,2–10 Ω
+Ra Table,R_a2,16788,Cell 2 R_a 9,I2,214,0,32767,82,2–10 Ω
+Ra Table,R_a2,16790,Cell 2 R_a 10,I2,342,0,32767,81,2–10 Ω
+Ra Table,R_a2,16792,Cell 2 R_a 11,I2,563,0,32767,92,2–10 Ω
+Ra Table,R_a2,16794,Cell 2 R_a 12,I2,728,0,32767,103,2–10 Ω
+Ra Table,R_a2,16796,Cell 2 R_a 13,I2,1035,0,32767,123,2–10 Ω
+Ra Table,R_a2,16798,Cell 2 R_a 14,I2,855,0,32767,658,2–10 Ω
+Ra Table,R_a3,16832,Cell 3 R_a flag,H2,0xFF55,0x0,0xFFFF,0xFF55,—
+Ra Table,R_a3,16834,Cell 3 R_a 0,I2,228,0,32767,67,2–10 Ω
+Ra Table,R_a3,16836,Cell 3 R_a 1,I2,149,0,32767,71,2–10 Ω
+Ra Table,R_a3,16838,Cell 3 R_a 2,I2,163,0,32767,83,2–10 Ω
+Ra Table,R_a3,16840,Cell 3 R_a 3,I2,188,0,32767,110,2–10 Ω
+Ra Table,R_a3,16842,Cell 3 R_a 4,I2,154,0,32767,96,2–10 Ω
+Ra Table,R_a3,16844,Cell 3 R_a 5,I2,159,0,32767,77,2–10 Ω
+Ra Table,R_a3,16846,Cell 3 R_a 6,I2,158,0,32767,96,2–10 Ω
+Ra Table,R_a3,16848,Cell 3 R_a 7,I2,166,0,32767,86,2–10 Ω
+Ra Table,R_a3,16850,Cell 3 R_a 8,I2,165,0,32767,84,2–10 Ω
+Ra Table,R_a3,16852,Cell 3 R_a 9,I2,214,0,32767,82,2–10 Ω
+Ra Table,R_a3,16854,Cell 3 R_a 10,I2,342,0,32767,81,2–10 Ω
+Ra Table,R_a3,16856,Cell 3 R_a 11,I2,563,0,32767,92,2–10 Ω
+Ra Table,R_a3,16858,Cell 3 R_a 12,I2,728,0,32767,103,2–10 Ω
+Ra Table,R_a3,16860,Cell 3 R_a 13,I2,1035,0,32767,123,2–10 Ω
+Ra Table,R_a3,16862,Cell 3 R_a 14,I2,855,0,32767,658,2–10 Ω
+Ra Table,R_a0x,16896,xCell 0 R_a flag,H2,0xFFFF,0x0,0xFFFF,0xFFFF,—
+Ra Table,R_a0x,16898,xCell 0 R_a 0,I2,228,0,32767,67,2–10 Ω
+Ra Table,R_a0x,16900,xCell 0 R_a 1,I2,149,0,32767,71,2–10 Ω
+Ra Table,R_a0x,16902,xCell 0 R_a 2,I2,163,0,32767,83,2–10 Ω
+Ra Table,R_a0x,16904,xCell 0 R_a 3,I2,188,0,32767,110,2–10 Ω
+Ra Table,R_a0x,16906,xCell 0 R_a 4,I2,154,0,32767,96,2–10 Ω
+Ra Table,R_a0x,16908,xCell 0 R_a 5,I2,159,0,32767,77,2–10 Ω
+Ra Table,R_a0x,16910,xCell 0 R_a 6,I2,158,0,32767,96,2–10 Ω
+Ra Table,R_a0x,16912,xCell 0 R_a 7,I2,166,0,32767,86,2–10 Ω
+Ra Table,R_a0x,16914,xCell 0 R_a 8,I2,165,0,32767,84,2–10 Ω
+Ra Table,R_a0x,16916,xCell 0 R_a 9,I2,214,0,32767,82,2–10 Ω
+Ra Table,R_a0x,16918,xCell 0 R_a 10,I2,342,0,32767,81,2–10 Ω
+Ra Table,R_a0x,16920,xCell 0 R_a 11,I2,563,0,32767,92,2–10 Ω
+Ra Table,R_a0x,16922,xCell 0 R_a 12,I2,728,0,32767,103,2–10 Ω
+Ra Table,R_a0x,16924,xCell 0 R_a 13,I2,1035,0,32767,123,2–10 Ω
+Ra Table,R_a0x,16926,xCell 0 R_a 14,I2,855,0,32767,658,2–10 Ω
+Ra Table,R_a1x,16960,xCell 1 R_a flag,H2,0xFFFF,0x0,0xFFFF,0xFFFF,—
+Ra Table,R_a1x,16962,xCell 1 R_a 0,I2,228,0,32767,67,2–10 Ω
+Ra Table,R_a1x,16964,xCell 1 R_a 1,I2,149,0,32767,71,2–10 Ω
+Ra Table,R_a1x,16966,xCell 1 R_a 2,I2,163,0,32767,83,2–10 Ω
+Ra Table,R_a1x,16968,xCell 1 R_a 3,I2,188,0,32767,110,2–10 Ω
+Ra Table,R_a1x,16970,xCell 1 R_a 4,I2,154,0,32767,96,2–10 Ω
+Ra Table,R_a1x,16972,xCell 1 R_a 5,I2,159,0,32767,77,2–10 Ω
+Ra Table,R_a1x,16974,xCell 1 R_a 6,I2,158,0,32767,96,2–10 Ω
+Ra Table,R_a1x,16976,xCell 1 R_a 7,I2,166,0,32767,86,2–10 Ω
+Ra Table,R_a1x,16978,xCell 1 R_a 8,I2,165,0,32767,84,2–10 Ω
+Ra Table,R_a1x,16980,xCell 1 R_a 9,I2,214,0,32767,82,2–10 Ω
+Ra Table,R_a1x,16982,xCell 1 R_a 10,I2,342,0,32767,81,2–10 Ω
+Ra Table,R_a1x,16984,xCell 1 R_a 11,I2,563,0,32767,92,2–10 Ω
+Ra Table,R_a1x,16986,xCell 1 R_a 12,I2,728,0,32767,103,2–10 Ω
+Ra Table,R_a1x,16988,xCell 1 R_a 13,I2,1035,0,32767,123,2–10 Ω
+Ra Table,R_a1x,16990,xCell 1 R_a 14,I2,855,0,32767,658,2–10 Ω
+Ra Table,R_a2x,17024,xCell 2 R_a flag,H2,0xFFFF,0x0,0xFFFF,0xFFFF,—
+Ra Table,R_a2x,17026,xCell 2 R_a 0,I2,228,0,32767,67,2–10 Ω
+Ra Table,R_a2x,17028,xCell 2 R_a 1,I2,149,0,32767,71,2–10 Ω
+Ra Table,R_a2x,17030,xCell 2 R_a 2,I2,163,0,32767,83,2–10 Ω
+Ra Table,R_a2x,17032,xCell 2 R_a 3,I2,188,0,32767,110,2–10 Ω
+Ra Table,R_a2x,17034,xCell 2 R_a 4,I2,154,0,32767,96,2–10 Ω
+Ra Table,R_a2x,17036,xCell 2 R_a 5,I2,159,0,32767,77,2–10 Ω
+Ra Table,R_a2x,17038,xCell 2 R_a 6,I2,158,0,32767,96,2–10 Ω
+Ra Table,R_a2x,17040,xCell 2 R_a 7,I2,166,0,32767,86,2–10 Ω
+Ra Table,R_a2x,17042,xCell 2 R_a 8,I2,165,0,32767,84,2–10 Ω
+Ra Table,R_a2x,17044,xCell 2 R_a 9,I2,214,0,32767,82,2–10 Ω
+Ra Table,R_a2x,17046,xCell 2 R_a 10,I2,342,0,32767,81,2–10 Ω
+Ra Table,R_a2x,17048,xCell 2 R_a 11,I2,563,0,32767,92,2–10 Ω
+Ra Table,R_a2x,17050,xCell 2 R_a 12,I2,728,0,32767,103,2–10 Ω
+Ra Table,R_a2x,17052,xCell 2 R_a 13,I2,1035,0,32767,123,2–10 Ω
+Ra Table,R_a2x,17054,xCell 2 R_a 14,I2,855,0,32767,658,2–10 Ω
+Ra Table,R_a3x,17088,xCell 3 R_a flag,H2,0xFFFF,0x0,0xFFFF,0xFFFF,—
+Ra Table,R_a3x,17090,xCell 3 R_a 0,I2,228,0,32767,67,2–10 Ω
+Ra Table,R_a3x,17092,xCell 3 R_a 1,I2,149,0,32767,71,2–10 Ω
+Ra Table,R_a3x,17094,xCell 3 R_a 2,I2,163,0,32767,83,2–10 Ω
+Ra Table,R_a3x,17096,xCell 3 R_a 3,I2,188,0,32767,110,2–10 Ω
+Ra Table,R_a3x,17098,xCell 3 R_a 4,I2,154,0,32767,96,2–10 Ω
+Ra Table,R_a3x,17100,xCell 3 R_a 5,I2,159,0,32767,77,2–10 Ω
+Ra Table,R_a3x,17102,xCell 3 R_a 6,I2,158,0,32767,96,2–10 Ω
+Ra Table,R_a3x,17104,xCell 3 R_a 7,I2,166,0,32767,86,2–10 Ω
+Ra Table,R_a3x,17106,xCell 3 R_a 8,I2,165,0,32767,84,2–10 Ω
+Ra Table,R_a3x,17108,xCell 3 R_a 9,I2,214,0,32767,82,2–10 Ω
+Ra Table,R_a3x,17110,xCell 3 R_a 10,I2,342,0,32767,81,2–10 Ω
+Ra Table,R_a3x,17112,xCell 3 R_a 11,I2,563,0,32767,92,2–10 Ω
+Ra Table,R_a3x,17114,xCell 3 R_a 12,I2,728,0,32767,103,2–10 Ω
+Ra Table,R_a3x,17116,xCell 3 R_a 13,I2,1035,0,32767,123,2–10 Ω
+Ra Table,R_a3x,17118,xCell 3 R_a 14,I2,855,0,32767,658,2–10 Ω

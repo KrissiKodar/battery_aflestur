@@ -1,0 +1,264 @@
+CLASS,SUBCLASS ID,SUBCLASS,OFFSET,NAME,TYPE,MEASURED_VALUE,MIN VALUE,MAX VALUE,DEFAULT,UNIT
+1st Level Safety,0,Voltage,0,LT COV Threshold,I2,,3700,5000,4300,mV
+1st Level Safety,0,Voltage,2,LT COV Recovery,I2,,0,4400,4100,mV
+1st Level Safety,0,Voltage,4,ST COV Threshold,I2,,3700,5000,4500,mV
+1st Level Safety,0,Voltage,6,ST COV Recovery,I2,,0,4400,4300,mV
+1st Level Safety,0,Voltage,8,HT COV Threshold,I2,,3700,5000,4200,mV
+1st Level Safety,0,Voltage,10,HT COV Recovery,I2,,0,4400,4000,mV
+1st Level Safety,0,Voltage,13,CUV Threshold,I2,,0,3500,2200,mV
+1st Level Safety,0,Voltage,16,CUV Recovery,I2,,0,3600,3000,mV
+1st Level Safety,1,Current,0,OC (1st Tier) Chg,I2,,0,20000,6000,mA
+1st Level Safety,1,Current,2,OC (1st Tier) Chg Time,U1,,0,240,2,s
+1st Level Safety,1,Current,3,OC Chg Recovery,I2,,–1000,1000,200,mA
+1st Level Safety,1,Current,5,OC (1st Tier) Dsg,I2,,0,20000,6000,mA
+1st Level Safety,1,Current,7,OC (1st Tier) Dsg Time,U1,,0,240,2,s
+1st Level Safety,1,Current,8,OC Dsg Recovery,I2,,0,1000,200,mA
+1st Level Safety,1,Current,10,Current Recovery Time,U1,,0,240,8,s
+1st Level Safety,1,Current,11,AFE OC Dsg,H1,,0x00,0x0f,0x07,
+1st Level Safety,1,Current,12,AFE OC Dsg Time,H1,,0x00,0x0f,0x07,
+1st Level Safety,1,Current,13,AFE OC Dsg Recovery,I2,,5,1000,5,mA
+1st Level Safety,1,Current,15,AFE SC Chg Cfg,H1,,0x00,0x0f,0x07,
+1st Level Safety,1,Current,16,AFE SC Dsg Cfg,H1,,0x00,0x0f,0x07,
+1st Level Safety,1,Current,17,AFE SC Recovery,I2,,0,200,1,mA
+1st Level Safety,2,Temperature,0,Over Temp Chg,I2,,0,1200,550,0.1°C
+1st Level Safety,2,Temperature,2,OT Chg Time,U1,,0,240,2,s
+1st Level Safety,2,Temperature,3,OT Chg Recovery,I2,,0,1200,500,0.1°C
+1st Level Safety,2,Temperature,5,Over Temp Dsg,I2,,0,1200,600,0.1°C
+1st Level Safety,2,Temperature,7,OT Dsg Time,U1,,0,240,2,s
+1st Level Safety,2,Temperature,8,OT Dsg Recovery,I2,,0,1200,550,0.1°C
+2nd Level Safety,16,Voltage,0,LT SOV Threshold,I2,,0,20000,4400,mV
+2nd Level Safety,16,Voltage,2,ST SOV Threshold,I2,,0,20000,4600,mV
+2nd Level Safety,16,Voltage,4,HT SOV Threshold,I2,,0,20000,4500,mV
+2nd Level Safety,16,Voltage,6,SOV Time,U1,,0,240,0,s
+2nd Level Safety,16,Voltage,7,PF SOV Fuse Blow Delay,U2,,0,240,0,s
+2nd Level Safety,16,Voltage,9,Cell Imbalance Current,I1,,0,200,5,mA
+2nd Level Safety,16,Voltage,10,Cell Imbalance Fail Voltage,I2,,0,5000,1000,mV
+2nd Level Safety,16,Voltage,12,Cell Imbalance Time,U1,,0,240,0,s
+2nd Level Safety,16,Voltage,13,Battery Rest Time,U2,,0,65535,1800,s
+2nd Level Safety,16,Voltage,15,Min CIM-check voltage,U2,,0,65535,3000,mV
+2nd Level Safety,16,Voltage,17,PFIN Detect Time,U1,,0,240,0,s
+2nd Level Safety,17,Current,0,SOC Chg,I2,,0,30000,10000,mA
+2nd Level Safety,17,Current,2,SOC Chg Time,U1,,0,240,0,s
+2nd Level Safety,17,Current,3,SOC Dsg,I2,,0,30000,10000,mA
+2nd Level Safety,17,Current,5,SOC Dsg Time,U1,,0,240,0,s
+2nd Level Safety,18,Temperature,0,SOT Chg,I2,,0,1200,650,0.1°C
+2nd Level Safety,18,Temperature,2,SOT Chg Time,U1,,0,240,0,s
+2nd Level Safety,18,Temperature,3,SOT Dsg,I2,,0,1200,750,0.1°C
+2nd Level Safety,18,Temperature,5,SOT Dsg Time,U1,,0,240,0,s
+2nd Level Safety,18,Temperature,6,Open Thermistor,I2,,–1000,1200,–333,0.1°C
+2nd Level Safety,18,Temperature,8,Open Time,I1,,0,240,0,s
+2nd Level Safety,19,FET Verification,0,FET Fail Limit,I2,,0,500,20,mA
+2nd Level Safety,19,FET Verification,2,FET Fail Time,U1,,0,240,0,s
+2nd Level Safety,20,AFE Verification,0,AFE Check Time,U1,,0,255,0,s
+2nd Level Safety,20,AFE Verification,1,AFE Fail Limit,U1,,0,255,10,
+2nd Level Safety,20,AFE Verification,2,AFE Fail Recovery Time,U1,,0,255,20,s
+2nd Level Safety,20,AFE Verification,3,AFE Init Retry Limit,U1,,0,255,6,
+2nd Level Safety,20,AFE Verification,4,AFE Init Limit,U1,,0,255,20,
+Charge Control,32,Charge Temperature Cfg,0,JT1,I2,,–400,1200,0,0.1°C
+Charge Control,32,Charge Temperature Cfg,2,JT2,I2,,–400,1200,120,0.1°C
+Charge Control,32,Charge Temperature Cfg,4,JT2a,I2,,–400,1200,300,0.1°C
+Charge Control,32,Charge Temperature Cfg,6,JT3,I2,,–400,1200,450,0.1°C
+Charge Control,32,Charge Temperature Cfg,8,JT4,I2,,–400,1200,550,0.1°C
+Charge Control,32,Charge Temperature Cfg,10,Temp Hys,I2,,–400,100,10,0.1°C
+Charge Control,33,Pre-Charge Cfg,0,Pre-chg Current,I2,,0,2000,250,mA
+Charge Control,33,Pre-Charge Cfg,2,Pre-chg Voltage,I2,,0,20000,3000,mV
+Charge Control,33,Pre-Charge Cfg,4,Recovery Voltage,I2,,0,20000,3100,mV
+Charge Control,34,Charge Cfg,0,LT Chg Voltage,I2,,0,20000,9000,mV
+Charge Control,34,Charge Cfg,2,LT Chg Current 1,I2,,0,20000,250,mA
+Charge Control,34,Charge Cfg,4,LT Chg Current 2,I2,,0,20000,250,mA
+Charge Control,34,Charge Cfg,6,LT Chg Current 3,I2,,0,20000,250,mA
+Charge Control,34,Charge Cfg,8,ST1 Chg Voltage,I2,,0,20000,12600,mV
+Charge Control,34,Charge Cfg,10,ST1 Chg Current 1,I2,,0,20000,4000,mA
+Charge Control,34,Charge Cfg,12,ST1 Chg Current 2,I2,,0,20000,4000,mA
+Charge Control,34,Charge Cfg,14,ST1 Chg Current 3,I2,,0,20000,4000,mA
+Charge Control,34,Charge Cfg,16,ST2 Chg Voltage,I2,,0,20000,12600,mV
+Charge Control,34,Charge Cfg,18,ST2 Chg Current 1,I2,,0,20000,4000,mA
+Charge Control,34,Charge Cfg,20,ST2 Chg Current 2,I2,,0,20000,4000,mA
+Charge Control,34,Charge Cfg,22,ST2 Chg Current 3,I2,,0,20000,4000,mA
+Charge Control,34,Charge Cfg,24,HT Chg Voltage,I2,,0,20000,12570,mV
+Charge Control,34,Charge Cfg,26,HT Chg Current 1,I2,,0,20000,3800,mA
+Charge Control,34,Charge Cfg,28,HT Chg Current 2,I2,,0,20000,3800,mA
+Charge Control,34,Charge Cfg,30,HT Chg Current 3,I2,,0,20000,3800,mA
+Charge Control,34,Charge Cfg,32,Cell Voltage Threshold 1,I2,,0,5000,3900,mV
+Charge Control,34,Charge Cfg,34,Cell Voltage Threshold 2,I2,,0,5000,4000,mV
+Charge Control,34,Charge Cfg,36,Cell Voltage Thresh Hys,I2,,0,1000,10,mV
+Charge Control,36,Termination Cfg.,0,Taper Current,I2,,0,1000,250,mA
+Charge Control,36,Termination Cfg.,4,Taper Voltage,I2,,0,1000,300,mV
+Charge Control,36,Termination Cfg.,6,Current Taper Window,U1,,0,240,40,s
+Charge Control,36,Termination Cfg.,7,TCA Set %,I1,,–1,100,–1,
+Charge Control,36,Termination Cfg.,8,TCA Clear %,I1,,–1,100,95,
+Charge Control,36,Termination Cfg.,9,FC Set %,I1,,–1,100,–1,
+Charge Control,36,Termination Cfg.,10,FC Clear %,I1,,–1,100,98,
+Charge Control,37,Cell Balancing Cfg,0,Cell Balance Threshold,I2,,0,5000,3900,mV
+Charge Control,37,Cell Balancing Cfg,2,Cell Balance Window,I2,,0,5000,100,mV
+Charge Control,37,Cell Balancing Cfg,4,Cell Balance Min,I2,,0,5000,40,mV
+Charge Control,37,Cell Balancing Cfg,5,Cell Balance Interval,U1,,0,240,20,s
+Charge Control,38,Charging Faults,0,Over Charging Voltage,U1,,0,3000,500,mV
+Charge Control,38,Charging Faults,2,Over Charging Volt Time,U1,,0,240,2,s
+Charge Control,38,Charging Faults,3,Over Charging Current,I2,,0,2000,500,mA
+Charge Control,38,Charging Faults,5,Over Charging Curr Time,U1,,0,240,2,s
+Charge Control,38,Charging Faults,6,Over Charging Curr Recov,I2,,0,2000,100,mA
+Charge Control,38,Charging Faults,8,Depleted Voltage,I2,,0,16000,6000,mV
+Charge Control,38,Charging Faults,10,Depleted Voltage Time,U1,,0,240,2,s
+Charge Control,38,Charging Faults,11,Depleted Recovery,I2,,0,16000,6500,mV
+Charge Control,38,Charging Faults,13,Over Charge Capacity,I2,,0,4000,300,mAh
+Charge Control,38,Charging Faults,15,Over Charge Recovery,I2,,0,100,2,mAh
+Charge Control,38,Charging Faults,17,FC-MTO,U2,,0,65535,10800,s
+Charge Control,38,Charging Faults,19,PC-MTO,U2,,0,65535,3600,s
+Charge Control,38,Charging Faults,21,Charge Fault Cfg,H1,,0x00,0x3f,0x00,
+SBS Configuration,48,Data,0,Rem Cap Alarm,I2,,0,700,300,mAh
+SBS Configuration,48,Data,2,Rem Energy Alarm,I2,,0,1000,432,10mW
+SBS Configuration,48,Data,4,Rem Time Alarm,U2,,0,30,10,min
+SBS Configuration,48,Data,6,Init Battery Mode,H2,,0x0000,0xffff,0x0081,
+SBS Configuration,48,Data,8,Design Voltage,I2,,7000,18000,10800,mV
+SBS Configuration,48,Data,10,Spec Info,H2,,0x0000,0xffff,0x0031,
+SBS Configuration,48,Data,12,Manuf Date,U2,,0,65535,0,Day + Mo × 32 + (Yr –1980) x 256
+SBS Configuration,48,Data,14,Ser. Num.,H2,,0x0000,0xffff,0x0001,
+SBS Configuration,48,Data,16,Cycle Count,U2,,0,65535,0,Count
+SBS Configuration,48,Data,18,CC Threshold,I2,,100,32767,4400,mAh
+SBS Configuration,48,Data,20,CC %,U1,,0,100,90,
+SBS Configuration,48,Data,21,CF MaxError Limit,U1,,0,100%,100%,
+SBS Configuration,48,Data,22,Design Capacity,I2,,0,65535,4400,mAh
+SBS Configuration,48,Data,24,Design Energy,I2,,0,65535,4752,10mW
+SBS Configuration,48,Data,26,Full Charge Capacity,I2,,0,65535,4400,mAh
+SBS Configuration,48,Data,28,DOD at EDV2,I2,,0,65535,15232,
+SBS Configuration,48,Data,30,Manuf Name,S12,,–,–,Texas Inst.,ASCII
+SBS Configuration,48,Data,42,Device Name,S8,,–,–,bq3060 device,ASCII
+SBS Configuration,48,Data,50,Device Chemistry,S5,,–,–,LION,ASCII
+SBS Configuration,49,Configuration,0,TDA Set %,I1,,–1,100,6,
+SBS Configuration,49,Configuration,1,TDA Clear %,I1,,–1,100,8,
+SBS Configuration,49,Configuration,2,FD Set %,I1,,–1,100,2,
+SBS Configuration,49,Configuration,3,FD Clear %,I1,,–1,100,5,
+SBS Configuration,49,Configuration,4,TDA Set Volt Threshold,I2,,0,16800,3750,mV
+SBS Configuration,49,Configuration,6,TDA Set Volt Time,U1,,0,240,5,s
+SBS Configuration,49,Configuration,7,TDA Clear Volt,I2,,0,16800,4125,mV
+SBS Configuration,49,Configuration,9,FD Set Volt Threshold,I2,,0,16800,3750,mV
+SBS Configuration,49,Configuration,11,FD Volt Time,U1,,0,240,5,s
+SBS Configuration,49,Configuration,12,FD Clear Volt,I2,,0,16800,4125,mV
+System Data,56,Manufacturer Data,0,Pack Lot Code,H2,,0x0000,0xffff,0x0000,
+System Data,56,Manufacturer Data,2,PCB Lot Code,H2,,0x0000,0xffff,0x0000,
+System Data,56,Manufacturer Data,4,Firmware Version,H2,,0x0000,0xffff,0x0000,
+System Data,56,Manufacturer Data,6,Hardware Revision,H2,,0x0000,0xffff,0x0000,
+System Data,56,Manufacturer Data,8,Cell Revision,H2,,0x0000,0xffff,0x0000,
+System Data,58,Manufacturer Info,0,Manuf Info,S32,,–,–,0123456789 abcdef01234 56789abcde,
+System Data,59,Lifetime Data,0,Lifetime Max Temp,I2,,0,1400,300,0.1°C
+System Data,59,Lifetime Data,2,Lifetime Min Temp,I2,,–600,1400,200,0.1°C
+System Data,59,Lifetime Data,4,Lifetime Max Cell Voltage,I2,,0,32767,3500,mV
+System Data,59,Lifetime Data,6,Lifetime Min Cell Voltage,I2,,0,32767,3200,mV
+Configuration,64,Registers,0,Operation Cfg A,H2,,0x0000,0xffff,0x0228,
+Configuration,64,Registers,2,Operation Cfg B,H2,,0x0000,0xffff,0x0440,
+Configuration,64,Registers,4,Operation Cfg C,H2,,0x0000,0xffff,0x0040,
+Configuration,64,Registers,6,Permanent Fail Cfg,H2,,0x0000,0xffff,0x0000,
+Configuration,64,Registers,8,Non-Removable Cfg,H2,,0x0000,0xffff,0x0000,
+Configuration,65,AFE,1,AFE State_CTL,H1,,0x00,0xff,0x00,
+Power,68,Power,0,Flash Update OK Voltage,I2,,6000,20000,7500,mV
+Power,68,Power,2,Shutdown Voltage,I2,,5000,20000,5250,mV
+Power,68,Power,4,Shutdown Time,U1,,0,240,10,s
+Power,68,Power,5,Cell Shutdown Voltage,I2,,0,5000,1750,mV
+Power,68,Power,7,Cell Shutdown Time,U1,,0,240,10,s
+Power,68,Power,8,AFE Shutdown Voltage,I2,,0,23000,3000,mV
+Power,68,Power,10,Sleep Current,I2,,0,100,10,mA
+Power,68,Power,12,Bus Low Time,U1,,0,255,5,s
+Power,68,Power,13,Cal Inhibit Temp Low,I2,,–400,1200,50,0.1°C
+Power,68,Power,15,Cal Inhibit Temp High,I2,,–400,1200,450,0.1°C
+Power,68,Power,17,Sleep Voltage Time,U1,,1,240,5,s
+Power,68,Power,18,Sleep Current Time,U1,,1,255,20,s
+Power,68,Power,19,Wake Current Reg,H1,,0x00,0x07,0x00,
+Gas Gauging,85,CEDV Cfg,0,CEDV Config,H1,,0,0xff,0x00,
+Gas Gauging,85,CEDV Cfg,1,EMF,U2,,0,65535,3743,mV
+Gas Gauging,85,CEDV Cfg,3,EDV C0 Factor,U2,,0,65535,149,
+Gas Gauging,85,CEDV Cfg,5,EDV R0 Factor,U2,,0,65535,867,
+Gas Gauging,85,CEDV Cfg,7,EDV T0 Rate Factor,U2,,0,65535,4030,
+Gas Gauging,85,CEDV Cfg,9,EDV R1 Rate Factor,U2,,0,65535,316,
+Gas Gauging,85,CEDV Cfg,11,EDV TC Factor,U1,,0,65535,9,
+Gas Gauging,85,CEDV Cfg,12,EDV C1 Factor,U1,,0,255,0,
+Gas Gauging,85,CEDV Cfg,13,EDV Age Factor,U1,,0,255,0,
+Gas Gauging,85,CEDV Cfg,14,Fixed EDV0,U2,,0,65535,3031,mV
+Gas Gauging,85,CEDV Cfg,16,Fixed EDV1,U2,,0,65535,3385,mV
+Gas Gauging,85,CEDV Cfg,18,Fixed EDV2,U2,,0,65535,3501,mV
+Gas Gauging,85,CEDV Cfg,29,Low Temp,U1,,0,255,119,0.1C
+Gas Gauging,85,CEDV Cfg,38,Overload Current,U2,,0,65535,5000,mA
+Gas Gauging,85,CEDV Cfg,42,Self Discharge Rate,U1,,0,255,20,0.01%/d ay
+Gas Gauging,85,CEDV Cfg,43,Electronics Load,U1,,0,255,0,3μA
+Gas Gauging,85,CEDV Cfg,44,Battery Low,U2,,0,65535,4608,% / 2.56
+Gas Gauging,85,CEDV Cfg,46,Near Full,U2,,0,65535,200,mAh
+Gas Gauging,81,Current Thresholds,0,Dsg Current Threshold,I2,,0,2000,100,mA
+Gas Gauging,81,Current Thresholds,2,Chg Current Threshold,I2,,0,2000,50,mA
+Gas Gauging,81,Current Thresholds,4,Quit Current,I2,,0,1000,10,mA
+Gas Gauging,81,Current Thresholds,6,Dsg Relax Time,U1,,0,255,1,s
+Gas Gauging,81,Current Thresholds,7,Chg Relax Time,U1,,0,255,60,s
+Gas Gauging,82,State,0,Qmax Cell 0,I2,,0,32767,4400,mAh
+Gas Gauging,82,State,2,Qmax Cell 1,I2,,0,32767,4400,mAh
+Gas Gauging,82,State,4,Qmax Cell 2,I2,,0,32767,4400,mAh
+Gas Gauging,82,State,6,Qmax Cell 3,I2,,0,32767,4400,mAh
+Gas Gauging,82,State,8,Qmax Pack,I2,,0,32767,4400,mAh
+PF Status,96,Device Status Data,0,PF Flags 1,H2,,0x0000,0x6fff,0x0000,
+PF Status,96,Device Status Data,2,Fuse Flag,H2,,0x0000,0xffff,0x0000,
+PF Status,96,Device Status Data,4,PF Voltage,I2,,0,32767,0,mV
+PF Status,96,Device Status Data,6,PF C4 Voltage,I2,,0,9999,0,mV
+PF Status,96,Device Status Data,8,PF C3 Voltage,I2,,0,9999,0,mV
+PF Status,96,Device Status Data,10,PF C2 Voltage,I2,,0,9999,0,mV
+PF Status,96,Device Status Data,12,PF C1 Voltage,I2,,0,9999,0,mV
+PF Status,96,Device Status Data,14,PF Current,I2,,–32768,32767,0,mA
+PF Status,96,Device Status Data,16,PF Temperature,I2,,–9999,9999,0,0.1 K
+PF Status,96,Device Status Data,18,PF Batt Stat,H2,,0x0000,0xffff,0x0000,
+PF Status,96,Device Status Data,20,PF RC-mAh,I2,,0,32767,0,mAh
+PF Status,96,Device Status Data,22,PF FCC,I2,,0,32767,0,mAh
+PF Status,96,Device Status Data,24,PF Chg Status,H2,,0x0000,0xffff,0x0000,
+PF Status,96,Device Status Data,26,PF Safety Status,H2,,0x0000,0xffff,0x0000,
+PF Status,96,Device Status Data,28,PF DOD,I2,,0,65535,,
+PF Status,96,Device Status Data,30,PF Flags 2,H2,,0x0000,0x8000,0x0000,
+PF Status,97,AFE Regs,0,AFE Status,H1,,0x00,0xff,0x00,
+PF Status,97,AFE Regs,1,AFE State,H1,,0x00,0xff,0x00,
+PF Status,97,AFE Regs,2,AFE Output,H1,,0x00,0xff,0x00,
+PF Status,97,AFE Regs,3,AFE Output Status,H1,,0x00,0xff,0x00,
+PF Status,97,AFE Regs,5,AFE Cell Select,H1,,0x00,0xff,0x00,
+PF Status,97,AFE Regs,6,AFE OLV,H1,,0x00,0xff,0x00,
+PF Status,97,AFE Regs,7,AFE OLT,H1,,0x00,0xff,0x00,
+PF Status,97,AFE Regs,8,AFE SCC,H1,,0x00,0xff,0x00,
+PF Status,97,AFE Regs,9,AFE SCD,H1,,0x00,0xff,0x00,
+PF Status,97,AFE Regs,10,AFE Function,H1,,0x00,0xff,0x00,
+Calibration,104,Data,0,CC Gain,F4,,0.1,4,0.9419,
+Calibration,104,Data,4,CC Delta,F4,,29826,1193046,280932.6,
+Calibration,104,Data,8,VC1 K-factor,I2,,0,32767,20500,
+Calibration,104,Data,10,VC2 K-factor,I2,,0,32767,20500,
+Calibration,104,Data,12,VC3 K-factor,I2,,0,32767,20500,
+Calibration,104,Data,14,VC4 K-factor,I2,,0,32767,20500,
+Calibration,104,Data,16,K-factor Override Flag,H2,,0,0x9669,0,
+Calibration,104,Data,18,AFE Pack Gain,I2,,0,32767,24500,μV / cnt
+Calibration,104,Data,20,CC Offset,I2,,–32768,32767,–1667,
+Calibration,104,Data,22,Board Offset,I2,,–32767,32767,0,
+Calibration,104,Data,24,Int Temp Offset,I1,,–128,127,0,
+Calibration,104,Data,25,Ext1 Temp Offset,I1,,–128,127,0,
+Calibration,104,Data,26,Ext2 Temp Offset,I1,,–128,127,0,
+Calibration,105,Config,0,CC Current,I2,,0,32767,3000,mA
+Calibration,105,Config,2,Voltage Signal,I2,,0,32767,12600,mV
+Calibration,105,Config,4,Temp Signal,I2,,0,32767,2980,0.1°C
+Calibration,105,Config,6,CC Offset Time,U2,,0,65535,250,ms
+Calibration,105,Config,8,ADC Offset Time,U2,,0,65535,32,ms
+Calibration,105,Config,10,CC Gain Time,U2,,0,65535,250,ms
+Calibration,105,Config,12,Voltage Time,U2,,0,65535,1888,ms
+Calibration,105,Config,14,Temperature Time,U2,,0,65535,32,s
+Calibration,105,Config,17,Cal Mode Timeout,U2,,0,65535,38400,1/128 s
+Calibration,106,Temp Model,0,Ext Coef a1,I2,,–32768,32767,–11130,
+Calibration,106,Temp Model,2,Ext Coef a2,I2,,–32768,32767,19142,
+Calibration,106,Temp Model,4,Ext Coef a3,I2,,–32768,32767,–19262,
+Calibration,106,Temp Model,6,Ext Coef a4,I2,,–32768,32767,28203,
+Calibration,106,Temp Model,8,Ext Coef a5,I2,,–32768,32767,892,
+Calibration,106,Temp Model,10,Ext Coef b1,I2,,–32768,32767,328,
+Calibration,106,Temp Model,12,Ext Coef b2,I2,,–32768,32767,–605,
+Calibration,106,Temp Model,14,Ext Coef b3,I2,,–32768,32767,–2443,
+Calibration,106,Temp Model,16,Ext Coef b4,I2,,–32768,32767,4696,
+Calibration,106,Temp Model,18,Ext rc0,I2,,–32768,32767,11703,
+Calibration,106,Temp Model,20,Ext adc0,I2,,–32768,32767,11338,
+Calibration,106,Temp Model,22,Rpad,I2,,–32768,32767,87,
+Calibration,106,Temp Model,24,Rint,I2,,–32768,32767,17740,
+Calibration,106,Temp Model,26,Int Coef 1,I2,,–32768,32767,0,s
+Calibration,106,Temp Model,28,Int Coef 2,I2,,–32768,32767,0,s
+Calibration,106,Temp Model,30,Int Coef 3,I2,,–32768,32767,–11136,s
+Calibration,106,Temp Model,32,Int Coef 4,I2,,–32768,32767,5754,s
+Calibration,106,Temp Model,34,Int Min AD,I2,,–32768,32767,0,s
+Calibration,106,Temp Model,36,Int Max Temp,I2,,–32768,32767,5754,s
+Calibration,107,Current,0,Filter,U1,,0,255,239,
+Calibration,107,Current,1,Deadband,U1,,0,255,3,mA
+Calibration,107,Current,2,CC Deadband,U1,,0,255,34,294 nV

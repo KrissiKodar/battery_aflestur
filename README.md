@@ -1,5 +1,18 @@
 # battery_i2c
-This folder contains the c++ code for the arduino that communicates with the batteries through I2C. This folder should not need any changes.
+This folder contains the c++ code for the arduino that communicates with the batteries through I2C.
+
+The code has been modified to read the dataflashes of BQ3060, BQ4050, BQ78350 correctly. 
+
+For BQ78350 it first unseals the battery, goes into full access mode and then reads the dataflash. After the whole dataflash has been read it seals the battery again.
+
+
+
+# GUI
+## contains OssurBatteryReader windows forms application for reading of the batteries (work in progress)
+
+It is a modified version of SmartBatteryHack, it has been modified to read the dataflash off BQ3060, BQ4050, BQ78350 correctly.
+
+Currently it reads the entire dataflashes and save them to .csv files which contain the data in raw bytes. Interpreting the bytes using the datasheets and saving to a database have to be added later.
 
 # python_files
 ## see inside the "python_files" folder for more detailed information.
