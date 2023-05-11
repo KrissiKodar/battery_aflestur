@@ -1,3 +1,4 @@
+#coding: iso-8859-1
 import pandas as pd
 import warnings
 
@@ -47,7 +48,8 @@ def read_from_4050(class_, subclass_, data_df, add_read):
                 # place temp_data[offset:offset+type_size] in test["MEASURED_VALUE"].iloc[j]
                 type_size = int(test["TYPE"].iloc[j][1:])
                 actual_address = test["ADDRESS"].iloc[j]
-                new_row  = {'CLASS': class_, 'SUBCLASS': subclass_, 'ADDRESS': f"0x{actual_address:x}", 'NAME': test["NAME"].iloc[j], 'CURRENT_ADDRESS': f"0x{min_address:x}", 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE_SIZE': type_size, 'TYPE': test["TYPE"].iloc[j]}
+                the_unit = test["UNIT"].iloc[j]
+                new_row  = {'CLASS': class_, 'SUBCLASS': subclass_, 'ADDRESS': f"0x{actual_address:x}", 'NAME': test["NAME"].iloc[j], 'CURRENT_ADDRESS': f"0x{min_address:x}", 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE_SIZE': type_size, 'TYPE': test["TYPE"].iloc[j], 'UNIT': the_unit}
                 add_read = add_read.append(new_row, ignore_index=True)
                 #test["MEASURED_VALUE"].iloc[j] = temp_data[offset:offset+type_size]
                 #measured_values.append(temp_data[offset:offset+type_size])
@@ -80,7 +82,8 @@ def read_from_4050(class_, subclass_, data_df, add_read):
         # place temp_data[offset:offset+type_size] in test["MEASURED_VALUE"].iloc[j]
         type_size = int(test["TYPE"].iloc[j][1:])	
         actual_address = test["ADDRESS"].iloc[j]
-        new_row  = {'CLASS': class_, 'SUBCLASS': subclass_, 'ADDRESS': f"0x{actual_address:x}", 'NAME': test["NAME"].iloc[j], 'CURRENT_ADDRESS': f"0x{min_address:x}", 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE_SIZE': type_size, 'TYPE': test["TYPE"].iloc[j]}
+        the_unit = test["UNIT"].iloc[j]
+        new_row  = {'CLASS': class_, 'SUBCLASS': subclass_, 'ADDRESS': f"0x{actual_address:x}", 'NAME': test["NAME"].iloc[j], 'CURRENT_ADDRESS': f"0x{min_address:x}", 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE_SIZE': type_size, 'TYPE': test["TYPE"].iloc[j], 'UNIT': the_unit}
         add_read = add_read.append(new_row, ignore_index=True)
         #test["MEASURED_VALUE"].iloc[j] = temp_data[offset:offset+type_size]
         #measured_values.append(temp_data[offset:offset+type_size])
@@ -140,10 +143,13 @@ def check(data_df, add_reads):
 
 if __name__ == "__main__":
     # Replace 'file_name.pkl' with the name of your pkl file
-    df = pd.read_pickle('pkl_files\BQ4050_df.pkl')
+    battery_gauge_type = "4050"
+    df = pd.read_pickle(f'pkl_files\BQ{battery_gauge_type}_df.pkl')
+    #print(df)
+
     # Create an empty DataFrame
     #address_reads = pd.DataFrame(columns=['CLASS', 'SUBCLASS', 'ADDRESS'])
-    address_reads = pd.DataFrame(columns=['CLASS', 'SUBCLASS', 'ADDRESS', 'NAME', 'CURRENT_ADDRESS' ,'NUM_READS', 'OFFSET', 'TYPE_SIZE', 'TYPE'])
+    address_reads = pd.DataFrame(columns=['CLASS', 'SUBCLASS', 'ADDRESS', 'NAME', 'CURRENT_ADDRESS' ,'NUM_READS', 'OFFSET', 'TYPE_SIZE', 'TYPE', 'UNIT'])
 
     print(address_reads)
     # Print the first few rows of the dataframe to verify that it was loaded correctly
@@ -173,7 +179,7 @@ if __name__ == "__main__":
 
 
     # Swap the locations of columns B and C
-    address_reads = address_reads.reindex(columns=['CLASS', 'SUBCLASS', 'NAME', 'ADDRESS', 'OFFSET', 'NUM_READS', 'TYPE'])
+    address_reads = address_reads.reindex(columns=['CLASS', 'SUBCLASS', 'NAME', 'ADDRESS', 'OFFSET', 'NUM_READS', 'TYPE', 'UNIT'])
 
     # Save the modified DataFrame to a new CSV file
-    address_reads.to_csv('BQ4050_read_help.csv', index=False)
+    address_reads.to_csv(f'BQ{battery_gauge_type}_read_help.csv', index=False)

@@ -16,8 +16,8 @@ def read_from_3060(class_, subclass_, data_df, add_read):
     for j in range(len(test)):
         offset = int(test["OFFSET"].iloc[j])
         type = test["TYPE"].iloc[j]
-        new_row  = {'CLASS': class_, 'SUBCLASS': test["SUBCLASS"].iloc[j], 'NAME': test["NAME"].iloc[j], 'SUBCLASS ID': subclass_, 'OFFSET': offset, 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE': type}
-        
+        the_unit = test["UNIT"].iloc[j]
+        new_row  = {'CLASS': class_, 'SUBCLASS': test["SUBCLASS"].iloc[j], 'NAME': test["NAME"].iloc[j], 'SUBCLASS ID': subclass_, 'OFFSET': offset, 'NUM_READS': num_reads, 'OFFSET': offset, 'TYPE': type, 'UNIT': the_unit}
         add_read = add_read.append(new_row, ignore_index=True)
         print(f"Subclass: {subclass_}")
     return add_read
@@ -39,10 +39,10 @@ if __name__ == "__main__":
     df = pd.read_pickle('pkl_files\BQ3060_df.pkl')
     print(list(df.columns.values))
     # Create an empty DataFrame
-    address_reads = pd.DataFrame(columns=['CLASS', 'SUBCLASS', 'NAME', 'SUBCLASS ID', 'OFFSET', 'NUM_READS', 'TYPE'])
+    address_reads = pd.DataFrame(columns=['CLASS', 'SUBCLASS', 'NAME', 'SUBCLASS ID', 'OFFSET', 'NUM_READS', 'TYPE', 'UNIT'])
 
     # Print the first few rows of the dataframe to verify that it was loaded correctly
     address_reads = read_all_dataflash(df, address_reads)
     print("test")
     print(address_reads[:20])
-    address_reads.to_csv('example_rheo.csv', index=False)
+    address_reads.to_csv('BQ3060_read_help.csv', index=False)
