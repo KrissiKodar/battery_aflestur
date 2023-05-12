@@ -1,0 +1,119 @@
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Data received
+3D 00 08 81 00 FF FF FF FF FF FF 83
+
+[INFO] Handshake ERROR: ??????
+
+[INFO] Device not found at COM3

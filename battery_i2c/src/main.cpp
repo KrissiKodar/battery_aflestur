@@ -473,9 +473,9 @@ void read_rom_block_3060(void)
     //uint8_t command = 0x44;
     bool done = false;
 
-    uint8_t len_all_subclases = 30;
+    uint8_t len_all_subclases = 31;
     uint16_t all_subclasses[len_all_subclases] = {0, 1, 2, 16, 17, 18, 19, 20, 32, 33, 34, 36, 37, 38, 
-                                                  48, 49, 56, 59, 64, 65, 68, 85, 81, 82, 96, 97, 104, 
+                                                  48, 49, 56, 58, 59, 64, 65, 68, 85, 81, 82, 96, 97, 104, 
                                                   105, 106, 107};
     uint8_t len_two_reads = 4;
     uint16_t two_reads[len_two_reads] = {34, 48, 85, 106};

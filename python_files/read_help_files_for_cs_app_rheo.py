@@ -45,4 +45,5 @@ if __name__ == "__main__":
     address_reads = read_all_dataflash(df, address_reads)
     print("test")
     print(address_reads[:20])
+    address_reads = address_reads.rename(columns={'SUBCLASS ID': 'SUBCLASS_ID'})
     address_reads.to_csv('BQ3060_read_help.csv', index=False)

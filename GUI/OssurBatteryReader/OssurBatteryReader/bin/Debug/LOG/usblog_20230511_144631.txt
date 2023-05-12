@@ -1,0 +1,34 @@
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[INFO] Device is not responding at COM3
+
+[INFO] Connecting to COM3
+
+[<-TX] Handshake request (COM3)
+3D 00 02 01 00 03
+
+[RX->] Handshake response
+3D 00 08 81 00 53 42 48 41 43 4B 35
+
+[INFO] Handshake OK: Battery ready
+
+[INFO] Device connected (COM3)
+
+[RX->] Device settings
+3D 00 05 83 01 03 00 00 8C
+
+[INFO] Word byte-order: reverse read/write
+
+[INFO] Design voltage: 0.0 V
+
+[<-TX] SMBus register dump request
+3D 00 04 02 03 00 20 29
+
+[RX->] SMBus register dump (00-20)
+3D 00 66 82 03 00 20 00 FF FF 01 FF FF 02 FF FF 03 FF FF 04 FF FF 05 FF FF 06 FF FF 07 FF FF 08 
+FF FF 09 FF FF 0A FF FF 0B FF FF 0C FF FF 0D FF FF 0E FF FF 0F FF FF 10 FF FF 11 FF FF 12 FF FF 
+13 FF FF 14 FF FF 15 FF FF 16 FF FF 17 FF FF 18 FF FF 19 FF FF 1A FF FF 1B FF FF 1C FF FF 1D FF 
+FF 1E FF FF 1F FF FF 20 9B 76
