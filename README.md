@@ -12,7 +12,7 @@ For BQ78350 it first unseals the battery, goes into full access mode and then re
 
 It is a modified version of SmartBatteryHack, it has been modified to read the dataflash off BQ3060, BQ4050, BQ78350 correctly.
 
-Currently it reads the entire dataflashes and save them to .csv files which contain the data in raw bytes. Interpreting the bytes using the datasheets and saving to a database have to be added later.
+Currently it reads the entire dataflashes and save them to .csv files which contain the data in raw bytes. It also parses the raw data bytes and saves the measured values in .CSV files. SQL queries are still to be implemented for the C# code.
 
 # python_files
 ## see inside the "python_files" folder for more detailed information.
